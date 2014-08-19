@@ -1,11 +1,19 @@
 require 'rails_helper'
 
 describe "Food lists" do
+  before(:all) do
+    require_relative '../../db/seeds'
+  end
+  after(:all) do
+    List.destroy_all
+  end
+
+  before { visit '/' }
+
   describe "The very high oxalate food list" do
     it "lists very high oxalate foods" do
-      list = List.create(name: "Very High Oxalate Foods", foods: ["spinach"])
+      click_on "Very High Oxalate Foods"
 
-      visit list_path(list)
       expect(page).to have_content("Very High Oxalate Foods")
       expect(page).to have_content(/spinach/i)
     end
@@ -13,9 +21,8 @@ describe "Food lists" do
 
   describe "The high oxalate food list" do
     it "lists high oxalate foods" do
-      list = List.create(name: "High Oxalate Foods", foods: ["chocolate"])
+      click_on "High Oxalate Foods"
 
-      visit list_path(list)
       expect(page).to have_content("High Oxalate Foods")
       expect(page).to have_content(/chocolate/i)
     end

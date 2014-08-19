@@ -16,4 +16,12 @@ describe ListsController, :type => :controller do
     end
   end
 
+  describe "GET index" do
+    it "redirects to first list" do
+      list = List.create
+      get :index
+      expect(response).to redirect_to(list)
+    end
+  end
+
 end
