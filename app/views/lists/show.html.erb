@@ -1,3 +1,5 @@
 <ul>
-  <li>spinach</li>
+<% @list.foods.each do |food| %>
+  <li><%= food %></li>
+<% end %>
 </ul>

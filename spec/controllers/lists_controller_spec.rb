@@ -1,11 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe ListsController, :type => :controller do
+describe ListsController, :type => :controller do
 
   describe "GET show" do
     it "returns http success" do
-      get :show, id: 1
+      list = List.create
+      get :show, id: list
       expect(response).to be_success
+    end
+
+    it "grabs correct list" do
+      list = List.create
+      get :show, id: list
+      expect(assigns(:list)).to eq(list)
     end
   end
 
