@@ -7,14 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 List.find_or_create_by(name: "Very High Oxalate Foods") do |list|
-  list.foods = ["spinach"]
+  list.foods << Food.new(name: "spinach")
 end
 List.find_or_create_by(name: "High Oxalate Foods") do |list|
-  list.foods = ["chocolate"]
+  list.foods << Food.new(name: "chocolate")
 end
 List.find_or_create_by(name: "Moderate Oxalate Foods") do |list|
-  list.foods = ["hot chocolate"]
+  list.foods << Food.new(name: "hot chocolate")
 end
 List.find_or_create_by(name: "Low Oxalate Foods") do |list|
-  list.foods = ["poultry"]
+  list.foods << Food.new(name: "poultry")
 end

@@ -1,3 +1,3 @@
 class List < ActiveRecord::Base
-  serialize :foods
+  has_many :foods, dependent: :destroy
 end
