@@ -9,4 +9,9 @@ class FoodsController < ApplicationController
   	list.foods << Food.new(food_params)
   	redirect_to list
   end
+
+  def search
+  	# SELECT * from foods WHERE `foods`.name LIKE "%chocolate%"
+  	@results = Food.where('name LIKE ?', "%#{params[:search]}%")
+  end
 end
