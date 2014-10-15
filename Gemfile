@@ -43,3 +43,5 @@ group :development, :test do
   gem 'capybara'
   gem 'poltergeist'
 end
+
+gem 'rails_12factor'
