@@ -7,7 +7,7 @@
   </tr>
 <% @list.foods.each do |food| %>
   <tr>
-    <td><%= food.name %></td>
+    <td><span class="<%= list_class_name(food.list) %>"><%= food.name %></span></td>
     <td><%= link_to "Edit", edit_food_path(food) %></td>
     <td><%= link_to "Delete", food_path(food), method: :delete %></td>
   </tr>
