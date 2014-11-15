@@ -67,4 +67,14 @@ describe "Food lists" do
     expect(page).to have_content("Low Oxalate Foods")
     expect(page).to have_content("Cat")
   end
+
+  it "deletes a food" do
+    click_on "Low Oxalate Foods"
+    expect(page).to have_content(/poultry/i)
+
+    click_on "Delete"
+
+    expect(page).to have_content("Low Oxalate Foods")
+    expect(page).not_to have_content(/poultry/i)
+  end
 end

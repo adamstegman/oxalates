@@ -47,4 +47,21 @@ RSpec.describe FoodsController, :type => :controller do
       expect(response).to redirect_to(list)
     end
   end
+
+  describe "DELETE destroy" do
+    it "deletes the food" do
+      list = List.create
+      food = list.foods.create
+      expect {
+        delete :destroy, id: food
+      }.to change(Food, :count).by(-1)
+    end
+
+    it "redirects to the old food's list" do
+      list = List.create
+      food = list.foods.create
+      delete :destroy, id: food
+      expect(response).to redirect_to(list)
+    end
+  end
 end

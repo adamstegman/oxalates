@@ -21,6 +21,13 @@ class FoodsController < ApplicationController
     redirect_to list
   end
 
+  def destroy
+    food = Food.find(params[:id])
+    list = food.list
+    food.destroy!
+    redirect_to list
+  end
+
   def search
     # SELECT * from foods WHERE `foods`.name LIKE "%chocolate%"
     @results = Food.where('name LIKE ?', "%#{params[:search]}%")
