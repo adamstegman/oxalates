@@ -1,6 +1,13 @@
 <h1><%= @list.name %></h1>
-<ul>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Edit</th>
+  </tr>
 <% @list.foods.each do |food| %>
-  <li><%= food.name %></li>
+  <tr>
+    <td><%= food.name %></td>
+    <td><%= link_to "Edit", edit_food_path(food) %></td>
+  </tr>
 <% end %>
-</ul>
+</table>

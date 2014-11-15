@@ -1,0 +1,8 @@
+<%= form_for @food do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :list %>
+  <%= f.select :list, options_from_collection_for_select(all_lists, :id, :name, @food.list_id) %>
+
+  <%= f.submit "Save" %>
+<% end %>

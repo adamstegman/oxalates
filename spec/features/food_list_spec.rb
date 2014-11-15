@@ -55,4 +55,16 @@ describe "Food lists" do
     expect(page).to have_content("Low Oxalate Foods")
     expect(page).to have_content("Dog")
   end
+
+  it "edits a food" do
+    click_on "Low Oxalate Foods"
+    expect(page).to have_content(/poultry/i)
+
+    click_on "Edit"
+    fill_in "Name", with: "Cat"
+    click_on "Save"
+
+    expect(page).to have_content("Low Oxalate Foods")
+    expect(page).to have_content("Cat")
+  end
 end
