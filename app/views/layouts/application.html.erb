@@ -18,7 +18,7 @@
 <% all_lists.each do |list| %>
 <%= link_to list.name, list %>
 <% end %>
-<%= link_to "Add Food", new_food_path %>
+<%= link_to "Add Food", new_food_path(list_id: @list.try(:id)) %>
 
 </body>
 </html>

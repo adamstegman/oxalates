@@ -1,6 +1,7 @@
 class FoodsController < ApplicationController
   def new
     @food = Food.new
+    @list_id = params[:list_id]
   end
 
   def create

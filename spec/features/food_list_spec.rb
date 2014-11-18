@@ -47,11 +47,12 @@ describe "Food lists" do
   end
 
   it "Adds a food" do
+    click_on "Low Oxalate Foods"
     click_on "Add Food"
-    select "Low Oxalate Foods", from: "List"
+    expect(page).to have_select("List", selected: "Low Oxalate Foods")
+
     fill_in "Name", with: "Dog"
     click_on "Add"
-
     expect(page).to have_content("Low Oxalate Foods")
     expect(page).to have_content("Dog")
   end

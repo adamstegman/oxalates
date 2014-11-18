@@ -3,7 +3,7 @@
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :list %>
-  <%= f.select :list, options_from_collection_for_select(all_lists, :id, :name) %>
+  <%= f.select :list, options_from_collection_for_select(all_lists, :id, :name, @list_id) %>
 
   <%= f.submit "Add" %>
 <% end %>
