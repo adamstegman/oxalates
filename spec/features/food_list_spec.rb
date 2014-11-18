@@ -3,6 +3,7 @@ require 'rails_helper'
 describe "Food lists" do
   before(:all) do
     require_relative '../../db/seeds'
+    ENV['OXALATES_PASSWORD'] = BCrypt::Password.create('password')
   end
   after(:all) do
     List.destroy_all
@@ -46,40 +47,9 @@ describe "Food lists" do
     end
   end
 
-  it "Adds a food" do
-    click_on "Low Oxalate Foods"
-    click_on "Add Food"
-    expect(page).to have_select("List", selected: "Low Oxalate Foods")
-
-    fill_in "Name", with: "Dog"
-    click_on "Add"
-    expect(page).to have_content("Low Oxalate Foods")
-    expect(page).to have_content("Dog")
-  end
-
-  it "edits a food" do
-    click_on "Low Oxalate Foods"
-    expect(page).to have_content(/poultry/i)
-
-    click_on "Edit"
-    fill_in "Name", with: "Cat"
-    click_on "Save"
-
-    expect(page).to have_content("Low Oxalate Foods")
-    expect(page).to have_content("Cat")
-  end
-
-  it "deletes a food" do
-    click_on "Low Oxalate Foods"
-    expect(page).to have_content(/poultry/i)
-
-    click_on "Delete"
-
-    expect(page).to have_content("Low Oxalate Foods")
-    expect(page).not_to have_content(/poultry/i)
-  end
-
   it "displays foods alphabetically case-insensitively" do
+    fill_in "Password", with: "password"
+    click_on "Log in"
     click_on "Add Food"
     select "Low Oxalate Foods", from: "List"
     fill_in "Name", with: "ZZZ"
@@ -90,5 +60,62 @@ describe "Food lists" do
     click_on "Add"
 
     expect(page).to have_content(/aaa.*ZZZ/)
+  end
+
+  context "when signed in" do
+    before do
+      fill_in "Password", with: "password"
+      click_on "Log in"
+    end
+
+    it "Adds a food" do
+      click_on "Low Oxalate Foods"
+      click_on "Add Food"
+      expect(page).to have_select("List", selected: "Low Oxalate Foods")
+
+      fill_in "Name", with: "Dog"
+      click_on "Add"
+      expect(page).to have_content("Low Oxalate Foods")
+      expect(page).to have_content("Dog")
+    end
+
+    it "edits a food" do
+      click_on "Low Oxalate Foods"
+      expect(page).to have_content(/poultry/i)
+
+      click_on "Edit"
+      fill_in "Name", with: "Cat"
+      click_on "Save"
+
+      expect(page).to have_content("Low Oxalate Foods")
+      expect(page).to have_content("Cat")
+    end
+
+    it "deletes a food" do
+      click_on "Low Oxalate Foods"
+      expect(page).to have_content(/poultry/i)
+
+      click_on "Delete"
+
+      expect(page).to have_content("Low Oxalate Foods")
+      expect(page).not_to have_content(/poultry/i)
+    end
+  end
+
+  context "when not signed in" do
+    it "does not add a food" do
+      click_on "Low Oxalate Foods"
+      expect(page).not_to have_link("Add Food")
+    end
+
+    it "does not edit a food" do
+      click_on "Low Oxalate Foods"
+      expect(page).not_to have_link("Edit")
+    end
+
+    it "does not delete a food" do
+      click_on "Low Oxalate Foods"
+      expect(page).not_to have_link("Delete")
+    end
   end
 end

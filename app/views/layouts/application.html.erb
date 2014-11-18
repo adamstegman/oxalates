@@ -7,6 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if current_user %>
+<%= link_to "Log out", session_path(from: current_path), method: :delete %>
+<% else %>
+<%= form_tag session_path do %>
+  <%= hidden_field_tag :from, current_path %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "Log in" %>
+<% end %>
+<% end %>
+
 <%= form_tag search_path, method: "get" do %>
   <%= label_tag :search %>
   <%= text_field_tag :search %>
@@ -18,7 +29,10 @@
 <% all_lists.each do |list| %>
 <%= link_to list.name, list %>
 <% end %>
+
+<% if current_user %>
 <%= link_to "Add Food", new_food_path(list_id: @list.try(:id)) %>
+<% end %>
 
 </body>
 </html>

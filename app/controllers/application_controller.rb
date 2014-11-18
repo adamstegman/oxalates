@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   def all_lists
     List.all
   end
-
   helper_method :all_lists
+
+  def current_user
+    session[:current_user]
+  end
+  helper_method :current_user
 end
