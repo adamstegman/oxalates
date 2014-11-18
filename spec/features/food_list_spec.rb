@@ -77,4 +77,17 @@ describe "Food lists" do
     expect(page).to have_content("Low Oxalate Foods")
     expect(page).not_to have_content(/poultry/i)
   end
+
+  it "displays foods alphabetically case-insensitively" do
+    click_on "Add Food"
+    select "Low Oxalate Foods", from: "List"
+    fill_in "Name", with: "ZZZ"
+    click_on "Add"
+    click_on "Add Food"
+    select "Low Oxalate Foods", from: "List"
+    fill_in "Name", with: "aaa"
+    click_on "Add"
+
+    expect(page).to have_content(/aaa.*ZZZ/)
+  end
 end

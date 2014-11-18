@@ -12,7 +12,7 @@ describe ListsController, :type => :controller do
     it "grabs correct list" do
       list = List.create
       get :show, id: list
-      expect(assigns(:list)).to eq(list)
+      expect(assigns(:list).id).to eq(list.id)
     end
   end
 
