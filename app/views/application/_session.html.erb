@@ -1,0 +1,10 @@
+<% if current_user %>
+  <%= link_to "Log out", session_path(from: current_path), method: :delete %>
+<% else %>
+  <%= form_tag session_path do %>
+    <%= hidden_field_tag :from, current_path %>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+    <%= submit_tag "Log in" %>
+  <% end %>
+<% end %>
