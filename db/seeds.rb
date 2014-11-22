@@ -6,15 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-List.find_or_create_by(name: "Very High Oxalate Foods") do |list|
+List.find_or_create_by(name: "Very High") do |list|
   list.foods << Food.new(name: "spinach")
 end
-List.find_or_create_by(name: "High Oxalate Foods") do |list|
+List.find_or_create_by(name: "High") do |list|
   list.foods << Food.new(name: "chocolate")
 end
-List.find_or_create_by(name: "Moderate Oxalate Foods") do |list|
+List.find_or_create_by(name: "Moderate") do |list|
   list.foods << Food.new(name: "hot chocolate")
 end
-List.find_or_create_by(name: "Low Oxalate Foods") do |list|
+List.find_or_create_by(name: "Low") do |list|
   list.foods << Food.new(name: "poultry")
 end
