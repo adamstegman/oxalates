@@ -1,7 +1,8 @@
 <% if current_user %>
-  <%= link_to "Log out", session_path(from: current_path), method: :delete %>
+  <%= link_to "Log out", session_path(from: current_path), method: :delete, class: 'session logout' %>
 <% else %>
-  <%= form_tag session_path do %>
+  <% # FIXME: implement login page %>
+  <%= form_tag session_path, class: 'session login' do %>
     <%= hidden_field_tag :from, current_path %>
     <%= label_tag :password %>
     <%= password_field_tag :password %>

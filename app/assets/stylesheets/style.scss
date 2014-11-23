@@ -1,20 +1,244 @@
+$font_family: "Helvetica", sans-serif;
+
+$title_height: 1em;
+$title_padding: 20px 0;
+$title_background_color: #a5a5a5;
+$title_font_family: "MarkerFelt-Thin", $font_family;
+$title_font_size: 28px;
+
+$actions_height: 44px;
+$actions_background_color: lighten($title_background_color, 20%);
+$actions_font_size: 16px;
+$actions_gutter_width: 0.5em;
+$session_padding: $actions_gutter_width 0 $actions_gutter_width $actions_gutter_width;
+$session_width: 4em;
+$search_padding: $actions_gutter_width;
+$search_width: 9em;
+$add_food_padding: $session_padding;
+$add_food_width: 2em;
+$edit_food_padding: $session_padding;
+$edit_food_width: 2em;
+
 $very_high_text_color: black;
 $high_text_color: #e00;
 $moderate_text_color: #fa0;
 $low_text_color: green;
+$food_list_item_border: 1px solid #ddd;
+$food_list_item_padding: 0.75em;
+$food_list_item_font_size: 16px;
 
-.list--very-high {
+$menu_height: $actions_height;
+$menu_padding: 4px 0;
+$menu_background_color: #fafafa;
+$menu_font_size: 10px;
+$menu_text_color: #aaa;
+$menu_active_text_color: darken($menu_text_color, 20%);
+$menu_hover_text_color: #000;
+
+html {
+  font-family: $font_family;
+}
+
+body, h1, p {
+  margin: 0;
+}
+
+.body {
+  display: -webkit-flex;
+  -webkit-align-items: stretch;
+  -webkit-flex-direction: column;
+  -webkit-justify-content: flex-start;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  height: calc(100vh - 44px);
+}
+
+.title {
+  min-height: $title_height;
+  padding: $title_padding;
+
+  background-color: $title_background_color;
+  font-family: $title_font_family;
+  font-size: $title_font_size;
+  text-align: center;
+}
+
+.actions {
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: $actions_height;
+
+  background-color: $actions_background_color;
+  font-size: $actions_font_size;
+  a {
+    text-decoration: none;
+  }
+}
+
+.session {
+  margin: $session_padding;
+  min-width: $session_width;
+  max-width: $session_width;
+  &.logout {
+    display: block;
+  }
+
+  text-align: center;
+
+  label {
+    @extend %hidden;
+  }
+  input[type='password'] {
+    font-size: $actions_font_size;
+    width: 100%;
+  }
+}
+
+.search {
+  min-width: $search_width;
+  padding: $search_padding;
+
+  label, input[type='submit'] {
+    @extend %hidden;
+  }
+  input[type='search'] {
+    font-size: $actions_font_size;
+    width: 100%;
+  }
+}
+
+.add-food {
+  padding: $add_food_padding;
+  min-width: $add_food_width;
+
+  text-align: center;
+}
+
+.edit-food {
+  padding: $edit_food_padding;
+  min-width: $edit_food_width;
+
+  text-align: center;
+}
+
+.content {
+  overflow: scroll;
+}
+
+.food-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.food-list-item {
+  border-bottom: $food_list_item_border;
+  padding: $food_list_item_padding;
+
+  font-size: $food_list_item_font_size;
+}
+
+.list-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: $menu_height;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background-color: $menu_background_color;
+
+  display: -webkit-flex;
+  -webkit-align-items: stretch;
+  -webkit-justify-content: space-between;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.list-menu-item {
+  height: 100%;
+  width: 100%;
+  a {
+    display: block;
+    height: 100%;
+  }
+
+  a {
+    color: $menu_text_color;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      color: $menu_hover_text_color;
+    }
+  }
+  color: $menu_text_color;
+  font-size: $menu_font_size;
+  text-align: center;
+
+  &.active {
+    color: $menu_active_text_color;
+    a {
+      color: $menu_active_text_color;
+
+      &:hover, &:focus {
+        color: $menu_hover_text_color;
+      }
+    }
+  }
+}
+
+.list-menu-item-content {
+  height: 100%;
+
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-flex-direction: column;
+  -webkit-justify-content: space-around;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.list-menu-item-icon {
+  min-height: 24px;
+  width: 21px;
+
+  background-color: black;
+}
+
+.very-high {
   color: $very_high_text_color;
 }
 
-.list--high {
+.high {
   color: $high_text_color;
 }
 
-.list--moderate {
+.moderate {
   color: $moderate_text_color;
 }
 
-.list--low {
+.low {
   color: $low_text_color;
+}
+
+%hidden {
+  overflow: hidden;
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  height: 1px;
+  width: 1px;
 }
