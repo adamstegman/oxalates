@@ -12,7 +12,6 @@ $actions_font_size: 16px;
 $actions_gutter_width: 0.5em;
 $session_padding: $actions_gutter_width 0 $actions_gutter_width $actions_gutter_width;
 $session_width: 4em;
-$session_font_size: 24px;
 $search_padding: $actions_gutter_width;
 $search_width: 9em;
 $add_food_padding: $session_padding;
@@ -27,6 +26,9 @@ $low_text_color: green;
 $food_list_item_border: 1px solid #ddd;
 $food_list_item_padding: 0.75em;
 $food_list_item_font_size: 16px;
+$body_form_section_margin: 8px;
+$body_form_header_font_size: 24px;
+$body_form_font_size: 24px;
 
 $menu_height: $actions_height;
 $menu_padding: 4px 0;
@@ -119,12 +121,7 @@ body, h1, p {
 }
 
 .session {
-  p {
-    margin: 0.5em;
-  }
-  input[type='password'] {
-    font-size: $session_font_size;
-  }
+  @extend %body-form;
 }
 
 .search {
@@ -148,6 +145,10 @@ body, h1, p {
   padding: $food_list_item_padding;
 
   font-size: $food_list_item_font_size;
+}
+
+.add-food {
+  @extend %body-form;
 }
 
 .list-menu {
@@ -234,6 +235,19 @@ body, h1, p {
 
 .low {
   color: $low_text_color;
+}
+
+%body-form {
+  h1, p {
+    margin: $body_form_section_margin;
+  }
+
+  h1 {
+    font-size: $body_form_header_font_size;
+  }
+  input, select {
+    font-size: $body_form_font_size;
+  }
 }
 
 %hidden {
