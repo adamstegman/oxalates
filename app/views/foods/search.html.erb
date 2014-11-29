@@ -1,6 +1,1 @@
-<% # FIXME: style %>
-<ul>
-  <% @results.each do |r| %>
-    <li><span class="<%= list_class_name(r.list) %>"><%= r.name %></span>: <%= r.list.name %></li>
-  <% end %>
-</ul>
+<%= render "lists/food_list", foods: @results %>

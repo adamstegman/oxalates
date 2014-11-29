@@ -1,5 +1,1 @@
-<ul class="food-list">
-<% @list.foods.each do |food| %>
-  <li class="food-list-item <%= list_class_name(food.list) %>"><%= food.name %></li>
-<% end %>
-</ul>
+<%= render "food_list", foods: @list.foods %>
