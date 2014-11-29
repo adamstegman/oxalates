@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def active_class_name(list)
-    if list.id == @list.id
+    if @list && list.id == @list.id
       'active'
     else
       ''
