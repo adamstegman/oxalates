@@ -48,8 +48,8 @@ describe "Food lists" do
   end
 
   it "displays foods alphabetically case-insensitively" do
-    fill_in "Password", with: "password"
-    click_on "Log in"
+    log_in
+
     click_on "Add Food"
     select "Low", from: "List"
     fill_in "Name", with: "ZZZ"
@@ -64,8 +64,7 @@ describe "Food lists" do
 
   context "when signed in" do
     before do
-      fill_in "Password", with: "password"
-      click_on "Log in"
+      log_in
     end
 
     it "Adds a food" do
@@ -117,5 +116,15 @@ describe "Food lists" do
       click_on "Low"
       expect(page).not_to have_link("Delete")
     end
+  end
+end
+
+def log_in
+  within '.actions' do
+    click_on "Log in"
+  end
+  fill_in "Password", with: "password"
+  within '.content' do
+    click_on "Log in"
   end
 end

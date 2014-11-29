@@ -1,7 +1,26 @@
 require 'spec_helper'
 
 describe SessionsController do
-  before { ENV['OXALATES_PASSWORD'] = BCrypt::Password.create('password') }
+  before do
+    ENV['OXALATES_PASSWORD'] = BCrypt::Password.create('password')
+  end
+
+  describe "GET new" do
+    it "returns http success" do
+      get :new
+      expect(response).to be_success
+    end
+
+    it "includes the given from path" do
+      get :new, from: '/somepath'
+      expect(assigns(:from)).to eq('/somepath')
+    end
+
+    it "uses the same from path when clicked again" do
+      get :new, from: "#{new_session_path(from: '/somepath')}"
+      expect(assigns(:from)).to eq('/somepath')
+    end
+  end
 
   describe "POST create" do
     it "sets a current user if the password is correct" do
