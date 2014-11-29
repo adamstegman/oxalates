@@ -13,7 +13,7 @@ describe "Food lists" do
 
   describe "The very high oxalate food list" do
     it "lists very high oxalate foods" do
-      click_on "Very High"
+      navigate_to "Very High"
 
       expect(page).to have_content("Very High Oxalate Foods")
       expect(page).to have_content(/spinach/i)
@@ -22,7 +22,7 @@ describe "Food lists" do
 
   describe "The high oxalate food list" do
     it "lists high oxalate foods" do
-      click_on "High"
+      navigate_to "High"
 
       expect(page).to have_content("High Oxalate Foods")
       expect(page).to have_content(/chocolate/i)
@@ -31,7 +31,7 @@ describe "Food lists" do
 
   describe "The moderate oxalate food list" do
     it "lists moderate oxalate foods" do
-      click_on "Moderate"
+      navigate_to "Moderate"
 
       expect(page).to have_content("Moderate Oxalate Foods")
       expect(page).to have_content(/hot chocolate/i)
@@ -40,7 +40,7 @@ describe "Food lists" do
 
   describe "The low oxalate food list" do
     it "lists low oxalate foods" do
-      click_on "Low"
+      navigate_to "Low"
 
       expect(page).to have_content("Low Oxalate Foods")
       expect(page).to have_content(/poultry/i)
@@ -50,14 +50,8 @@ describe "Food lists" do
   it "displays foods alphabetically case-insensitively" do
     log_in
 
-    click_on "Add Food"
-    select "Low", from: "List"
-    fill_in "Name", with: "ZZZ"
-    click_on "Add"
-    click_on "Add Food"
-    select "Low", from: "List"
-    fill_in "Name", with: "aaa"
-    click_on "Add"
+    add_food name: "ZZZ", list: "Low"
+    add_food name: "aaa", list: "Low"
 
     expect(page).to have_content(/aaa.*ZZZ/)
   end
@@ -68,21 +62,24 @@ describe "Food lists" do
     end
 
     it "Adds a food" do
-      click_on "Low"
-      click_on "Add Food"
+      navigate_to "Low"
+      action "Add"
       expect(page).to have_select("List", selected: "Low")
 
       fill_in "Name", with: "Dog"
-      click_on "Add"
+      within '.content' do
+        click_on "Add"
+      end
       expect(page).to have_content("Low Oxalate Foods")
       expect(page).to have_content("Dog")
     end
 
     it "edits a food" do
-      click_on "Low"
+      navigate_to "Low"
       expect(page).to have_content(/poultry/i)
 
-      click_on "Edit"
+      action "Edit"
+      # FIXME
       fill_in "Name", with: "Cat"
       click_on "Save"
 
@@ -91,9 +88,10 @@ describe "Food lists" do
     end
 
     it "deletes a food" do
-      click_on "Low"
+      navigate_to "Low"
       expect(page).to have_content(/poultry/i)
 
+      # FIXME
       click_on "Delete"
 
       expect(page).to have_content("Low Oxalate Foods")
@@ -103,28 +101,47 @@ describe "Food lists" do
 
   context "when not signed in" do
     it "does not add a food" do
-      click_on "Low"
-      expect(page).not_to have_link("Add Food")
+      navigate_to "Low"
+      expect(page).not_to have_link("Add")
     end
 
     it "does not edit a food" do
-      click_on "Low"
+      navigate_to "Low"
       expect(page).not_to have_link("Edit")
     end
 
     it "does not delete a food" do
-      click_on "Low"
+      navigate_to "Low"
       expect(page).not_to have_link("Delete")
     end
   end
 end
 
-def log_in
-  within '.actions' do
-    click_on "Log in"
+def add_food(name: name, list: list)
+  action "Add"
+  select list, from: "List"
+  fill_in "Name", with: name
+  within '.content' do
+    click_on "Add"
   end
+end
+
+def log_in
+  action "Log in"
   fill_in "Password", with: "password"
   within '.content' do
     click_on "Log in"
+  end
+end
+
+def action(name)
+  within '.actions' do
+    click_on name
+  end
+end
+
+def navigate_to(name)
+  within '.list-menu' do
+    click_on name
   end
 end
