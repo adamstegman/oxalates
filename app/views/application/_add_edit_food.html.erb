@@ -1,4 +1,6 @@
 <% if current_user %>
   <%= link_to "Add", new_food_path(list_id: @list.try(:id)), class: 'add-food' %>
-  <%= link_to "Edit", '#', class: 'edit-food' %>
+  <% if @list %>
+    <%= link_to "Edit", edit_list_path(@list.id), class: 'edit-list' %>
+  <% end %>
 <% end %>

@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-describe "Food lists" do
-  before(:all) do
-    require_relative '../../db/seeds'
+describe "Food lists", js: true do
+  before(:each) do
+    load File.expand_path('../../../db/seeds.rb', __FILE__)
     ENV['OXALATES_PASSWORD'] = BCrypt::Password.create('password')
   end
-  after(:all) do
+  after(:each) do
     List.destroy_all
   end
 
@@ -74,13 +74,14 @@ describe "Food lists" do
       expect(page).to have_content("Dog")
     end
 
-    xit "edits a food" do
+    it "edits a food" do
       navigate_to "Low"
       expect(page).to have_content(/poultry/i)
 
       action "Edit"
+      click_on "poultry"
       fill_in "Name", with: "Cat"
-      click_on "Save"
+      click_on "Done"
 
       expect(page).to have_content("Low Oxalate Foods")
       expect(page).to have_content("Cat")

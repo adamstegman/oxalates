@@ -148,6 +148,26 @@ body, h1, p {
   font-size: $food_list_item_font_size;
 }
 
+.edit-food-list-item {
+  @extend .food-list-item;
+
+  display: block;
+
+  cursor: text;
+  text-decoration: none;
+}
+
+.food-list-item-name {
+  display: none;
+}
+input.food-list-item-name {
+  @extend .food-list-item;
+
+  width: 100%;
+
+  -webkit-appearance: none;
+}
+
 .add-food {
   @extend %body-form;
 }
