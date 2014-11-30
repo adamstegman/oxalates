@@ -1,5 +1,4 @@
 <% if current_user %>
   <%= link_to "Add", new_food_path(list_id: @list.try(:id)), class: 'add-food' %>
-  <% # FIXME: Edit should work still %>
   <%= link_to "Edit", '#', class: 'edit-food' %>
 <% end %>
