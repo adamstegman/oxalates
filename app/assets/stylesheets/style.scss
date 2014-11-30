@@ -1,6 +1,6 @@
 $font_family: "Helvetica", sans-serif;
 
-$title_height: 1em;
+$title_height: 28px;
 $title_padding: 20px 0;
 $title_background_color: #a5a5a5;
 $title_font_family: "MarkerFelt-Thin", $font_family;
@@ -61,6 +61,7 @@ body, h1, p {
 
 .title {
   min-height: $title_height;
+  max-height: $title_height;
   padding: $title_padding;
 
   background-color: $title_background_color;
