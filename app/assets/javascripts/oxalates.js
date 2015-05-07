@@ -6,6 +6,7 @@ window.Oxalates = (function() {
 
     var allowEditFoodName = function(event, $el) {
       event.preventDefault();
+      event.stopPropagation();
 
       // disallow editing of other foods
       hideFields($el);
@@ -51,8 +52,10 @@ window.Oxalates = (function() {
         this.$el = $(el);
 
         var _this = this;
-        this.$el.on('click', '.edit-food-list-item', function(event) {
-          allowEditFoodName(event, _this.$el);
+        ['click', 'touchend'].forEach(function(eventType) {
+          _this.$el.on(eventType, '.edit-food-list-item', function(event) {
+            allowEditFoodName(event, _this.$el);
+          });
         });
         this.$el.on('change', '.food-list-item-name', updateFoodListItem);
 
