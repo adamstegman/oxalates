@@ -118,7 +118,7 @@ describe "Food lists", js: true do
   end
 end
 
-def add_food(name: name, list: list)
+def add_food(name:, list:)
   action "Add"
   select list, from: "List"
   fill_in "Name", with: name
