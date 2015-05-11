@@ -26,6 +26,10 @@ $low_text_color: green;
 $food_list_item_border: 1px solid #ddd;
 $food_list_item_padding: 0.75em;
 $food_list_item_font_size: 16px;
+$destroy_food_list_item_icon_height: 22px;
+$destroy_food_list_item_icon_width: 22px;
+$destroy_food_list_item_link_height: 44px;
+$destroy_food_list_item_link_width: 44px;
 $body_form_section_margin: 8px;
 $body_form_header_font_size: 24px;
 $body_form_font_size: 24px;
@@ -139,19 +143,36 @@ body, h1, p {
   list-style-type: none;
   margin: 0;
   padding: 0;
+
+  & > li {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+
+    border-bottom: $food_list_item_border;
+  }
 }
 
 .food-list-item {
-  border-bottom: $food_list_item_border;
   padding: $food_list_item_padding;
 
   font-size: $food_list_item_font_size;
+}
+
+.destroy-food-list-item {
+  width: $destroy_food_list_item_icon_width;
+  height: $destroy_food_list_item_icon_height;
+  padding: #{($destroy_food_list_item_link_height - $destroy_food_list_item_icon_height) / 2}
+           #{($destroy_food_list_item_link_width  - $destroy_food_list_item_icon_width)  / 2};
 }
 
 .edit-food-list-item {
   @extend .food-list-item;
 
   display: block;
+  -webkit-flex-grow: 2;
+  flex-grow: 2;
 
   cursor: text;
   text-decoration: none;

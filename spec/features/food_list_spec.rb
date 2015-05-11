@@ -87,10 +87,11 @@ describe "Food lists", js: true do
       expect(page).to have_content("Cat")
     end
 
-    xit "deletes a food" do
+    it "deletes a food" do
       navigate_to "Low"
       expect(page).to have_content(/poultry/i)
 
+      action "Edit"
       click_on "Delete"
 
       expect(page).to have_content("Low Oxalate Foods")
