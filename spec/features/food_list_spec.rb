@@ -95,6 +95,7 @@ describe "Food lists", js: true do
       click_on "Delete"
 
       expect(page).to have_content("Low Oxalate Foods")
+      expect(page).to have_link("Done")
       expect(page).not_to have_content(/poultry/i)
     end
   end

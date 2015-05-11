@@ -26,7 +26,7 @@ class FoodsController < ApplicationController
     food = Food.find(params[:id])
     list = food.list
     food.destroy!
-    redirect_to list
+    redirect_to edit_list_path(list)
   end
 
   def search

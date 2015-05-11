@@ -57,11 +57,11 @@ RSpec.describe FoodsController, :type => :controller do
       }.to change(Food, :count).by(-1)
     end
 
-    it "redirects to the old food's list" do
+    it "redirects to editing the old food's list" do
       list = List.create
       food = list.foods.create
       delete :destroy, id: food
-      expect(response).to redirect_to(list)
+      expect(response).to redirect_to(edit_list_path(list))
     end
   end
 end
