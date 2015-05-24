@@ -1,10 +1,18 @@
 class ListsController < ApplicationController
   def show
-    @list = SortedList.new(List.find(params[:id]))
+    if params[:id] == AllFoodsList::ID
+      @list = SortedList.new(AllFoodsList.new)
+    else
+      @list = SortedList.new(List.find(params[:id]))
+    end
   end
 
   def edit
-    @list = SortedList.new(List.find(params[:id]))
+    if params[:id] == AllFoodsList::ID
+      @list = SortedList.new(AllFoodsList.new)
+    else
+      @list = SortedList.new(List.find(params[:id]))
+    end
   end
 
   def update

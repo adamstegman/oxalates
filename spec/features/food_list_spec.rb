@@ -11,6 +11,18 @@ describe "Food lists", js: true do
 
   before { visit '/' }
 
+  describe "The all foods list" do
+    it "lists all foods" do
+      navigate_to "All"
+
+      expect(page).to have_content("All Oxalate Foods")
+      expect(page).to have_content(/spinach/i)
+      expect(page).to have_content(/chocolate/i)
+      expect(page).to have_content(/hot chocolate/i)
+      expect(page).to have_content(/poultry/i)
+    end
+  end
+
   describe "The very high oxalate food list" do
     it "lists very high oxalate foods" do
       navigate_to "Very High"
