@@ -31,7 +31,7 @@ class FoodsController < ApplicationController
 
   def search
     # SELECT * from foods WHERE `foods`.name LIKE "%chocolate%"
-    @results = Food.where('name LIKE ?', "%#{params[:search]}%")
+    @results = Food.where('name ILIKE ?', "%#{params[:search]}%")
     @query = params[:search]
   end
 end

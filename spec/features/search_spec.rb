@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "searching for food" do
   before(:all) do
-    List.find_or_create_by(name: "High Oxalate Foods") do |list|
+    @list = List.find_or_create_by(name: "High Oxalate Foods") do |list|
       list.foods << Food.new(name: "chocolate")
       list.foods << Food.new(name: "something else")
       list.foods << Food.new(name: "hot chocolate")
@@ -21,6 +21,14 @@ describe "searching for food" do
   it "keeps the search query in the search box" do
     search_for "a query"
     expect(page.find("#search").value).to eq("a query")
+  end
+
+  it "searches case-insensitively" do
+    @list.foods << Food.new(name: "Cold Chocolate")
+    search_for "CHOCOLATE"
+    expect(page).to have_content("chocolate")
+    expect(page).to have_content("hot chocolate")
+    expect(page).to have_content("Cold Chocolate")
   end
 end
 
