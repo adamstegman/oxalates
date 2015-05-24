@@ -2,7 +2,7 @@ window.Oxalates = (function() {
   var $foodListItems = {};
 
   var EditList = (function() {
-    var editListPathPattern = new RegExp("/lists/(\\d+)/edit");
+    var editListPathPattern = new RegExp("/lists/([^/]+)/edit");
 
     var allowEditFoodName = function(event, $el) {
       event.preventDefault();

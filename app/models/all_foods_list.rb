@@ -17,6 +17,10 @@ class AllFoodsList
     Food.all
   end
 
+  def foods=(foods)
+    foods.each(&:save)
+  end
+
   def persisted?
     true
   end

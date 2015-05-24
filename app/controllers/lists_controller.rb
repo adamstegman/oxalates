@@ -1,24 +1,16 @@
 class ListsController < ApplicationController
   def show
-    if params[:id] == AllFoodsList::ID
-      @list = SortedList.new(AllFoodsList.new)
-    else
-      @list = SortedList.new(List.find(params[:id]))
-    end
+    @list = SortedList.new(fetch_list)
   end
 
   def edit
-    if params[:id] == AllFoodsList::ID
-      @list = SortedList.new(AllFoodsList.new)
-    else
-      @list = SortedList.new(List.find(params[:id]))
-    end
+    @list = SortedList.new(fetch_list)
   end
 
   def update
     # Does not merge conflicting writes, last write wins
     # A more friendly approach might be incremental updates rather than the entire list at a time
-    list = List.find(params[:id])
+    list = fetch_list
     list.foods = Array(params[:list][:foods]).map { |food_params|
       Food.find(food_params[:id]).tap do |food|
         food.update_attributes(food_params.permit(:name))
@@ -29,5 +21,15 @@ class ListsController < ApplicationController
 
   def index
     redirect_to List.first
+  end
+
+  private
+
+  def fetch_list
+    if params[:id] == AllFoodsList::ID
+      AllFoodsList.new
+    else
+      List.find(params[:id])
+    end
   end
 end

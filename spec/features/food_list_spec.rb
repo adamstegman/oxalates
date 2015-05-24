@@ -21,6 +21,20 @@ describe "Food lists", js: true do
       expect(page).to have_content(/hot chocolate/i)
       expect(page).to have_content(/poultry/i)
     end
+
+    it "edits a food" do
+      log_in
+      navigate_to "All"
+      expect(page).to have_content(/poultry/i)
+
+      action "Edit"
+      click_on "poultry"
+      fill_in "Name", with: "Cat"
+      click_on "Done"
+
+      expect(page).to have_content("All Oxalate Foods")
+      expect(page).to have_content("Cat")
+    end
   end
 
   describe "The very high oxalate food list" do
