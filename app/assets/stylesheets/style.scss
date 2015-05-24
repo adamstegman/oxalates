@@ -1,3 +1,4 @@
+$background_color: #fff;
 $font_family: "Helvetica", sans-serif;
 
 $title_height: 28px;
@@ -30,9 +31,17 @@ $destroy_food_list_item_icon_height: 22px;
 $destroy_food_list_item_icon_width: 22px;
 $destroy_food_list_item_link_height: 44px;
 $destroy_food_list_item_link_width: 44px;
+$body_form_padding: 0 1em;
 $body_form_section_margin: 8px;
 $body_form_header_font_size: 24px;
 $body_form_font_size: 24px;
+$body_form_input_height: 1.7em;
+$body_form_input_margin: 0 0 1em 0;
+$body_form_input_padding: 2px;
+$body_form_select_height: 1.5em;
+$body_form_submit_background_color: lighten($title_background_color, 20%);
+$body_form_submit_border: 1px solid darken($body_form_submit_background_color, 20%);
+$body_form_submit_height: 2em;
 
 $menu_height: $actions_height;
 $menu_padding: 4px 0;
@@ -280,12 +289,31 @@ input.food-list-item-name {
 }
 
 %body-form {
+  padding: $body_form_padding;
+
   p {
     margin: $body_form_section_margin;
   }
 
   input, select {
+    display: block;
+    box-sizing: border-box;
     font-size: $body_form_font_size;
+    height: $body_form_input_height;
+    line-height: $body_form_input_height;
+    margin: $body_form_input_margin;
+    padding: $body_form_input_padding;
+    width: 100%;
+  }
+  select {
+    -webkit-appearance: menulist-button;
+    background: $background_color;
+    height: $body_form_select_height;
+  }
+  input[type="submit"] {
+    background: $body_form_submit_background_color;
+    border: $body_form_submit_border;
+    height: $body_form_submit_height;
   }
 }
 
