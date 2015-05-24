@@ -1,6 +1,5 @@
 <%= form_for @food, html: {class: 'add-food'} do |f| %>
-  <h1>Add a Food</h1>
-  <p><%= f.label :name %></p>
+  <p><%= f.label :name, "New food name" %></p>
   <p><%= f.text_field :name %></p>
   <p><%= f.label :list %></p>
   <p><%= f.select :list, options_from_collection_for_select(all_lists, :id, :name, @list_id) %></p>

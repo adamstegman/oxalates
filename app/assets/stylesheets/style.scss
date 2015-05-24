@@ -280,13 +280,10 @@ input.food-list-item-name {
 }
 
 %body-form {
-  h1, p {
+  p {
     margin: $body_form_section_margin;
   }
 
-  h1 {
-    font-size: $body_form_header_font_size;
-  }
   input, select {
     font-size: $body_form_font_size;
   }
