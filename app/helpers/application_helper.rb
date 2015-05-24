@@ -29,4 +29,8 @@ module ApplicationHelper
       %w(black #e00 #fa0 green)
     end
   end
+
+  def lists_options(selected_list_id)
+    options_from_collection_for_select(List.all, :id, :name, selected_list_id)
+  end
 end
