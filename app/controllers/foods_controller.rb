@@ -6,7 +6,6 @@ class FoodsController < ApplicationController
 
   def create
     list = List.find(params[:food][:list])
-    food_params = params.require(:food).permit(:name)
     list.foods << Food.new(food_params)
     redirect_to list
   end
@@ -17,7 +16,6 @@ class FoodsController < ApplicationController
 
   def update
     list = List.find(params[:food][:list])
-    food_params = params.require(:food).permit(:name)
     list.foods.find(params[:id]).update_attributes!(food_params)
     redirect_to list
   end
@@ -33,5 +31,11 @@ class FoodsController < ApplicationController
     # SELECT * from foods WHERE `foods`.name LIKE "%chocolate%"
     @results = Food.where('name ILIKE ?', "%#{params[:search]}%")
     @query = params[:search]
+  end
+
+  private
+
+  def food_params
+    params.require(:food).permit(:name, :oxalate_mg, :serving)
   end
 end

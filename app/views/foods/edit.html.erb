@@ -1,8 +1,12 @@
-<%= form_for @food do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :list %>
-  <%= f.select :list, lists_options(@food.list_id) %>
+<%= form_for @food, html: {class: 'edit-food'} do |f| %>
+  <p><%= f.label :name %></p>
+  <p><%= f.text_field :name %></p>
+  <p><%= f.label :oxalate_mg, "Oxalates per serving (mg)" %></p>
+  <p><%= f.number_field :oxalate_mg %></p>
+  <p><%= f.label :serving %></p>
+  <p><%= f.text_field :serving %></p>
+  <p><%= f.label :list %></p>
+  <p><%= f.select :list, lists_options(@food.list_id) %></p>
 
-  <%= f.submit "Done" %>
+  <p><%= f.submit "Done" %></p>
 <% end %>

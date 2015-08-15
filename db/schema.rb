@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123223052) do
+ActiveRecord::Schema.define(version: 20150815220227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20141123223052) do
     t.integer  "list_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "oxalate_mg", default: 0, null: false
+    t.string   "serving"
   end
 
   create_table "lists", force: true do |t|

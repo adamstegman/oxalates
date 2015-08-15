@@ -92,12 +92,16 @@ describe "Food lists", js: true do
       action "Add"
       expect(page).to have_select("List", selected: "Low")
 
-      fill_in "Name", with: "Dog"
+      fill_in "New food name", with: "Dog"
+      fill_in "Oxalates per serving", with: "50"
+      fill_in "Serving", with: "1 animal"
       within '.content' do
         click_on "Add"
       end
       expect(page).to have_content("Low Oxalate Foods")
       expect(page).to have_content("Dog")
+      expect(page).to have_content(/50\s*mg/)
+      expect(page).to have_content("1 animal")
     end
 
     it "edits a food" do
@@ -147,7 +151,7 @@ end
 def add_food(name:, list:)
   action "Add"
   select list, from: "List"
-  fill_in "Name", with: name
+  fill_in "New food name", with: name
   within '.content' do
     click_on "Add"
   end
