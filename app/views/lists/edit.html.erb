@@ -1,15 +1,10 @@
-<%= form_tag list_path(@list.id), method: :put do %>
-  <ul class="food-list">
-  <% @list.foods.each do |food| %>
-    <li>
-      <%= link_to food_path(food), method: :delete, class: 'destroy-food-list-item' do %>
-        <%= image_tag 'destroy_food_list_item.svg', alt: "Delete" %>
-      <% end %>
-      <%= link_to food.name, edit_food_path(food), class: "edit-food-list-item #{list_class_name(food.list)}" %>
-      <%= hidden_field_tag 'list[foods][][id]', food.id %>
-      <%= label_tag 'list[foods][][name]', "Name", class: 'food-list-item-name' %>
-      <%= text_field_tag 'list[foods][][name]', food.name, class: 'food-list-item-name' %>
-    </li>
-  <% end %>
-  </ul>
+<ul class="food-list">
+<% @list.foods.each do |food| %>
+  <li>
+    <%= link_to food_path(food), method: :delete, class: 'destroy-food-list-item' do %>
+      <%= image_tag 'destroy_food_list_item.svg', alt: "Delete" %>
+    <% end %>
+    <%= link_to food.name, edit_food_path(food), class: "edit-food-list-item #{list_class_name(food.list)}" %>
+  </li>
 <% end %>
+</ul>

@@ -32,7 +32,7 @@ describe "Food lists", js: true do
       fill_in "Name", with: "Cat"
       click_on "Done"
 
-      expect(page).to have_content("All Oxalate Foods")
+      expect(page).to have_content("Low Oxalate Foods")
       expect(page).to have_content("Cat")
     end
   end
@@ -111,10 +111,19 @@ describe "Food lists", js: true do
       action "Edit"
       click_on "poultry"
       fill_in "Name", with: "Cat"
+      fill_in "Oxalates per serving", with: "100"
+      fill_in "Serving", with: "2 animals"
       click_on "Done"
 
       expect(page).to have_content("Low Oxalate Foods")
       expect(page).to have_content("Cat")
+
+      click_on "Done"
+
+      expect(page).to have_content("Low Oxalate Foods")
+      expect(page).to have_content("Cat")
+      expect(page).to have_content(/100\s*mg/)
+      expect(page).to have_content("2 animals")
     end
 
     it "deletes a food" do

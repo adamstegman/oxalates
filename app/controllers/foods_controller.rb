@@ -17,7 +17,7 @@ class FoodsController < ApplicationController
   def update
     list = List.find(params[:food][:list])
     list.foods.find(params[:id]).update_attributes!(food_params)
-    redirect_to list
+    redirect_to edit_list_path(list)
   end
 
   def destroy
