@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def food_list_item(food)
-    "#{food.name} - #{food.oxalate_mg}mg - #{food.serving}"
+    "#{food.name} - #{sprintf("%g", food.oxalate_mg.round(2))}mg - #{food.serving}"
   end
 
   def list_class_name(list)

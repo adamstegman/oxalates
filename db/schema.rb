@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150815220227) do
     t.integer  "list_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "oxalate_mg", default: 0, null: false
+    t.float    "oxalate_mg", default: 0.0, null: false
     t.string   "serving"
   end
 
