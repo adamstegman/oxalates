@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'app/presenters/sorted_list'
 
 describe SortedList do
   subject(:list) { described_class.new(model) }

@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe SessionsController do
+describe SessionsController, type: :controller do
   before do
     ENV['OXALATES_PASSWORD'] = BCrypt::Password.create('password')
   end
