@@ -11,6 +11,10 @@ module ApplicationHelper
     end
   end
 
+  def food_list_item(food)
+    "#{food.name} - #{food.oxalate_mg}mg - #{food.serving}"
+  end
+
   def list_class_name(list)
     list.name.sub(/ Oxalate Foods\z/, '').downcase.gsub(/\W+/, '-').sub(/\A-/, '').sub(/-\z/, '')
   end

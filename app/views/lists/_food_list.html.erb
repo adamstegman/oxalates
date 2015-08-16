@@ -1,5 +1,5 @@
 <ul class="food-list">
 <% foods.each do |food| %>
-  <li class="food-list-item <%= list_class_name(food.list) %>"><%= food.name %></li>
+  <li class="food-list-item <%= list_class_name(food.list) %>"><%= food_list_item(food) %></li>
 <% end %>
 </ul>
