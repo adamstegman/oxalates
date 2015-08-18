@@ -23,6 +23,14 @@ module ApplicationHelper
     cssify(List.for_food(food).name)
   end
 
+  def list_header(list)
+    if list.name != "All"
+      "#{list.name} Oxalates"
+    else
+      "#{list.name} Foods"
+    end
+  end
+
   def list_menu_item_icon_line_colors(list)
     case list.name
     when 'Very High'

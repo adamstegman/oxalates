@@ -22,7 +22,7 @@ describe "Food lists", js: true do
     it "lists all foods" do
       navigate_to "All"
 
-      expect(page).to have_content("All Oxalate Foods")
+      expect(page).to have_content("All Foods")
       expect(page).to have_content(/beetroot/i)
       expect(page).to have_content(/carrot/i)
       expect(page).to have_content(/tomato/i)
@@ -39,7 +39,7 @@ describe "Food lists", js: true do
       fill_in "Name", with: "Cat"
       click_on "Done"
 
-      expect(page).to have_content("Low Oxalate Foods")
+      expect(page).to have_content("Low Oxalates")
       expect(page).to have_content("Cat")
     end
   end
@@ -48,7 +48,7 @@ describe "Food lists", js: true do
     it "lists very high oxalate foods" do
       navigate_to "Very High"
 
-      expect(page).to have_content("Very High Oxalate Foods")
+      expect(page).to have_content("Very High Oxalates")
       expect(page).to have_content(/beetroot/i)
     end
   end
@@ -57,7 +57,7 @@ describe "Food lists", js: true do
     it "lists high oxalate foods" do
       navigate_to "High"
 
-      expect(page).to have_content("High Oxalate Foods")
+      expect(page).to have_content("High Oxalates")
       expect(page).to have_content(/carrots/i)
     end
   end
@@ -66,7 +66,7 @@ describe "Food lists", js: true do
     it "lists moderate oxalate foods" do
       navigate_to "Moderate"
 
-      expect(page).to have_content("Moderate Oxalate Foods")
+      expect(page).to have_content("Moderate Oxalates")
       expect(page).to have_content(/tomato/i)
     end
   end
@@ -75,7 +75,7 @@ describe "Food lists", js: true do
     it "lists low oxalate foods" do
       navigate_to "Low"
 
-      expect(page).to have_content("Low Oxalate Foods")
+      expect(page).to have_content("Low Oxalates")
       expect(page).to have_content(/asparagus/i)
     end
   end
@@ -104,7 +104,7 @@ describe "Food lists", js: true do
       within '.content' do
         click_on "Add"
       end
-      expect(page).to have_content("Moderate Oxalate Foods")
+      expect(page).to have_content("Moderate Oxalates")
       expect(page).to have_content("Dog")
       expect(page).to have_content(/5\s*mg/)
       expect(page).to have_content("1 animal")
@@ -121,12 +121,12 @@ describe "Food lists", js: true do
       fill_in "Serving", with: "2 animals"
       click_on "Done"
 
-      expect(page).to have_content("Very High Oxalate Foods")
+      expect(page).to have_content("Very High Oxalates")
       expect(page).to have_content("Cat")
 
       click_on "Done"
 
-      expect(page).to have_content("Very High Oxalate Foods")
+      expect(page).to have_content("Very High Oxalates")
       expect(page).to have_content("Cat")
       expect(page).to have_content(/100\s*mg/)
       expect(page).to have_content("2 animals")
@@ -139,7 +139,7 @@ describe "Food lists", js: true do
       action "Edit"
       click_on "Delete"
 
-      expect(page).to have_content("Low Oxalate Foods")
+      expect(page).to have_content("Low Oxalates")
       expect(page).to have_link("Done")
       expect(page).not_to have_content(/asparagus/i)
     end
