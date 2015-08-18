@@ -1,22 +1,20 @@
 class ListsController < ApplicationController
   def show
-    @list = SortedList.new(fetch_list)
+    @list = fetch_list
   end
 
   def edit
-    @list = SortedList.new(fetch_list)
+    @list = fetch_list
   end
 
   def update
     # Does not merge conflicting writes, last write wins
     # A more friendly approach might be incremental updates rather than the entire list at a time
-    list = fetch_list
-    list.foods = Array(params[:list][:foods]).map { |food_params|
-      Food.find(food_params[:id]).tap do |food|
-        food.update_attributes(food_params.permit(:name))
-      end
+    Array(params[:list][:foods]).each { |food_params|
+      food = Food.find(food_params[:id])
+      food.update_attributes!(food_params.permit(:name))
     }
-    redirect_to list
+    redirect_to fetch_list
   end
 
   def index

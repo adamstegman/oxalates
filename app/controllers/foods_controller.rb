@@ -5,9 +5,8 @@ class FoodsController < ApplicationController
   end
 
   def create
-    list = List.find(params[:food][:list])
-    list.foods << Food.new(food_params)
-    redirect_to list
+    food = Food.create!(food_params)
+    redirect_to List.for_food(food)
   end
 
   def edit
@@ -15,16 +14,15 @@ class FoodsController < ApplicationController
   end
 
   def update
-    list = List.find(params[:food][:list])
-    list.foods.find(params[:id]).update_attributes!(food_params)
-    redirect_to edit_list_path(list)
+    food = Food.find(params[:id])
+    food.update_attributes!(food_params)
+    redirect_to edit_list_path(List.for_food(food))
   end
 
   def destroy
     food = Food.find(params[:id])
-    list = food.list
     food.destroy!
-    redirect_to edit_list_path(list)
+    redirect_to edit_list_path(List.for_food(food))
   end
 
   def search

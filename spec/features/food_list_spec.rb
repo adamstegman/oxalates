@@ -2,11 +2,18 @@ require 'rails_helper'
 
 describe "Food lists", js: true do
   before(:each) do
-    load File.expand_path('../../../db/seeds.rb', __FILE__)
     ENV['OXALATES_PASSWORD'] = BCrypt::Password.create('password')
+  end
+  before(:each) do
+    load File.expand_path('../../../db/seeds.rb', __FILE__)
+    Food.create!(name: "beetroot, steamed", oxalate_mg: 50.0, serving: "just under 1/2 cup")
+    Food.create!(name: "carrots, grated", oxalate_mg: 15.0, serving: "1/2 cup")
+    Food.create!(name: "tomato, raw, sliced", oxalate_mg: 5.0, serving: "1/2 cup")
+    Food.create!(name: "asparagus, raw", oxalate_mg: 4.9, serving: "1/2 cup")
   end
   after(:each) do
     List.destroy_all
+    Food.destroy_all
   end
 
   before { visit '/' }
@@ -16,19 +23,19 @@ describe "Food lists", js: true do
       navigate_to "All"
 
       expect(page).to have_content("All Oxalate Foods")
-      expect(page).to have_content(/spinach/i)
-      expect(page).to have_content(/chocolate/i)
-      expect(page).to have_content(/hot chocolate/i)
-      expect(page).to have_content(/poultry/i)
+      expect(page).to have_content(/beetroot/i)
+      expect(page).to have_content(/carrot/i)
+      expect(page).to have_content(/tomato/i)
+      expect(page).to have_content(/asparagus/i)
     end
 
     it "edits a food" do
       log_in
       navigate_to "All"
-      expect(page).to have_content(/poultry/i)
+      expect(page).to have_content(/asparagus/i)
 
       action "Edit"
-      click_on "poultry"
+      click_on "asparagus"
       fill_in "Name", with: "Cat"
       click_on "Done"
 
@@ -42,7 +49,7 @@ describe "Food lists", js: true do
       navigate_to "Very High"
 
       expect(page).to have_content("Very High Oxalate Foods")
-      expect(page).to have_content(/spinach/i)
+      expect(page).to have_content(/beetroot/i)
     end
   end
 
@@ -51,7 +58,7 @@ describe "Food lists", js: true do
       navigate_to "High"
 
       expect(page).to have_content("High Oxalate Foods")
-      expect(page).to have_content(/chocolate/i)
+      expect(page).to have_content(/carrots/i)
     end
   end
 
@@ -60,7 +67,7 @@ describe "Food lists", js: true do
       navigate_to "Moderate"
 
       expect(page).to have_content("Moderate Oxalate Foods")
-      expect(page).to have_content(/hot chocolate/i)
+      expect(page).to have_content(/tomato/i)
     end
   end
 
@@ -69,15 +76,15 @@ describe "Food lists", js: true do
       navigate_to "Low"
 
       expect(page).to have_content("Low Oxalate Foods")
-      expect(page).to have_content(/poultry/i)
+      expect(page).to have_content(/asparagus/i)
     end
   end
 
   it "displays foods alphabetically case-insensitively" do
     log_in
 
-    add_food name: "ZZZ", list: "Low"
-    add_food name: "aaa", list: "Low"
+    add_food name: "ZZZ"
+    add_food name: "aaa"
 
     expect(page).to have_content(/aaa.*ZZZ/)
   end
@@ -90,37 +97,36 @@ describe "Food lists", js: true do
     it "adds a food" do
       navigate_to "Low"
       action "Add"
-      expect(page).to have_select("List", selected: "Low")
 
       fill_in "New food name", with: "Dog"
-      fill_in "Oxalates per serving", with: "50"
+      fill_in "Oxalates per serving", with: "5"
       fill_in "Serving", with: "1 animal"
       within '.content' do
         click_on "Add"
       end
-      expect(page).to have_content("Low Oxalate Foods")
+      expect(page).to have_content("Moderate Oxalate Foods")
       expect(page).to have_content("Dog")
-      expect(page).to have_content(/50\s*mg/)
+      expect(page).to have_content(/5\s*mg/)
       expect(page).to have_content("1 animal")
     end
 
     it "edits a food" do
-      navigate_to "Low"
-      expect(page).to have_content(/poultry/i)
+      navigate_to "Very High"
+      expect(page).to have_content(/beetroot/i)
 
       action "Edit"
-      click_on "poultry"
+      click_on "beetroot"
       fill_in "Name", with: "Cat"
       fill_in "Oxalates per serving", with: "100"
       fill_in "Serving", with: "2 animals"
       click_on "Done"
 
-      expect(page).to have_content("Low Oxalate Foods")
+      expect(page).to have_content("Very High Oxalate Foods")
       expect(page).to have_content("Cat")
 
       click_on "Done"
 
-      expect(page).to have_content("Low Oxalate Foods")
+      expect(page).to have_content("Very High Oxalate Foods")
       expect(page).to have_content("Cat")
       expect(page).to have_content(/100\s*mg/)
       expect(page).to have_content("2 animals")
@@ -128,14 +134,14 @@ describe "Food lists", js: true do
 
     it "deletes a food" do
       navigate_to "Low"
-      expect(page).to have_content(/poultry/i)
+      expect(page).to have_content(/asparagus/i)
 
       action "Edit"
       click_on "Delete"
 
       expect(page).to have_content("Low Oxalate Foods")
       expect(page).to have_link("Done")
-      expect(page).not_to have_content(/poultry/i)
+      expect(page).not_to have_content(/asparagus/i)
     end
   end
 
@@ -157,9 +163,8 @@ describe "Food lists", js: true do
   end
 end
 
-def add_food(name:, list:)
+def add_food(name:)
   action "Add"
-  select list, from: "List"
   fill_in "New food name", with: name
   within '.content' do
     click_on "Add"

@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150815220227) do
+ActiveRecord::Schema.define(version: 20150816192222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "foods", force: true do |t|
     t.string   "name"
-    t.integer  "list_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "oxalate_mg", default: 0.0, null: false
@@ -29,6 +28,8 @@ ActiveRecord::Schema.define(version: 20150815220227) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "bottom_threshold"
+    t.float    "top_threshold"
   end
 
   create_table "sessions", force: true do |t|

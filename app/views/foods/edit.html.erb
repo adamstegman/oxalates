@@ -5,8 +5,6 @@
   <p><%= f.number_field :oxalate_mg, step: "any" %></p>
   <p><%= f.label :serving %></p>
   <p><%= f.text_field :serving %></p>
-  <p><%= f.label :list %></p>
-  <p><%= f.select :list, lists_options(@food.list_id) %></p>
 
   <p><%= f.submit "Done" %></p>
 <% end %>

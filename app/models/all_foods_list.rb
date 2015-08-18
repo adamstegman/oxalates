@@ -13,12 +13,12 @@ class AllFoodsList
     NAME
   end
 
-  def foods
-    Food.all
+  def bottom_threshold
+    nil
   end
 
-  def foods=(foods)
-    foods.each(&:save)
+  def top_threshold
+    nil
   end
 
   def persisted?

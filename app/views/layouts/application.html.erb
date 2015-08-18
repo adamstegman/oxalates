@@ -15,7 +15,7 @@
 <div class="body">
 
 <% if @list %>
-<h1 class="title <%= list_class_name(@list) %>"><%= @list.name %> Oxalate Foods</h1>
+<h1 class="title <%= cssify(@list.name) %>"><%= @list.name %> Oxalate Foods</h1>
 <% else %>
 <h1 class="title">Oxalates</h1>
 <% end %>

@@ -6,15 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-List.find_or_create_by(name: "Very High") do |list|
-  list.foods << Food.new(name: "spinach")
-end
-List.find_or_create_by(name: "High") do |list|
-  list.foods << Food.new(name: "chocolate")
-end
-List.find_or_create_by(name: "Moderate") do |list|
-  list.foods << Food.new(name: "hot chocolate")
-end
-List.find_or_create_by(name: "Low") do |list|
-  list.foods << Food.new(name: "poultry")
-end
+List.find_or_initialize_by(name: "Very High").update_attributes!(bottom_threshold: 50.0)
+List.find_or_initialize_by(name: "High").update_attributes!(bottom_threshold: 15.0, top_threshold: 50.0)
+List.find_or_initialize_by(name: "Moderate").update_attributes!(bottom_threshold: 5.0, top_threshold: 15.0)
+List.find_or_initialize_by(name: "Low").update_attributes!(top_threshold: 5.0)

@@ -15,8 +15,12 @@ module ApplicationHelper
     "#{food.name} - #{sprintf("%g", food.oxalate_mg.round(2))}mg - #{food.serving}"
   end
 
-  def list_class_name(list)
-    list.name.sub(/ Oxalate Foods\z/, '').downcase.gsub(/\W+/, '-').sub(/\A-/, '').sub(/-\z/, '')
+  def foods_for_list(list)
+    Food.for_list(list).sort { |a, b| a.name.downcase <=> b.name.downcase }
+  end
+
+  def list_class_name(food)
+    cssify(List.for_food(food).name)
   end
 
   def list_menu_item_icon_line_colors(list)
@@ -34,7 +38,7 @@ module ApplicationHelper
     end
   end
 
-  def lists_options(selected_list_id)
-    options_from_collection_for_select(List.all, :id, :name, selected_list_id)
+  def cssify(string)
+    string.downcase.gsub(/\W+/, '-').sub(/\A-/, '').sub(/-\z/, '')
   end
 end
