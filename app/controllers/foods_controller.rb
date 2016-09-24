@@ -22,7 +22,10 @@ class FoodsController < ApplicationController
   def destroy
     food = Food.find(params[:id])
     food.destroy!
-    redirect_to edit_list_path(List.for_food(food))
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { head 204 }
+    end
   end
 
   def search
