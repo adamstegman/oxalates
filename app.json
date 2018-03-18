@@ -1,20 +1,22 @@
 {
   "expo": {
-    "name": "oxalates",
-    "description": "A very interesting project.",
+    "name": "Oxalates",
+    "description": "Track oxalate content in foods",
     "slug": "oxalates",
     "privacy": "public",
     "sdkVersion": "25.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": ["ios"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
+    "githubUrl": "https://github.com/adamstegman/oxalates",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
+      "bundleIdentifier": "com.adamstegman.oxalates",
       "supportsTablet": true
     }
   }

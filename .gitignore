@@ -1,2 +1,3 @@
+**/__tests__/__snapshots__/
 node_modules/**/*
 .expo/**/*
