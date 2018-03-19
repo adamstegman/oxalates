@@ -8,15 +8,19 @@ import Colors from '../constants/Colors';
 import HomeScreen from '../screens/HomeScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
-export default TabNavigator(
-  {
-    Home: {
-      screen: HomeScreen,
-    },
-    Settings: {
-      screen: SettingsScreen,
-    },
+const routes = {
+  Home: {
+    screen: HomeScreen,
   },
+};
+if (__DEV__) {
+  routes.Settings = {
+    screen: SettingsScreen,
+  };
+}
+
+export default TabNavigator(
+  routes,
   {
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused }) => {

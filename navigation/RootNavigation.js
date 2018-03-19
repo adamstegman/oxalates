@@ -1,5 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 
+import Colors from '../constants/Colors';
+import Layout from '../constants/Layout';
 import MainTabNavigator from './MainTabNavigator';
 
 export default StackNavigator(
@@ -9,10 +11,16 @@ export default StackNavigator(
     },
   },
   {
-    navigationOptions: () => ({
-      headerTitleStyle: {
-        fontWeight: 'normal',
+    navigationOptions: {
+      title: 'Oxalates',
+      headerStyle: {
+        backgroundColor: Colors.headerBackgroundColor,
+        height: Layout.header.height,
       },
-    }),
+      headerTitleStyle: {
+        fontFamily: 'MarkerFelt-Thin',
+        fontSize: Layout.header.fontSize,
+      },
+    },
   }
 );

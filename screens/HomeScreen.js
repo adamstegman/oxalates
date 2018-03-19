@@ -4,6 +4,8 @@ import {
   View,
 } from 'react-native';
 
+import Colors from '../constants/Colors';
+
 export default class HomeScreen extends React.Component {
   render() {
     return (
@@ -16,6 +18,6 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.backgroundColor,
   },
 });
