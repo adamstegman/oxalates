@@ -12,7 +12,6 @@ export default StackNavigator(
   },
   {
     navigationOptions: {
-      title: 'Oxalates',
       headerStyle: {
         backgroundColor: Colors.headerBackgroundColor,
         height: Layout.header.height,

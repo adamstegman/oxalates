@@ -6,7 +6,11 @@ import {
 
 import Colors from '../constants/Colors';
 
-export default class HomeScreen extends React.Component {
+export default class AllScreen extends React.Component {
+  static navigationOptions = {
+    title: 'All Foods',
+  };
+
   render() {
     return (
       <View style={styles.container}>

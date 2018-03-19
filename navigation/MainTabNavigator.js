@@ -1,16 +1,16 @@
 import React from 'react';
-import { Platform } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Image, Platform } from 'react-native';
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 
-import Colors from '../constants/Colors';
-
-import HomeScreen from '../screens/HomeScreen';
+import AllScreen from '../screens/AllScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
+const icons = {
+  All: require('../assets/images/icon-all.png'),
+};
 const routes = {
-  Home: {
-    screen: HomeScreen,
+  All: {
+    screen: AllScreen,
   },
 };
 if (__DEV__) {
@@ -25,26 +25,11 @@ export default TabNavigator(
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused }) => {
         const { routeName } = navigation.state;
-        let iconName;
-        switch (routeName) {
-          case 'Home':
-            iconName =
-              Platform.OS === 'ios'
-                ? `ios-information-circle${focused ? '' : '-outline'}`
-                : 'md-information-circle';
-            break;
-          case 'Settings':
-            iconName =
-              Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options';
+        if (icons[routeName]) {
+          return <Image source={icons[routeName]} />;
+        } else {
+          return undefined;
         }
-        return (
-          <Ionicons
-            name={iconName}
-            size={28}
-            style={{ marginBottom: -3 }}
-            color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
-          />
-        );
       },
     }),
     tabBarComponent: TabBarBottom,
