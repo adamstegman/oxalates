@@ -26,12 +26,24 @@ export default class AllScreen extends React.Component {
     });
   }
 
+  separator = () => {
+    return (
+      <View
+        style={{
+          height: 1,
+          backgroundColor: Colors.listSeparator,
+        }}
+      />
+    );
+  };
+
   render() {
     return (
       <View style={styles.container}>
         <FlatList data={this.state.foods}
                   renderItem={({ item }) => <FoodListItem food={item} />}
                   keyExtractor={(food, index) => index}
+                  ItemSeparatorComponent={this.separator}
         />
       </View>
     );

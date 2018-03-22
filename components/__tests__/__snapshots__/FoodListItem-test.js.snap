@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a food as a list item 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginBottom": 4,
+      "marginLeft": 12,
+      "marginRight": 12,
+      "marginTop": 4,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    numberOfLines={1}
+    style={
+      Object {
+        "flex": 7,
+        "fontSize": 16,
+        "lineHeight": 40,
+      }
+    }
+  >
+    Test
+  </Text>
+  <View
+    style={
+      Object {
+        "flex": 3,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 12,
+        "marginRight": 12,
+        "marginTop": 4,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      numberOfLines={1}
+      style={
+        Object {
+          "color": "#666",
+          "flex": 7,
+          "fontSize": 12,
+          "lineHeight": 16,
+          "textAlign": "right",
+        }
+      }
+    >
+      30.00
+      mg
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      numberOfLines={1}
+      style={
+        Object {
+          "color": "#666",
+          "flex": 7,
+          "fontSize": 12,
+          "lineHeight": 16,
+          "textAlign": "right",
+        }
+      }
+    >
+      1 cup
+    </Text>
+  </View>
+</View>
+`;
