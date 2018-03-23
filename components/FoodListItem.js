@@ -11,7 +11,7 @@ export class FoodListItem extends React.Component {
 
     const listService = new ListService();
     const list = listService.listForFood(food);
-    const listStyle = styles[list.name];
+    const listStyle = StyleSheet.create({text: {color: list.color}}).text;
 
     const nameStyle = StyleSheet.flatten([styles.text, listStyle]);
     const infoContainerStyle = StyleSheet.flatten([styles.container, styles.infoContainer]);
@@ -52,17 +52,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     textAlign: 'right',
-  },
-  Low: {
-    color: Colors.low,
-  },
-  Moderate: {
-    color: Colors.moderate,
-  },
-  High: {
-    color: Colors.high,
-  },
-  "Very High": {
-    color: Colors.veryHigh,
   },
 });

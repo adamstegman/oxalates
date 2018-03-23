@@ -1,20 +1,24 @@
 [
   {
     "name": "Very High",
-    "bottomThreshold": 50
+    "bottomThreshold": 50,
+    "color": "black"
   },
   {
     "name": "High",
     "bottomThreshold": 15,
-    "topThreshold": 50
+    "topThreshold": 50,
+    "color": "#e00"
   },
   {
     "name": "Moderate",
     "bottomThreshold": 5,
-    "topThreshold": 15
+    "topThreshold": 15,
+    "color": "#fa0"
   },
   {
     "name": "Low",
-    "topThreshold": 5
+    "topThreshold": 5,
+    "color": "green"
   }
 ]

@@ -5,10 +5,6 @@ export default {
 
   backgroundColor: '#fff',
   lightText: '#666',
-  veryHigh: 'black',
-  high: '#e00',
-  moderate: '#fa0',
-  low: 'green',
 
   headerBackgroundColor: '#a5a5a5',
 
