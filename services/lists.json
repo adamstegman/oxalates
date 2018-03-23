@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Very High",
+    "bottomThreshold": 50
+  },
+  {
+    "name": "High",
+    "bottomThreshold": 15,
+    "topThreshold": 50
+  },
+  {
+    "name": "Moderate",
+    "bottomThreshold": 5,
+    "topThreshold": 15
+  },
+  {
+    "name": "Low",
+    "topThreshold": 5
+  }
+]

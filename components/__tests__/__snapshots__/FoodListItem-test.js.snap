@@ -20,6 +20,7 @@ exports[`renders a food as a list item 1`] = `
     numberOfLines={1}
     style={
       Object {
+        "color": "#e00",
         "flex": 7,
         "fontSize": 16,
         "lineHeight": 40,

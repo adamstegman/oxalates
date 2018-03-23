@@ -2,14 +2,21 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import Colors from '../constants/Colors';
+import { ListService } from '../services/ListService';
 
 export class FoodListItem extends React.Component {
   render() {
     const food = this.props.food;
     const oxalates = food.oxalate_mg.toFixed(2);
-    const nameStyle = StyleSheet.flatten([styles.text]);
+
+    const listService = new ListService();
+    const list = listService.listForFood(food);
+    const listStyle = styles[list.name];
+
+    const nameStyle = StyleSheet.flatten([styles.text, listStyle]);
     const infoContainerStyle = StyleSheet.flatten([styles.container, styles.infoContainer]);
     const infoTextStyle = StyleSheet.flatten([nameStyle, styles.infoText]);
+
     return(
       <View style={styles.container}>
         <Text numberOfLines={1} style={nameStyle}>{food.name}</Text>
@@ -45,5 +52,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     textAlign: 'right',
+  },
+  Low: {
+    color: Colors.low,
+  },
+  Moderate: {
+    color: Colors.moderate,
+  },
+  High: {
+    color: Colors.high,
+  },
+  "Very High": {
+    color: Colors.veryHigh,
   },
 });
