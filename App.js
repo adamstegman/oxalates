@@ -30,6 +30,10 @@ export default class App extends React.Component {
     return Promise.all([
       Asset.loadAsync([
         require('./assets/images/icon-all.png'),
+        require('./assets/images/icon-very-high.png'),
+        require('./assets/images/icon-high.png'),
+        require('./assets/images/icon-moderate.png'),
+        require('./assets/images/icon-low.png'),
       ]),
     ]);
   };

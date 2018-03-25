@@ -3,5 +3,20 @@
     "name": "Almonds",
     "serving": "22 nuts (1 oz)",
     "oxalate_mg": 120
+  },
+  {
+    "name": "carrots, grated",
+    "oxalate_mg": 15,
+    "serving": "1/2 cup"
+  },
+  {
+    "name": "tomato, raw, sliced",
+    "oxalate_mg": 5,
+    "serving": "1/2 cup"
+  },
+  {
+    "name": "cider, bottled, sweet",
+    "oxalate_mg": 0,
+    "serving": "12 oz"
   }
 ]

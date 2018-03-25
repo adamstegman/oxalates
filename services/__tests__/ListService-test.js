@@ -40,3 +40,15 @@ describe('listForFood', () => {
     expect(listService.listForFood(food).name).toEqual("Low");
   });
 });
+
+describe('get', () => {
+  it('gets a list by name', () => {
+    const listService = new ListService();
+    expect(listService.get("Very High").name).toEqual("Very High")
+  });
+
+  it('throws an error for an invalid name', () => {
+    const listService = new ListService();
+    expect(() => listService.get("Invalid")).toThrow();
+  });
+});
