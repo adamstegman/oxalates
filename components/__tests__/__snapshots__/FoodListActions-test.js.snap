@@ -14,9 +14,74 @@ exports[`renders the food list actions 1`] = `
   <View
     style={
       Object {
+        "flex": 1,
+        "margin": 4,
+      }
+    }
+  >
+    <View
+      accessibilityComponentType="button"
+      accessibilityLabel={undefined}
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      accessible={true}
+      collapsable={undefined}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <View
+        style={
+          Array [
+            Object {},
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={undefined}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "#007AFF",
+                "fontSize": 18,
+                "padding": 8,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Log In
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
         "borderRadius": 8,
         "flex": 1,
-        "margin": 8,
+        "margin": 4,
         "overflow": "hidden",
       }
     }
@@ -32,7 +97,112 @@ exports[`renders the food list actions 1`] = `
         Object {
           "backgroundColor": "#fff",
           "fontSize": 16,
-          "padding": 8,
+          "padding": 10,
+        }
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`renders the food list actions for an admin 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#d8d8d8",
+      "flexDirection": "row",
+      "height": 48,
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "margin": 4,
+      }
+    }
+  >
+    <View
+      accessibilityComponentType="button"
+      accessibilityLabel={undefined}
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      accessible={true}
+      collapsable={undefined}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <View
+        style={
+          Array [
+            Object {},
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={undefined}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "#007AFF",
+                "fontSize": 18,
+                "padding": 8,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Log Out
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "borderRadius": 8,
+        "flex": 1,
+        "margin": 4,
+        "overflow": "hidden",
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      autoCapitalize="none"
+      clearButtonMode="always"
+      onChangeText={[Function]}
+      placeholder="Filter"
+      returnKeyType="search"
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "fontSize": 16,
+          "padding": 10,
         }
       }
     />

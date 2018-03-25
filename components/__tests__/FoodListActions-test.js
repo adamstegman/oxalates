@@ -8,3 +8,9 @@ it('renders the food list actions', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+it('renders the food list actions for an admin', () => {
+  const tree = renderer.create(<FoodListActions admin={true} />).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});

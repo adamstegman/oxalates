@@ -1,13 +1,47 @@
 import React from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
+import { Button, StyleSheet, TextInput, View } from 'react-native';
 
 import Colors from '../constants/Colors';
 
 export class FoodListActions extends React.Component {
+  constructor() {
+    super();
+    this.state = { admin: false };
+  }
+
+  componentDidMount() {
+    this.setState({ admin: this.props.admin });
+  }
+
+  logIn() {
+    this.setState({ admin: true });
+  }
+
+  logOut() {
+    this.setState({ admin: false });
+  }
+
   render() {
+    let sessionButton;
+    if (this.state.admin) {
+      sessionButton = <Button
+        title="Log Out"
+        onPress={() => this.logOut()}
+      />;
+    } else {
+      sessionButton = <Button
+        title="Log In"
+        onPress={() => this.logIn()}
+      />;
+    }
+
+    const searchContainerStyle = StyleSheet.flatten([styles.actionContainer, styles.searchContainer]);
     return (
       <View style={styles.container}>
-        <View style={styles.searchContainer}>
+        <View style={styles.actionContainer}>
+          {sessionButton}
+        </View>
+        <View style={searchContainerStyle}>
           <TextInput
             autoCapitalize={"none"}
             clearButtonMode={"always"}
@@ -29,15 +63,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     height: 48,
   },
-  searchContainer: {
+  actionContainer: {
     flex: 1,
+    margin: 4,
+  },
+  searchContainer: {
     borderRadius: 8,
-    margin: 8,
     overflow: 'hidden',
   },
   search: {
     backgroundColor: Colors.backgroundColor,
-    padding: 8,
+    padding: 10,
     fontSize: 16,
   },
 });
