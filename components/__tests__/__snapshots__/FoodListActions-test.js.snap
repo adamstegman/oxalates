@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the food list actions 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#d8d8d8",
+      "flexDirection": "row",
+      "height": 48,
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "borderRadius": 8,
+        "flex": 1,
+        "margin": 8,
+        "overflow": "hidden",
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      autoCapitalize="none"
+      clearButtonMode="always"
+      onChangeText={[Function]}
+      placeholder="Filter"
+      returnKeyType="search"
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "fontSize": 16,
+          "padding": 8,
+        }
+      }
+    />
+  </View>
+</View>
+`;

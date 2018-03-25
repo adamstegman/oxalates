@@ -11,7 +11,12 @@ exports[`renders a list of all foods 1`] = `
 >
   <RCTScrollView
     ItemSeparatorComponent={[Function]}
-    data={Array []}
+    ListHeaderComponent={
+      <FoodListActions
+        onFilter={[Function]}
+      />
+    }
+    data={undefined}
     disableVirtualization={false}
     getItem={[Function]}
     getItemCount={[Function]}
@@ -34,7 +39,50 @@ exports[`renders a list of all foods 1`] = `
     viewabilityConfigCallbackPairs={Array []}
     windowSize={21}
   >
-    <View />
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#d8d8d8",
+              "flexDirection": "row",
+              "height": 48,
+              "justifyContent": "space-between",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "borderRadius": 8,
+                "flex": 1,
+                "margin": 8,
+                "overflow": "hidden",
+              }
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              autoCapitalize="none"
+              clearButtonMode="always"
+              onChangeText={[Function]}
+              placeholder="Filter"
+              returnKeyType="search"
+              style={
+                Object {
+                  "backgroundColor": "#fff",
+                  "fontSize": 16,
+                  "padding": 8,
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
   </RCTScrollView>
 </View>
 `;
@@ -50,7 +98,12 @@ exports[`renders a list of foods 1`] = `
 >
   <RCTScrollView
     ItemSeparatorComponent={[Function]}
-    data={Array []}
+    ListHeaderComponent={
+      <FoodListActions
+        onFilter={[Function]}
+      />
+    }
+    data={undefined}
     disableVirtualization={false}
     getItem={[Function]}
     getItemCount={[Function]}
@@ -73,7 +126,50 @@ exports[`renders a list of foods 1`] = `
     viewabilityConfigCallbackPairs={Array []}
     windowSize={21}
   >
-    <View />
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#d8d8d8",
+              "flexDirection": "row",
+              "height": 48,
+              "justifyContent": "space-between",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "borderRadius": 8,
+                "flex": 1,
+                "margin": 8,
+                "overflow": "hidden",
+              }
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              autoCapitalize="none"
+              clearButtonMode="always"
+              onChangeText={[Function]}
+              placeholder="Filter"
+              returnKeyType="search"
+              style={
+                Object {
+                  "backgroundColor": "#fff",
+                  "fontSize": 16,
+                  "padding": 8,
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
   </RCTScrollView>
 </View>
 `;

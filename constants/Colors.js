@@ -7,6 +7,7 @@ export default {
   lightText: '#666',
 
   headerBackgroundColor: '#a5a5a5',
+  listHeaderBackgroundColor: '#d8d8d8',
 
   listSeparator: '#ccc',
 
