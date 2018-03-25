@@ -7,7 +7,6 @@ import VeryHighScreen from '../screens/VeryHighScreen';
 import HighScreen from '../screens/HighScreen';
 import ModerateScreen from '../screens/ModerateScreen';
 import LowScreen from '../screens/LowScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 
 const icons = {
   All: require('../assets/images/icon-all.png'),
@@ -33,11 +32,6 @@ const routes = {
     screen: LowScreen,
   },
 };
-if (__DEV__) {
-  routes.Settings = {
-    screen: SettingsScreen,
-  };
-}
 
 export default TabNavigator(
   routes,
