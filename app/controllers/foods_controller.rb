@@ -29,9 +29,10 @@ class FoodsController < ApplicationController
   end
 
   def search
-    # SELECT * from foods WHERE `foods`.name LIKE "%chocolate%"
-    @results = Food.where('name ILIKE ?', "%#{params[:search]}%")
     @query = params[:search]
+    @query.strip!
+    # SELECT * from foods WHERE `foods`.name ILIKE "%7%up%"
+    @results = Food.where('name ILIKE ?', "%#{@query.gsub(/\W/, '%')}%")
   end
 
   private
