@@ -12,29 +12,29 @@ describe SessionsController, type: :controller do
     end
 
     it "includes the given from path" do
-      get :new, from: '/somepath'
+      get :new, params: {from: '/somepath'}
       expect(assigns(:from)).to eq('/somepath')
     end
 
     it "uses the same from path when clicked again" do
-      get :new, from: "#{new_session_path(from: '/somepath')}"
+      get :new, params: {from: "#{new_session_path(from: '/somepath')}"}
       expect(assigns(:from)).to eq('/somepath')
     end
   end
 
   describe "POST create" do
     it "sets a current user if the password is correct" do
-      post :create, password: 'password'
+      post :create, params: {password: 'password'}
       expect(controller.current_user).not_to be_nil
     end
 
     it "does not set a current user if the password is incorrect" do
-      post :create, password: 'whatever'
+      post :create, params: {password: 'whatever'}
       expect(!!controller.current_user).to be(false)
     end
 
     it "redirects to the given from path" do
-      post :create, from: '/somepath'
+      post :create, params: {from: '/somepath'}
       expect(response).to redirect_to('/somepath')
     end
 
@@ -46,7 +46,7 @@ describe SessionsController, type: :controller do
 
   describe "DELETE destroy" do
     it "deletes the current user" do
-      post :create, password: 'password'
+      post :create, params: {password: 'password'}
       expect(controller.current_user).not_to be_nil
 
       delete :destroy
@@ -54,7 +54,7 @@ describe SessionsController, type: :controller do
     end
 
     it "redirects to the given from path" do
-      delete :destroy, from: '/somepath'
+      delete :destroy, params: {from: '/somepath'}
       expect(response).to redirect_to('/somepath')
     end
 

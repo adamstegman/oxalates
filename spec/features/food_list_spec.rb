@@ -86,7 +86,7 @@ describe "Food lists", js: true do
     add_food name: "ZZZ"
     add_food name: "aaa"
 
-    expect(page).to have_content(/aaa.*ZZZ/)
+    expect(page).to have_content(:all, /aaa.*ZZZ/)
   end
 
   context "when signed in" do

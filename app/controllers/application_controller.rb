@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def all_lists
-    List.all.unshift(AllFoodsList.new)
+    List.all.to_a.unshift(AllFoodsList.new)
   end
   helper_method :all_lists
 
