@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 window.Oxalates = (function() {
   var scrollPositionPattern = new RegExp("^#(\\d+)$");
 
