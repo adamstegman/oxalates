@@ -26,7 +26,7 @@ gem 'spring', group: :development
 gem 'bcrypt', '~> 3.1.7'
 
 # Use passenger as the app server
-gem 'passenger', '~> 5.0.0'
+gem 'passenger', '~> 5.3.0'
 
 gem 'foreman'
 
