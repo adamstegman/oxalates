@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListMenuItem renders an active list 1`] = `
+<li
+  className="list-menu-item active"
+>
+  <div
+    className="list-menu-item-content"
+  >
+    <div
+      className="list-menu-item-icon"
+    />
+    <p
+      className="list-menu-item-text"
+    >
+      Very High
+    </p>
+  </div>
+</li>
+`;
+
+exports[`ListMenuItem renders an inactive list 1`] = `
+<li
+  className="list-menu-item "
+>
+  <div
+    className="list-menu-item-content"
+  >
+    <div
+      className="list-menu-item-icon"
+    />
+    <p
+      className="list-menu-item-text"
+    >
+      Very High
+    </p>
+  </div>
+</li>
+`;

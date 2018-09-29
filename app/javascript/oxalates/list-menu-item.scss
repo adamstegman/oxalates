@@ -1,0 +1,55 @@
+$menu_text_color: #aaa;
+$menu_active_text_color: darken($menu_text_color, 20%);
+$menu_hover_text_color: #000;
+
+$menu_font_size: 10px;
+
+.list-menu-item {
+  height: 100%;
+  width: 100%;
+  a {
+    display: block;
+    height: 100%;
+  }
+
+  a {
+    color: $menu_text_color;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      color: $menu_hover_text_color;
+    }
+  }
+  color: $menu_text_color;
+  font-size: $menu_font_size;
+  text-align: center;
+
+  &.active {
+    color: $menu_active_text_color;
+    a {
+      color: $menu_active_text_color;
+
+      &:hover, &:focus {
+        color: $menu_hover_text_color;
+      }
+    }
+  }
+}
+
+.list-menu-item-content {
+  height: 100%;
+
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-flex-direction: column;
+  -webkit-justify-content: space-around;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.list-menu-item-icon {
+  min-height: 24px;
+  width: 21px;
+}

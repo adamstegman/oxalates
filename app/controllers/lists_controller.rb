@@ -18,7 +18,14 @@ class ListsController < ApplicationController
   end
 
   def index
-    redirect_to List.first
+    respond_to do |format|
+      format.html do
+        redirect_to List.first
+      end
+      format.json do
+        @lists = List.all.to_a.unshift(AllFoodsList.new)
+      end
+    end
   end
 
   private

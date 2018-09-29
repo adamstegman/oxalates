@@ -3,7 +3,6 @@
 <head>
   <title>Oxalates</title>
   <%= stylesheet_pack_tag 'application', media: 'all' %>
-  <%= javascript_pack_tag 'application' %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -12,26 +11,14 @@
   <link rel="apple-touch-icon" sizes="152x152" href="<%= image_path('apple-touch-icon-152x152.png') %>"/>
 </head>
 <body>
-<div class="body">
-
-<% if @list %>
-<h1 class="title <%= cssify(@list.name) %>"><%= list_header(@list) %></h1>
-<% else %>
-<h1 class="title">Oxalates</h1>
+<div id="root"></div>
+<%= javascript_tag do %>
+  window.initialState = {
+    lists: [<% all_lists.each do |list| %>
+      <%= raw json_escape(list_as_json_for_state(list)) %>,
+    <% end %>],
+  };
 <% end %>
-<div class="actions">
-  <% # would prefer session | search | add/edit but iOS is not closing the form tag %>
-  <%= render "add_edit_food" %>
-  <%= render "session" %>
-  <%= render "search" %>
-</div>
-
-<div class="content">
-<%= yield %>
-</div>
-
-</div>
-
-<%= render "list_menu" %>
+<%= javascript_pack_tag 'application' %>
 </body>
 </html>

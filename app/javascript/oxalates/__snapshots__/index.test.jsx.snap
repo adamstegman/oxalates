@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index renders the home screen 1`] = `
+<div>
+  <div
+    className="body"
+  >
+    <h1
+      className="title"
+    >
+      Oxalates
+    </h1>
+    <div
+      className="content"
+    />
+  </div>
+  <ul
+    className="list-menu"
+  >
+    <li
+      className="list-menu-item "
+    >
+      <div
+        className="list-menu-item-content"
+      >
+        <div
+          className="list-menu-item-icon"
+        />
+        <p
+          className="list-menu-item-text"
+        >
+          Very High
+        </p>
+      </div>
+    </li>
+    <li
+      className="list-menu-item "
+    >
+      <div
+        className="list-menu-item-content"
+      >
+        <div
+          className="list-menu-item-icon"
+        />
+        <p
+          className="list-menu-item-text"
+        >
+          High
+        </p>
+      </div>
+    </li>
+    <li
+      className="list-menu-item "
+    >
+      <div
+        className="list-menu-item-content"
+      >
+        <div
+          className="list-menu-item-icon"
+        />
+        <p
+          className="list-menu-item-text"
+        >
+          Moderate
+        </p>
+      </div>
+    </li>
+    <li
+      className="list-menu-item "
+    >
+      <div
+        className="list-menu-item-content"
+      >
+        <div
+          className="list-menu-item-icon"
+        />
+        <p
+          className="list-menu-item-text"
+        >
+          Low
+        </p>
+      </div>
+    </li>
+  </ul>
+</div>
+`;

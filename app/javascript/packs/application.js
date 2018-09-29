@@ -11,5 +11,6 @@ import $ from "jquery";
 window.jQuery = $;
 require('../vendor/webapplinks');
 
-import '../oxalates';
-import '../oxalates.scss';
+import '../legacy';
+
+import '../index';

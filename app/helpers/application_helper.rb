@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def list_as_json_for_state(list)
+    list.to_json(only: [:id, :name, :bottom_threshold, :top_threshold])
+  end
+
   def current_path
     request.fullpath
   end
