@@ -4,18 +4,67 @@ exports[`ListMenuItem renders an active list 1`] = `
 <li
   className="list-menu-item active"
 >
-  <div
-    className="list-menu-item-content"
+  <button
+    className="list-menu-item-content no-outline"
+    onClick={[Function]}
+    type="button"
   >
     <div
       className="list-menu-item-icon"
-    />
+    >
+      <svg
+        height="25"
+        width="21"
+      >
+        <rect
+          fill="none"
+          height="25"
+          stroke="black"
+          strokeWidth="3"
+          width="21"
+          x="0"
+          y="0"
+        />
+        <line
+          stroke="black"
+          strokeWidth="2"
+          x1="3"
+          x2="18"
+          y1="5"
+          y2="5"
+        />
+        <line
+          stroke="#e00"
+          strokeWidth="2"
+          x1="3"
+          x2="18"
+          y1="10"
+          y2="10"
+        />
+        <line
+          stroke="#fa0"
+          strokeWidth="2"
+          x1="3"
+          x2="18"
+          y1="15"
+          y2="15"
+        />
+        <line
+          stroke="green"
+          strokeWidth="2"
+          x1="3"
+          x2="18"
+          y1="20"
+          y2="20"
+        />
+      </svg>
+    </div>
     <p
       className="list-menu-item-text"
     >
-      Very High
+      All
     </p>
-  </div>
+  </button>
 </li>
 `;
 
@@ -23,17 +72,66 @@ exports[`ListMenuItem renders an inactive list 1`] = `
 <li
   className="list-menu-item "
 >
-  <div
-    className="list-menu-item-content"
+  <button
+    className="list-menu-item-content no-outline"
+    onClick={[Function]}
+    type="button"
   >
     <div
       className="list-menu-item-icon"
-    />
+    >
+      <svg
+        height="25"
+        width="21"
+      >
+        <rect
+          fill="none"
+          height="25"
+          stroke="black"
+          strokeWidth="3"
+          width="21"
+          x="0"
+          y="0"
+        />
+        <line
+          stroke="black"
+          strokeWidth="2"
+          x1="3"
+          x2="18"
+          y1="5"
+          y2="5"
+        />
+        <line
+          stroke="#e00"
+          strokeWidth="2"
+          x1="3"
+          x2="18"
+          y1="10"
+          y2="10"
+        />
+        <line
+          stroke="#fa0"
+          strokeWidth="2"
+          x1="3"
+          x2="18"
+          y1="15"
+          y2="15"
+        />
+        <line
+          stroke="green"
+          strokeWidth="2"
+          x1="3"
+          x2="18"
+          y1="20"
+          y2="20"
+        />
+      </svg>
+    </div>
     <p
       className="list-menu-item-text"
     >
-      Very High
+      All
     </p>
-  </div>
+  </button>
 </li>
 `;

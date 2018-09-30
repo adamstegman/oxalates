@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { ListMenu } from './list-menu';
+import { selectActiveListId } from './actions';
 
 const mapStateToProps = state => {
   return {
@@ -10,6 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    onListSelect: list => dispatch(selectActiveListId(list.id)),
   };
 };
 

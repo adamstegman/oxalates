@@ -5,7 +5,7 @@ import lists from './lists.json';
 test('initial state has no lists', () => {
   const initialState = {
     lists: [],
-    activeListId: null,
+    activeListId: 'all',
   };
   expect(oxalates(undefined, {})).toEqual(initialState);
 });

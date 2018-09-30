@@ -4,7 +4,7 @@ import {
   SELECT_ACTIVE_LIST
 } from './actions';
 
-const activeListId = (state = null, action) => {
+const activeListId = (state = 'all', action) => {
   switch (action.type) {
     case SELECT_ACTIVE_LIST:
       return action.activeListId;

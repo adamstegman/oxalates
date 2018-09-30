@@ -1,0 +1,246 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListMenuItemIcon renders the "All" list 1`] = `
+<svg
+  height="25"
+  width="21"
+>
+  <rect
+    fill="none"
+    height="25"
+    stroke="black"
+    strokeWidth="3"
+    width="21"
+    x="0"
+    y="0"
+  />
+  <line
+    stroke="black"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="5"
+    y2="5"
+  />
+  <line
+    stroke="#e00"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="10"
+    y2="10"
+  />
+  <line
+    stroke="#fa0"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="15"
+    y2="15"
+  />
+  <line
+    stroke="green"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="20"
+    y2="20"
+  />
+</svg>
+`;
+
+exports[`ListMenuItemIcon renders the "High" list 1`] = `
+<svg
+  height="25"
+  width="21"
+>
+  <rect
+    fill="none"
+    height="25"
+    stroke="black"
+    strokeWidth="3"
+    width="21"
+    x="0"
+    y="0"
+  />
+  <line
+    stroke="#e00"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="5"
+    y2="5"
+  />
+  <line
+    stroke="#e00"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="10"
+    y2="10"
+  />
+  <line
+    stroke="#e00"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="15"
+    y2="15"
+  />
+  <line
+    stroke="#e00"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="20"
+    y2="20"
+  />
+</svg>
+`;
+
+exports[`ListMenuItemIcon renders the "Low" list 1`] = `
+<svg
+  height="25"
+  width="21"
+>
+  <rect
+    fill="none"
+    height="25"
+    stroke="black"
+    strokeWidth="3"
+    width="21"
+    x="0"
+    y="0"
+  />
+  <line
+    stroke="green"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="5"
+    y2="5"
+  />
+  <line
+    stroke="green"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="10"
+    y2="10"
+  />
+  <line
+    stroke="green"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="15"
+    y2="15"
+  />
+  <line
+    stroke="green"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="20"
+    y2="20"
+  />
+</svg>
+`;
+
+exports[`ListMenuItemIcon renders the "Moderate" list 1`] = `
+<svg
+  height="25"
+  width="21"
+>
+  <rect
+    fill="none"
+    height="25"
+    stroke="black"
+    strokeWidth="3"
+    width="21"
+    x="0"
+    y="0"
+  />
+  <line
+    stroke="#fa0"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="5"
+    y2="5"
+  />
+  <line
+    stroke="#fa0"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="10"
+    y2="10"
+  />
+  <line
+    stroke="#fa0"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="15"
+    y2="15"
+  />
+  <line
+    stroke="#fa0"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="20"
+    y2="20"
+  />
+</svg>
+`;
+
+exports[`ListMenuItemIcon renders the "Very High" list 1`] = `
+<svg
+  height="25"
+  width="21"
+>
+  <rect
+    fill="none"
+    height="25"
+    stroke="black"
+    strokeWidth="3"
+    width="21"
+    x="0"
+    y="0"
+  />
+  <line
+    stroke="black"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="5"
+    y2="5"
+  />
+  <line
+    stroke="black"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="10"
+    y2="10"
+  />
+  <line
+    stroke="black"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="15"
+    y2="15"
+  />
+  <line
+    stroke="black"
+    strokeWidth="2"
+    x1="3"
+    x2="18"
+    y1="20"
+    y2="20"
+  />
+</svg>
+`;

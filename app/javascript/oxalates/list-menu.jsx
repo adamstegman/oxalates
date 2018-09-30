@@ -16,7 +16,10 @@ export class ListMenu extends React.Component {
     return (
       <ul className="list-menu">
         {lists.map(list =>
-          <ListMenuItem key={list.id} list={list} active={this.isActive(list)} />
+          <ListMenuItem key={list.id}
+                        list={list}
+                        active={this.isActive(list)}
+                        onSelect={list => this.props.onListSelect(list)}/>
         )}
       </ul>
     );

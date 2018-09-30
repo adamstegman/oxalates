@@ -7,14 +7,21 @@ $menu_font_size: 10px;
 .list-menu-item {
   height: 100%;
   width: 100%;
-  a {
-    display: block;
+  button {
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 100%;
     height: 100%;
+
+    &.no-outline {
+      outline: none;
+    }
   }
 
-  a {
+  button {
     color: $menu_text_color;
-    text-decoration: none;
 
     &:hover, &:focus {
       color: $menu_hover_text_color;
@@ -26,7 +33,7 @@ $menu_font_size: 10px;
 
   &.active {
     color: $menu_active_text_color;
-    a {
+    button {
       color: $menu_active_text_color;
 
       &:hover, &:focus {

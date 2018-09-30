@@ -1,4 +1,4 @@
-import { selectActiveListId } from './active-list';
+import { selectActiveListId } from './select-active-list-id';
 import configureMockStore from 'redux-mock-store';
 import lists from '../lists.json';
 
