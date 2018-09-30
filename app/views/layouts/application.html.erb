@@ -14,9 +14,12 @@
 <div id="root"></div>
 <%= javascript_tag do %>
   window.initialState = {
-    lists: [<% all_lists.each do |list| %>
-      <%= raw json_escape(list_as_json_for_state(list)) %>,
-    <% end %>],
+    listMenu: {
+      lists: [<% all_lists.each do |list| %>
+        <%= raw json_escape(list_as_json_for_state(list)) %>,
+      <% end %>],
+      activeListId: '<%= all_foods_list.id %>',
+    },
   };
 <% end %>
 <%= javascript_pack_tag 'application' %>

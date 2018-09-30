@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FoodListItem renders a food 1`] = `
+<li
+  className="food-list-item all"
+>
+  beetroot, steamed
+   - 
+  50.00
+  mg - 
+  just under 1/2 cup
+</li>
+`;

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "beetroot, steamed",
+    "oxalate_mg": 50.0,
+    "serving": "just under 1/2 cup"
+  },
+  {
+    "id": 2,
+    "name": "carrots, steamed",
+    "oxalate_mg": 15.0,
+    "serving": "1/2 cup"
+  },
+  {
+    "id": 3,
+    "name": "tomato, raw, sliced",
+    "oxalate_mg": 5.0,
+    "serving": "1/2 cup"
+  },
+  {
+    "id": 4,
+    "name": "Asparagus, raw",
+    "oxalate_mg": 4.9,
+    "serving": "1/2 cup"
+  }
+]

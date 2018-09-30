@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import lists from './lists.json';
+import lists from '../../../__mocks__/lists.json';
 import { ListHeader } from './list-header';
 
 test('ListHeader renders the All list title', () => {

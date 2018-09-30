@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
+import { fetchFoods } from './oxalates/actions';
 import oxalates from './oxalates/reducers'
 import { Oxalates } from './oxalates/index';
 
@@ -13,6 +14,7 @@ const store = createStore(
   oxalates(window.initialState, {}),
   applyMiddleware(thunkMiddleware),
 )
+store.dispatch(fetchFoods(window.initialState.listMenu.activeListId));
 
 ReactDOM.render(
   <Provider store={store}>

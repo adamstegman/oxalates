@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FoodList renders error indicator 1`] = `
+<div
+  className="content"
+>
+  <ul
+    className="food-list"
+  >
+    <li
+      className="food-list-item error"
+    >
+      some error
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`FoodList renders foods 1`] = `
+<div
+  className="content"
+>
+  <ul
+    className="food-list"
+  >
+    <li
+      className="food-list-item low"
+    >
+      Asparagus, raw
+       - 
+      4.90
+      mg - 
+      1/2 cup
+    </li>
+    <li
+      className="food-list-item very-high"
+    >
+      beetroot, steamed
+       - 
+      50.00
+      mg - 
+      just under 1/2 cup
+    </li>
+    <li
+      className="food-list-item high"
+    >
+      carrots, steamed
+       - 
+      15.00
+      mg - 
+      1/2 cup
+    </li>
+    <li
+      className="food-list-item moderate"
+    >
+      tomato, raw, sliced
+       - 
+      5.00
+      mg - 
+      1/2 cup
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`FoodList renders loading indicator 1`] = `
+<div
+  className="content"
+>
+  <ul
+    className="food-list"
+  >
+    <li
+      className="food-list-item"
+    >
+      Loading foods...
+    </li>
+  </ul>
+</div>
+`;

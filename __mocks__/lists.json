@@ -1,0 +1,32 @@
+[
+  {
+    "id": "all",
+    "name": "All",
+    "bottomThreshold": null,
+    "topThreshold": null
+  },
+  {
+    "id": 1,
+    "name": "Very High",
+    "bottomThreshold": 50,
+    "topThreshold": null
+  },
+  {
+    "id": 2,
+    "name": "High",
+    "bottomThreshold": 15,
+    "topThreshold": 50
+  },
+  {
+    "id": 3,
+    "name": "Moderate",
+    "bottomThreshold": 5,
+    "topThreshold": 15
+  },
+  {
+    "id": 4,
+    "name": "Low",
+    "bottomThreshold": null,
+    "topThreshold": 5
+  }
+]

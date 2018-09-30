@@ -5,6 +5,11 @@ describe "API" do
     ENV['OXALATES_PASSWORD'] = BCrypt::Password.create('password')
   end
   before(:each) do
+    List.destroy_all
+    Food.destroy_all
+    ActiveRecord::Base.connection.execute('ALTER SEQUENCE lists_id_seq RESTART WITH 1')
+    ActiveRecord::Base.connection.execute('ALTER SEQUENCE foods_id_seq RESTART WITH 1')
+
     load File.expand_path('../../../db/seeds.rb', __FILE__)
     Food.create!(name: "beetroot, steamed", oxalate_mg: 50.0, serving: "just under 1/2 cup")
     Food.create!(name: "carrots, grated", oxalate_mg: 15.0, serving: "1/2 cup")
@@ -19,7 +24,6 @@ describe "API" do
   describe "/lists" do
     it "returns all lists" do
       get "/lists", headers: {'Accept' => 'application/json'}
-      puts response.body
       lists = JSON.parse(response.body)["lists"]
       expect(lists).to eq([
         {"id" => "all", "name" => "All", "bottom_threshold" => nil, "top_threshold" => nil},
@@ -31,17 +35,52 @@ describe "API" do
     end
   end
 
-  xdescribe "The all foods list" do
-    it "lists all foods" do
-      navigate_to "All"
-
-      expect(page).to have_content("All Foods")
-      expect(page).to have_content(/beetroot/i)
-      expect(page).to have_content(/carrot/i)
-      expect(page).to have_content(/tomato/i)
-      expect(page).to have_content(/asparagus/i)
+  describe "/foods" do
+    it "returns foods for the All Foods list" do
+      get "/foods?list_id=all", headers: {'Accept' => 'application/json'}
+      foods = JSON.parse(response.body)["foods"]
+      expect(foods).to eq([
+        {"id" => 1, "name" => "beetroot, steamed", "oxalate_mg" => 50.0, "serving" => "just under 1/2 cup"},
+        {"id" => 2, "name" => "carrots, grated", "oxalate_mg" => 15.0, "serving" => "1/2 cup"},
+        {"id" => 3, "name" => "tomato, raw, sliced", "oxalate_mg" => 5.0, "serving" => "1/2 cup"},
+        {"id" => 4, "name" => "asparagus, raw", "oxalate_mg" => 4.9, "serving" => "1/2 cup"},
+      ])
     end
 
+    it "returns foods for the Very High list" do
+      get "/foods?list_id=1", headers: {'Accept' => 'application/json'}
+      foods = JSON.parse(response.body)["foods"]
+      expect(foods).to eq([
+        {"id" => 1, "name" => "beetroot, steamed", "oxalate_mg" => 50.0, "serving" => "just under 1/2 cup"},
+      ])
+    end
+
+    it "returns foods for the High list" do
+      get "/foods?list_id=2", headers: {'Accept' => 'application/json'}
+      foods = JSON.parse(response.body)["foods"]
+      expect(foods).to eq([
+        {"id" => 2, "name" => "carrots, grated", "oxalate_mg" => 15.0, "serving" => "1/2 cup"},
+      ])
+    end
+
+    it "returns foods for the Moderate list" do
+      get "/foods?list_id=3", headers: {'Accept' => 'application/json'}
+      foods = JSON.parse(response.body)["foods"]
+      expect(foods).to eq([
+        {"id" => 3, "name" => "tomato, raw, sliced", "oxalate_mg" => 5.0, "serving" => "1/2 cup"},
+      ])
+    end
+
+    it "returns foods for the Low list" do
+      get "/foods?list_id=4", headers: {'Accept' => 'application/json'}
+      foods = JSON.parse(response.body)["foods"]
+      expect(foods).to eq([
+        {"id" => 4, "name" => "asparagus, raw", "oxalate_mg" => 4.9, "serving" => "1/2 cup"},
+      ])
+    end
+  end
+
+  xdescribe "The all foods list" do
     it "edits a food" do
       log_in
       navigate_to "All"
@@ -55,51 +94,6 @@ describe "API" do
       expect(page).to have_content("Low Oxalates")
       expect(page).to have_content("Cat")
     end
-  end
-
-  xdescribe "The very high oxalate food list" do
-    it "lists very high oxalate foods" do
-      navigate_to "Very High"
-
-      expect(page).to have_content("Very High Oxalates")
-      expect(page).to have_content(/beetroot/i)
-    end
-  end
-
-  xdescribe "The high oxalate food list" do
-    it "lists high oxalate foods" do
-      navigate_to "High"
-
-      expect(page).to have_content("High Oxalates")
-      expect(page).to have_content(/carrots/i)
-    end
-  end
-
-  xdescribe "The moderate oxalate food list" do
-    it "lists moderate oxalate foods" do
-      navigate_to "Moderate"
-
-      expect(page).to have_content("Moderate Oxalates")
-      expect(page).to have_content(/tomato/i)
-    end
-  end
-
-  xdescribe "The low oxalate food list" do
-    it "lists low oxalate foods" do
-      navigate_to "Low"
-
-      expect(page).to have_content("Low Oxalates")
-      expect(page).to have_content(/asparagus/i)
-    end
-  end
-
-  xit "displays foods alphabetically case-insensitively" do
-    log_in
-
-    add_food name: "ZZZ"
-    add_food name: "aaa"
-
-    expect(page).to have_content(:all, /aaa.*ZZZ/)
   end
 
   xcontext "when signed in" do

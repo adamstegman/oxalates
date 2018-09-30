@@ -20,7 +20,7 @@ class ListsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        redirect_to List.first
+        redirect_to AllFoodsList.new
       end
       format.json do
         @lists = List.all.to_a.unshift(AllFoodsList.new)

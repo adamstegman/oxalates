@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import lists from './lists.json';
+import lists from '../../../__mocks__/lists.json';
 import { ActiveListHeader } from './active-list-header';
 import { ListHeader } from './list-header';
 
@@ -12,8 +12,10 @@ Enzyme.configure({ adapter: new Adapter() });
 
 const mockStore = configureStore();
 const state = {
-  lists,
-  activeListId: lists[0].id,
+  listMenu: {
+    lists,
+    activeListId: lists[0].id,
+  },
 };
 
 test('ActiveListHeader renders the header with the active list name', () => {

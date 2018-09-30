@@ -1,4 +1,16 @@
 class FoodsController < ApplicationController
+  def index
+    list = fetch_list
+    respond_to do |format|
+      format.html do
+        redirect_to AllFoodsList.new
+      end
+      format.json do
+        @foods = Food.for_list(list)
+      end
+    end
+  end
+
   def new
     @food = Food.new
     @list_id = params[:list_id]
@@ -36,6 +48,14 @@ class FoodsController < ApplicationController
   end
 
   private
+
+  def fetch_list
+    if params[:list_id] == AllFoodsList::ID
+      AllFoodsList.new
+    else
+      List.find(params[:list_id])
+    end
+  end
 
   def food_params
     params.require(:food).permit(:name, :oxalate_mg, :serving)

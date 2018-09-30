@@ -14,7 +14,48 @@ exports[`Index renders the home screen 1`] = `
     </div>
     <div
       className="content"
-    />
+    >
+      <ul
+        className="food-list"
+      >
+        <li
+          className="food-list-item low"
+        >
+          Asparagus, raw
+           - 
+          4.90
+          mg - 
+          1/2 cup
+        </li>
+        <li
+          className="food-list-item very-high"
+        >
+          beetroot, steamed
+           - 
+          50.00
+          mg - 
+          just under 1/2 cup
+        </li>
+        <li
+          className="food-list-item high"
+        >
+          carrots, steamed
+           - 
+          15.00
+          mg - 
+          1/2 cup
+        </li>
+        <li
+          className="food-list-item moderate"
+        >
+          tomato, raw, sliced
+           - 
+          5.00
+          mg - 
+          1/2 cup
+        </li>
+      </ul>
+    </div>
   </div>
   <ul
     className="list-menu"

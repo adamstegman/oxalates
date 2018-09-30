@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import lists from './lists.json';
+import lists from '../../../__mocks__/lists.json';
 import { ListMenu } from './list-menu';
 
 test('ListMenu renders all lists', () => {
