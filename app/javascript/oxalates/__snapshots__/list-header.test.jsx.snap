@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListHeader renders the All list title 1`] = `
+<div>
+  <h1
+    className="title all"
+  >
+    All Foods
+  </h1>
+</div>
+`;
+
+exports[`ListHeader renders the Very High list title 1`] = `
+<div>
+  <h1
+    className="title very-high"
+  >
+    Very High Oxalates
+  </h1>
+</div>
+`;

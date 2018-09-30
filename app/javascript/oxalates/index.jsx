@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './index.scss';
+import { ActiveListHeader } from './active-list-header';
 import { ActiveListMenu } from './active-list-menu';
 
 export class Oxalates extends React.Component {
@@ -9,9 +10,7 @@ export class Oxalates extends React.Component {
     return (
       <div>
         <div className="body">
-          <h1 className="title">Oxalates</h1>
-          <div className="content">
-          </div>
+          <ActiveListHeader />
         </div>
         <ActiveListMenu />
       </div>

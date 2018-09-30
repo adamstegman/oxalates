@@ -5,11 +5,13 @@ exports[`Index renders the home screen 1`] = `
   <div
     className="body"
   >
-    <h1
-      className="title"
-    >
-      Oxalates
-    </h1>
+    <div>
+      <h1
+        className="title all"
+      >
+        All Foods
+      </h1>
+    </div>
     <div
       className="content"
     />
@@ -18,7 +20,7 @@ exports[`Index renders the home screen 1`] = `
     className="list-menu"
   >
     <li
-      className="list-menu-item "
+      className="list-menu-item active"
     >
       <button
         className="list-menu-item-content no-outline"

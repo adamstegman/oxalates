@@ -13,7 +13,7 @@ const mockStore = configureStore();
 const lists = require('./lists.json');
 const state = {
   lists,
-  activeList: lists[0],
+  activeListId: lists[0].id,
 };
 
 test('Index renders the home screen', () => {
