@@ -1,2 +1,2 @@
-export * from './actions/select-active-list';
-export * from './actions/fetch-foods';
+export * from './actions/selectActiveList';
+export * from './actions/fetchFoods';

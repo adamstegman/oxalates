@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { listPropType } from './list-prop-type';
-import { ListMenuItemIcon } from './list-menu-item-icon';
+import { listPropType } from './listPropType';
+import { ListMenuItemIcon } from './ListMenuItemIcon';
 
-import './list-menu-item.scss';
+import './ListMenuItem.scss';
 
 const ACTIVE_CLASS_NAME = 'active';
 const EMPTY_CLASS_NAME = '';

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { cssify } from './cssify';
-import { listPropType } from './list-prop-type';
+import { listPropType } from './listPropType';
 
-import './list-header.scss';
+import './ListHeader.scss';
 
 export class ListHeader extends React.Component {
   getListHeader(list) {

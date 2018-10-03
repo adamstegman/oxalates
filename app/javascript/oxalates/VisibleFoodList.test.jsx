@@ -4,10 +4,10 @@ import Adapter from 'enzyme-adapter-react-16';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import foods from '../../../__mocks__/foods.json';
-import lists from '../../../__mocks__/lists.json';
-import { VisibleFoodList } from './visible-food-list';
-import { FoodList } from './food-list';
+import foods from './__mocks__/foods.json';
+import lists from './__mocks__/lists.json';
+import { VisibleFoodList } from './VisibleFoodList';
+import { FoodList } from './FoodList';
 
 Enzyme.configure({ adapter: new Adapter() });
 

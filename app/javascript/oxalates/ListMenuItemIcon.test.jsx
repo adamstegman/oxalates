@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import lists from '../../../__mocks__/lists.json';
-import { ListMenuItemIcon } from './list-menu-item-icon';
+import lists from './__mocks__/lists.json';
+import { ListMenuItemIcon } from './ListMenuItemIcon';
 
 test('ListMenuItemIcon renders the "All" list', () => {
   const list = lists[0];

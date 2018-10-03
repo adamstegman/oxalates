@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { ListMenu } from './list-menu';
 import { selectActiveList } from './actions';
+import { ListMenu } from './ListMenu';
 
 const mapStateToProps = state => {
   const {

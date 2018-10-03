@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './index.scss';
-import { ActiveListHeader } from './active-list-header';
-import { ActiveListMenu } from './active-list-menu';
-import { VisibleFoodList } from './visible-food-list';
+import { ActiveListHeader } from './ActiveListHeader';
+import { ActiveListMenu } from './ActiveListMenu';
+import { VisibleFoodList } from './VisibleFoodList';
 
 export class Oxalates extends React.Component {
   render() {

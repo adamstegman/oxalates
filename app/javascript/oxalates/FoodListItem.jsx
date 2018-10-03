@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { cssify } from './cssify';
-import { foodPropType } from './food-prop-type';
-import { listPropType } from './list-prop-type';
+import { foodPropType } from './foodPropType';
+import { listPropType } from './listPropType';
 
-import './food-list-item.scss';
+import './FoodListItem.scss';
 
 export class FoodListItem extends React.Component {
   render() {

@@ -6,10 +6,10 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import lists from '../../../__mocks__/lists.json';
+import lists from './__mocks__/lists.json';
 import { selectActiveListId } from './actions';
-import { ActiveListMenu } from './active-list-menu';
-import { ListMenu } from './list-menu';
+import { ActiveListMenu } from './ActiveListMenu';
+import { ListMenu } from './ListMenu';
 
 Enzyme.configure({ adapter: new Adapter() });
 

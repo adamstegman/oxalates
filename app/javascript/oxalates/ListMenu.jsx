@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ListMenuItem } from './list-menu-item';
-import { listPropType } from './list-prop-type';
+import { ListMenuItem } from './ListMenuItem';
+import { listPropType } from './listPropType';
 
-import './list-menu.scss';
+import './ListMenu.scss';
 
 export class ListMenu extends React.Component {
   isActive(list) {

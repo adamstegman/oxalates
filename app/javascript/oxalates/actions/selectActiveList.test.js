@@ -1,7 +1,8 @@
-import { selectActiveList } from './select-active-list';
 import fetchMock from 'fetch-mock';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+
+import { selectActiveList } from './selectActiveList';
 
 const mockStore = configureMockStore([thunk]);
 

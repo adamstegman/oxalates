@@ -4,9 +4,9 @@ import Adapter from 'enzyme-adapter-react-16';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import lists from '../../../__mocks__/lists.json';
-import { ActiveListHeader } from './active-list-header';
-import { ListHeader } from './list-header';
+import lists from './__mocks__/lists.json';
+import { ActiveListHeader } from './ActiveListHeader';
+import { ListHeader } from './ListHeader';
 
 Enzyme.configure({ adapter: new Adapter() });
 

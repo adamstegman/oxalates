@@ -6,8 +6,8 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
 import { Oxalates } from './index';
-import foods from '../../../__mocks__/foods.json';
-import lists from '../../../__mocks__/lists.json';
+import foods from './__mocks__/foods.json';
+import lists from './__mocks__/lists.json';
 
 Enzyme.configure({ adapter: new Adapter() });
 

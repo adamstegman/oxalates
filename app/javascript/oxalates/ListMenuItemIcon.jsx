@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { listPropType } from './list-prop-type';
+import { listPropType } from './listPropType';
 
 const VERY_HIGH_COLOR = 'black';
 const HIGH_COLOR = '#e00';

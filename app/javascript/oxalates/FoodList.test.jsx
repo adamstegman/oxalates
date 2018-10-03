@@ -1,9 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import foods from '../../../__mocks__/foods.json';
-import { FoodList } from './food-list';
-import lists from '../../../__mocks__/lists.json';
+import foods from './__mocks__/foods.json';
+import { FoodList } from './FoodList';
+import lists from './__mocks__/lists.json';
 
 test('FoodList renders foods', () => {
   const component = renderer.create(

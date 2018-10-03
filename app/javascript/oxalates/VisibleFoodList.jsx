@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { FoodList } from './food-list';
+import { FoodList } from './FoodList';
 
 const mapStateToProps = state => {
   const {

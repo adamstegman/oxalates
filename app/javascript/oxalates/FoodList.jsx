@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { foodPropType } from './food-prop-type';
-import { FoodListError } from './food-list-error';
-import { FoodListItem } from './food-list-item';
-import { FoodListLoading } from './food-list-loading';
-import { listPropType } from './list-prop-type';
+import { foodPropType } from './foodPropType';
+import { FoodListError } from './FoodListError';
+import { FoodListItem } from './FoodListItem';
+import { FoodListLoading } from './FoodListLoading';
+import { listPropType } from './listPropType';
 
-import './food-list.scss';
+import './FoodList.scss';
 
 export class FoodList extends React.Component {
   // Find the "highest" (most dangerous) list

@@ -1,10 +1,10 @@
-import { fetchFoods } from './fetch-foods';
 import fetchMock from 'fetch-mock';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import responseFoods from '../../../../__mocks__/response-foods.json';
-import foods from '../../../../__mocks__/foods.json';
+import responseFoods from '../__mocks__/response-foods.json';
+import foods from '../__mocks__/foods.json';
+import { fetchFoods } from './fetchFoods';
 
 const mockStore = configureMockStore([thunk]);
 

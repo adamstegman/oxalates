@@ -5,9 +5,9 @@ import {
   selectActiveListId,
  } from './actions';
 import oxalates from './reducers';
-import responseFoods from '../../../__mocks__/response-foods.json';
-import foods from '../../../__mocks__/foods.json';
-import lists from '../../../__mocks__/lists.json';
+import responseFoods from './__mocks__/response-foods.json';
+import foods from './__mocks__/foods.json';
+import lists from './__mocks__/lists.json';
 
 test('initial state has no lists', () => {
   const initialState = {
