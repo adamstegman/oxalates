@@ -1,0 +1,18 @@
+@import "./constants";
+@import "./hidden";
+
+$search_padding: $actions_gutter_width;
+$search_width: 9em;
+
+.search {
+  min-width: $search_width;
+  padding: $search_padding;
+
+  label, input[type='submit'] {
+    @extend %hidden;
+  }
+  input[type='search'] {
+    font-size: $actions_font_size;
+    width: 100%;
+  }
+}

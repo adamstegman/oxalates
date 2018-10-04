@@ -11,6 +11,30 @@ exports[`Index renders the home screen 1`] = `
       >
         All Foods
       </h1>
+      <div
+        className="actions"
+      >
+        <form
+          className="search"
+          onSubmit={[Function]}
+        >
+          <label
+            htmlFor="search"
+          >
+            Search
+          </label>
+          <input
+            defaultValue=""
+            name="search"
+            placeholder="Search"
+            type="search"
+          />
+          <input
+            type="submit"
+            value="Search"
+          />
+        </form>
+      </div>
     </div>
     <div
       className="content"

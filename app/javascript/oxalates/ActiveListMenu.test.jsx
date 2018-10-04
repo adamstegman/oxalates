@@ -7,7 +7,6 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import lists from './__mocks__/lists.json';
-import { selectActiveListId } from './actions';
 import { ActiveListMenu } from './ActiveListMenu';
 import { ListMenu } from './ListMenu';
 

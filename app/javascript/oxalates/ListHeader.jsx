@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { cssify } from './cssify';
 import { listPropType } from './listPropType';
+import { ActionsMenu } from './ActionsMenu';
 
 import './ListHeader.scss';
 
@@ -26,6 +27,7 @@ export class ListHeader extends React.Component {
     return (
       <div>
         <h1 className={`title ${listClassName}`}>{header}</h1>
+        <ActionsMenu />
       </div>
     );
   }

@@ -42,9 +42,20 @@ class FoodsController < ApplicationController
 
   def search
     @query = params[:search]
-    @query.strip!
-    # SELECT * from foods WHERE `foods`.name ILIKE "%7%up%"
-    @results = Food.where('name ILIKE ?', "%#{@query.gsub(/\W/, '%')}%")
+    if @query.present?
+      @query.strip!
+      # SELECT * from foods WHERE `foods`.name ILIKE "%7%up%"
+      @results = Food.where('name ILIKE ?', "%#{@query.gsub(/\W/, '%')}%")
+    else
+      @results = Food.all
+    end
+    respond_to do |format|
+      format.html
+      format.json do
+        @foods = @results
+        render action: :index
+      end
+    end
   end
 
   private

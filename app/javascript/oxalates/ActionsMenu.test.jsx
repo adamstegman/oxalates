@@ -3,28 +3,20 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import { Oxalates } from './index';
-import foods from './__mocks__/foods.json';
-import lists from './__mocks__/lists.json';
+import { ActionsMenu } from './ActionsMenu';
 
 const mockStore = configureStore();
 const state = {
-  listMenu: {
-    lists,
-    activeListId: lists[0].id,
-  },
   foodList: {
-    foods,
-    error: null,
-    query: '',
+    query: 'test',
   },
 };
 
-test('Index renders the home screen', () => {
+test('ActionsMenu renders the unauthenticated actions menu', () => {
   const store = mockStore(state);
   const component = renderer.create(
     <Provider store={store}>
-      <Oxalates />
+      <ActionsMenu />
     </Provider>,
   );
   let tree = component.toJSON();

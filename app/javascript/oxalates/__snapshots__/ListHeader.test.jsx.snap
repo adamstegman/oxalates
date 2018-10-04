@@ -7,6 +7,30 @@ exports[`ListHeader renders the All list title 1`] = `
   >
     All Foods
   </h1>
+  <div
+    className="actions"
+  >
+    <form
+      className="search"
+      onSubmit={[Function]}
+    >
+      <label
+        htmlFor="search"
+      >
+        Search
+      </label>
+      <input
+        defaultValue="test"
+        name="search"
+        placeholder="Search"
+        type="search"
+      />
+      <input
+        type="submit"
+        value="Search"
+      />
+    </form>
+  </div>
 </div>
 `;
 
@@ -17,5 +41,29 @@ exports[`ListHeader renders the Very High list title 1`] = `
   >
     Very High Oxalates
   </h1>
+  <div
+    className="actions"
+  >
+    <form
+      className="search"
+      onSubmit={[Function]}
+    >
+      <label
+        htmlFor="search"
+      >
+        Search
+      </label>
+      <input
+        defaultValue="test"
+        name="search"
+        placeholder="Search"
+        type="search"
+      />
+      <input
+        type="submit"
+        value="Search"
+      />
+    </form>
+  </div>
 </div>
 `;

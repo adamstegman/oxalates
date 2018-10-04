@@ -16,6 +16,9 @@ const state = {
     lists,
     activeListId: lists[0].id,
   },
+  foodList: {
+    query: 'test',
+  },
 };
 
 test('ActiveListHeader renders the header with the active list name', () => {

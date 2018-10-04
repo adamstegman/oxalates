@@ -80,6 +80,50 @@ describe "API" do
     end
   end
 
+  describe "/search" do
+    before(:each) do
+      Food.create!(name: "chocolate")
+      Food.create!(name: "something else")
+      Food.create!(name: "hot chocolate")
+    end
+
+    it "returns matching foods" do
+      get "/search?search=chocolate", headers: {'Accept' => 'application/json'}
+      foods = JSON.parse(response.body)["foods"]
+      expect(foods).to eq([
+        {"id" => 5, "name" => "chocolate", "oxalate_mg" => 0.0, "serving" => nil},
+        {"id" => 7, "name" => "hot chocolate", "oxalate_mg" => 0.0, "serving" => nil},
+      ])
+    end
+
+    it "searches case-insensitively" do
+      Food.create!(name: "Cold Chocolate")
+      get "/search?search=CHOCOLATE", headers: {'Accept' => 'application/json'}
+      foods = JSON.parse(response.body)["foods"]
+      expect(foods).to eq([
+        {"id" => 5, "name" => "chocolate", "oxalate_mg" => 0.0, "serving" => nil},
+        {"id" => 7, "name" => "hot chocolate", "oxalate_mg" => 0.0, "serving" => nil},
+        {"id" => 8, "name" => "Cold Chocolate", "oxalate_mg" => 0.0, "serving" => nil},
+      ])
+    end
+
+    context "given no query" do
+      it "returns all foods" do
+        get "/search", headers: {'Accept' => 'application/json'}
+        foods = JSON.parse(response.body)["foods"]
+        expect(foods).to eq([
+          {"id" => 1, "name" => "beetroot, steamed", "oxalate_mg" => 50.0, "serving" => "just under 1/2 cup"},
+          {"id" => 2, "name" => "carrots, grated", "oxalate_mg" => 15.0, "serving" => "1/2 cup"},
+          {"id" => 3, "name" => "tomato, raw, sliced", "oxalate_mg" => 5.0, "serving" => "1/2 cup"},
+          {"id" => 4, "name" => "asparagus, raw", "oxalate_mg" => 4.9, "serving" => "1/2 cup"},
+          {"id" => 5, "name" => "chocolate", "oxalate_mg" => 0.0, "serving" => nil},
+          {"id" => 6, "name" => "something else", "oxalate_mg" => 0.0, "serving" => nil},
+          {"id" => 7, "name" => "hot chocolate", "oxalate_mg" => 0.0, "serving" => nil},
+        ])
+      end
+    end
+  end
+
   xdescribe "The all foods list" do
     it "edits a food" do
       log_in

@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchForm renders the search form 1`] = `
+<form
+  className="search"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="search"
+  >
+    Search
+  </label>
+  <input
+    name="search"
+    placeholder="Search"
+    type="search"
+  />
+  <input
+    type="submit"
+    value="Search"
+  />
+</form>
+`;
+
+exports[`SearchForm renders the search form with a query already entered 1`] = `
+<form
+  className="search"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="search"
+  >
+    Search
+  </label>
+  <input
+    defaultValue="my query"
+    name="search"
+    placeholder="Search"
+    type="search"
+  />
+  <input
+    type="submit"
+    value="Search"
+  />
+</form>
+`;
