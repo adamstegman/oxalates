@@ -20,10 +20,11 @@ exports[`ListHeader renders the All list title 1`] = `
         Search
       </label>
       <input
-        defaultValue="test"
         name="search"
+        onChange={[Function]}
         placeholder="Search"
         type="search"
+        value="test"
       />
       <input
         type="submit"
@@ -54,10 +55,11 @@ exports[`ListHeader renders the Very High list title 1`] = `
         Search
       </label>
       <input
-        defaultValue="test"
         name="search"
+        onChange={[Function]}
         placeholder="Search"
         type="search"
+        value="test"
       />
       <input
         type="submit"

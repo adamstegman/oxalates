@@ -14,10 +14,11 @@ exports[`ActionsMenu renders the unauthenticated actions menu 1`] = `
       Search
     </label>
     <input
-      defaultValue="test"
       name="search"
+      onChange={[Function]}
       placeholder="Search"
       type="search"
+      value="test"
     />
     <input
       type="submit"

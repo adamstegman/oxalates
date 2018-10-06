@@ -24,10 +24,11 @@ exports[`Index renders the home screen 1`] = `
             Search
           </label>
           <input
-            defaultValue=""
             name="search"
+            onChange={[Function]}
             placeholder="Search"
             type="search"
+            value=""
           />
           <input
             type="submit"

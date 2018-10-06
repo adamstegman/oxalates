@@ -12,6 +12,7 @@ exports[`SearchForm renders the search form 1`] = `
   </label>
   <input
     name="search"
+    onChange={[Function]}
     placeholder="Search"
     type="search"
   />
@@ -33,10 +34,11 @@ exports[`SearchForm renders the search form with a query already entered 1`] = `
     Search
   </label>
   <input
-    defaultValue="my query"
     name="search"
+    onChange={[Function]}
     placeholder="Search"
     type="search"
+    value="my query"
   />
   <input
     type="submit"
