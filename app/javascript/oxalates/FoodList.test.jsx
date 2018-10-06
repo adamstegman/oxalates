@@ -13,9 +13,17 @@ test('FoodList renders foods', () => {
   expect(tree).toMatchSnapshot();
 });
 
-test('FoodList renders loading indicator', () => {
+test('FoodList renders empty food list', () => {
   const component = renderer.create(
     <FoodList foods={[]} lists={lists} />,
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+test('FoodList renders loading indicator', () => {
+  const component = renderer.create(
+    <FoodList foods={[]} lists={lists} requestedListId={lists[0].id} />,
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();

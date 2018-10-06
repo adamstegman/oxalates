@@ -53,7 +53,7 @@ describe('ActiveListMenu', () => {
     const expectedActions = [
       { type: 'SELECT_ACTIVE_LIST_ID', activeListId: lists[1].id },
       { type: 'FETCH_FOODS_REQUEST', listId: lists[1].id },
-      { type: 'FETCH_FOODS_SUCCESS', foods: [] },
+      { type: 'FETCH_FOODS_SUCCESS', listId: lists[1].id, foods: [] },
     ];
     return renderedListMenu.prop('onListSelect')(lists[1]).then(() => {
       expect(store.getActions()).toEqual(expectedActions);

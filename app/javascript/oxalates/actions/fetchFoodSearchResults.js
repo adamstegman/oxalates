@@ -7,7 +7,7 @@ export const fetchFoodSearchResultsRequest = query => {
 };
 
 export const FETCH_FOOD_SEARCH_RESULTS_SUCCESS = 'FETCH_FOOD_SEARCH_RESULTS_SUCCESS';
-export const fetchFoodSearchResultsSuccess = response => {
+export const fetchFoodSearchResultsSuccess = (query, response) => {
   const foods = response.foods.map(food => {
     const newFood = Object.assign({}, food);
     newFood.oxalateMg = food.oxalate_mg;
@@ -16,6 +16,7 @@ export const fetchFoodSearchResultsSuccess = response => {
   });
   return {
     type: FETCH_FOOD_SEARCH_RESULTS_SUCCESS,
+    query,
     foods,
   };
 };
@@ -42,7 +43,7 @@ export const fetchFoodSearchResults = query => {
       }
       throw new Error(`Expected OK response, got code=${response.status}`);
     }).then(response => {
-      dispatch(fetchFoodSearchResultsSuccess(response));
+      dispatch(fetchFoodSearchResultsSuccess(query, response));
     }).catch(err => {
       dispatch(fetchFoodSearchResultsFailure(query, err));
     });

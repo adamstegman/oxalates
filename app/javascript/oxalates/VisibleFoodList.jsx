@@ -3,6 +3,7 @@ import { FoodList } from './FoodList';
 
 const mapStateToProps = state => {
   const {
+    requestedListId,
     error,
     foods,
   } = state.foodList;
@@ -10,6 +11,7 @@ const mapStateToProps = state => {
     lists,
   } = state.listMenu;
   return {
+    requestedListId,
     error,
     foods,
     lists,

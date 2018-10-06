@@ -25,7 +25,7 @@ describe('fetchFoods', () => {
 
     const expectedActions = [
       { type: 'FETCH_FOODS_REQUEST', listId: 1 },
-      { type: 'FETCH_FOODS_SUCCESS', foods },
+      { type: 'FETCH_FOODS_SUCCESS', listId: 1, foods },
     ];
     const store = mockStore({ foodList: { foods: [] } });
     return store.dispatch(fetchFoods(1)).then(() => {

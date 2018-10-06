@@ -7,7 +7,7 @@ export const fetchFoodsRequest = listId => {
 };
 
 export const FETCH_FOODS_SUCCESS = 'FETCH_FOODS_SUCCESS';
-export const fetchFoodsSuccess = response => {
+export const fetchFoodsSuccess = (listId, response) => {
   const foods = response.foods.map(food => {
     const newFood = Object.assign({}, food);
     newFood.oxalateMg = food.oxalate_mg;
@@ -16,6 +16,7 @@ export const fetchFoodsSuccess = response => {
   });
   return {
     type: FETCH_FOODS_SUCCESS,
+    listId,
     foods,
   };
 };
@@ -42,7 +43,7 @@ export const fetchFoods = (listId) => {
       }
       throw new Error(`Expected OK response, got code=${response.status}`);
     }).then(response => {
-      dispatch(fetchFoodsSuccess(response));
+      dispatch(fetchFoodsSuccess(listId, response));
     }).catch(err => {
       dispatch(fetchFoodsFailure(listId, err));
     });

@@ -20,28 +20,51 @@ const activeListId = (state = 'all', action) => {
   }
 };
 
-const foods = (state = [], action) => {
+const foods = (state = [], action, { requestedListId, query }) => {
   switch (action.type) {
     case FETCH_FOOD_SEARCH_RESULTS_REQUEST:
     case FETCH_FOODS_REQUEST:
       return [];
     case FETCH_FOOD_SEARCH_RESULTS_SUCCESS:
+      if (action.query === query) {
+        return action.foods;
+      }
     case FETCH_FOODS_SUCCESS:
-      return action.foods;
+      if (action.listId === requestedListId) {
+        return action.foods;
+      }
     default:
       return state;
   }
 };
 
-const fetchFoodsError = (state = null, action) => {
+const requestedListId = (state = null, action) => {
+  switch (action.type) {
+    case FETCH_FOODS_REQUEST:
+      return action.listId;
+    case FETCH_FOODS_SUCCESS:
+    case FETCH_FOODS_FAILURE:
+      if (action.listId === state) {
+        return null;
+      }
+    default:
+      return state;
+  }
+};
+
+const fetchFoodsError = (state = null, action, { requestedListId, query }) => {
   switch (action.type) {
     case FETCH_FOOD_SEARCH_RESULTS_REQUEST:
     case FETCH_FOODS_REQUEST:
       return null;
     case FETCH_FOOD_SEARCH_RESULTS_FAILURE:
-      return `Error fetching foods for query="${action.query}": ${action.err.message}`;
+      if (action.query === query) {
+        return `Error fetching foods for query="${action.query}": ${action.err.message}`;
+      }
     case FETCH_FOODS_FAILURE:
-      return `Error fetching foods for list_id=${action.listId}: ${action.err.message}`;
+      if (action.listId === requestedListId) {
+        return `Error fetching foods for list_id=${action.listId}: ${action.err.message}`;
+      }
     default:
       return state;
   }
@@ -68,11 +91,14 @@ const listMenu = combineReducers({
   activeListId,
 });
 
-const foodList = combineReducers({
-  foods,
-  error: fetchFoodsError,
-  query,
-})
+const foodList = (state = {}, action) => {
+  return {
+    foods: foods(state.foods, action, { requestedListId: state.requestedListId, query: state.query  }),
+    error: fetchFoodsError(state.error, action, { requestedListId: state.requestedListId, query: state.query }),
+    requestedListId: requestedListId(state.requestedListId, action),
+    query: query(state.query, action),
+  };
+};
 
 const oxalates = combineReducers({
   listMenu,

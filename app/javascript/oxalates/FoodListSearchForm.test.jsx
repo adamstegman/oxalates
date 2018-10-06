@@ -51,7 +51,7 @@ describe('FoodListSearchForm', () => {
     const expectedActions = [
       { type: 'SET_SEARCH_QUERY', query: 'test' },
       { type: 'FETCH_FOOD_SEARCH_RESULTS_REQUEST', query: 'test' },
-      { type: 'FETCH_FOOD_SEARCH_RESULTS_SUCCESS', foods: [] },
+      { type: 'FETCH_FOOD_SEARCH_RESULTS_SUCCESS', query: 'test', foods: [] },
     ];
     return renderedSearchForm.prop('onSubmit')('test').then(() => {
       expect(store.getActions()).toEqual(expectedActions);

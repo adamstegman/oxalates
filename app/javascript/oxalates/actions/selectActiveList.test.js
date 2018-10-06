@@ -18,7 +18,7 @@ describe('selectActiveList', () => {
     const expectedActions = [
       { type: 'SELECT_ACTIVE_LIST_ID', activeListId: 1 },
       { type: 'FETCH_FOODS_REQUEST', listId: 1 },
-      { type: 'FETCH_FOODS_SUCCESS', foods: [] },
+      { type: 'FETCH_FOODS_SUCCESS', listId: 1, foods: [] },
     ];
     const store = mockStore({ listMenu: { activeListId: 'all' } });
     return store.dispatch(selectActiveList(1)).then(() => {

@@ -25,7 +25,7 @@ describe('fetchFoodSearchResults', () => {
 
     const expectedActions = [
       { type: 'FETCH_FOOD_SEARCH_RESULTS_REQUEST', query: 'test' },
-      { type: 'FETCH_FOOD_SEARCH_RESULTS_SUCCESS', foods },
+      { type: 'FETCH_FOOD_SEARCH_RESULTS_SUCCESS', query: 'test', foods },
     ];
     const store = mockStore({ foodList: { foods: [], query: 'test' } });
     return store.dispatch(fetchFoodSearchResults('test')).then(() => {

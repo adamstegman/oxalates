@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { foodPropType } from './foodPropType';
+import { FoodListEmptyItem } from './FoodListEmptyItem';
 import { FoodListError } from './FoodListError';
 import { FoodListItem } from './FoodListItem';
 import { FoodListLoading } from './FoodListLoading';
@@ -48,13 +49,16 @@ export class FoodList extends React.Component {
     const {
       foods,
       lists,
+      requestedListId,
       error,
     } = this.props;
     const sortedFoods = this.sortFoodsAlphabetically(foods);
     const sortedLists = this.sortListsByThresholds(lists);
 
-    let contents = <FoodListLoading />;
-    if (error) {
+    let contents = <FoodListEmptyItem />;
+    if (requestedListId) {
+      contents = <FoodListLoading />;
+    } else if (error) {
       contents = <FoodListError error={error} />;
     } else if (foods.length > 0) {
       contents = sortedFoods.map(food => {
@@ -76,4 +80,6 @@ export class FoodList extends React.Component {
 FoodList.propTypes = {
   foods: PropTypes.arrayOf(foodPropType).isRequired,
   lists: PropTypes.arrayOf(listPropType).isRequired,
+  requestedListId: PropTypes.node,
+  error: PropTypes.string,
 };

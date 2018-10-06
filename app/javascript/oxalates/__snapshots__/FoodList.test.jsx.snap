@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`FoodList renders empty food list 1`] = `
+<div
+  className="content"
+>
+  <ul
+    className="food-list"
+  >
+    <li
+      className="food-list-item"
+    >
+      No foods found
+    </li>
+  </ul>
+</div>
+`;
+
 exports[`FoodList renders error indicator 1`] = `
 <div
   className="content"
