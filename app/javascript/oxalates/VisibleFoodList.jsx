@@ -10,9 +10,10 @@ const mapStateToProps = state => {
   const {
     lists,
   } = state.listMenu;
+  const errorMessage = error ? error.message : null;
   return {
     requestedListId,
-    error,
+    error: errorMessage,
     foods,
     lists,
   };

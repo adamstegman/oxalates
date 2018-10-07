@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
 
 import {
+  AUTHENTICATE_FAILURE,
+  AUTHENTICATE_SUCCESS,
   FETCH_FOOD_SEARCH_RESULTS_FAILURE,
   FETCH_FOOD_SEARCH_RESULTS_REQUEST,
   FETCH_FOOD_SEARCH_RESULTS_SUCCESS,
@@ -8,8 +10,59 @@ import {
   FETCH_FOODS_REQUEST,
   FETCH_FOODS_SUCCESS,
   SELECT_ACTIVE_LIST_ID,
+  SET_AUTHENTICATING,
+  SET_PASSWORD,
   SET_SEARCH_QUERY,
 } from './actions';
+
+const authenticated = (state = false, action, { password }) => {
+  switch(action.type) {
+    case AUTHENTICATE_SUCCESS:
+      if (action.password === password) {
+        return true;
+      }
+      return state;
+    default:
+      return state;
+  }
+};
+
+const authenticating = (state = false, action, { password }) => {
+  switch(action.type) {
+    case AUTHENTICATE_SUCCESS:
+      if (action.password === password) {
+        return false;
+      }
+      return state;
+    case SET_AUTHENTICATING:
+      return action.authenticating;
+    default:
+      return state;
+  }
+};
+
+const sessionError = (state = null, action, { password }) => {
+  switch(action.type) {
+    case AUTHENTICATE_FAILURE:
+      if (action.password === password) {
+        return action.err;
+      }
+      return state;
+    case SET_PASSWORD:
+      return null;
+    default:
+      return state;
+  }
+};
+
+const password = (state = '', action) => {
+  switch(action.type) {
+    case SET_PASSWORD:
+      return action.password;
+    default:
+      return state;
+  }
+};
 
 const activeListId = (state = 'all', action) => {
   switch (action.type) {
@@ -29,10 +82,12 @@ const foods = (state = [], action, { requestedListId, query }) => {
       if (action.query === query) {
         return action.foods;
       }
+      return state;
     case FETCH_FOODS_SUCCESS:
       if (action.listId === requestedListId) {
         return action.foods;
       }
+      return state;
     default:
       return state;
   }
@@ -47,6 +102,7 @@ const requestedListId = (state = null, action) => {
       if (action.listId === state) {
         return null;
       }
+      return state;
     default:
       return state;
   }
@@ -61,10 +117,12 @@ const fetchFoodsError = (state = null, action, { requestedListId, query }) => {
       if (action.query === query) {
         return `Error fetching foods for query="${action.query}": ${action.err.message}`;
       }
+      return state;
     case FETCH_FOODS_FAILURE:
       if (action.listId === requestedListId) {
         return `Error fetching foods for list_id=${action.listId}: ${action.err.message}`;
       }
+      return state;
     default:
       return state;
   }
@@ -86,6 +144,15 @@ const lists = (state = [], action) => {
   }
 };
 
+const session = (state = {}, action) => {
+  return {
+    authenticated: authenticated(state.authenticated, action, { password: state.password }),
+    authenticating: authenticating(state.authenticating, action, { password: state.password }),
+    error: sessionError(state.error, action, { password: state.password }),
+    password: password(state.password, action),
+  };
+};
+
 const listMenu = combineReducers({
   lists,
   activeListId,
@@ -101,6 +168,7 @@ const foodList = (state = {}, action) => {
 };
 
 const oxalates = combineReducers({
+  session,
   listMenu,
   foodList,
 });

@@ -18,6 +18,10 @@ const state = {
     error: null,
     query: '',
   },
+  session: {
+    authenticating: false,
+    password: '',
+  },
 };
 
 test('Index renders the home screen', () => {

@@ -13,7 +13,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 const mockStore = configureStore();
 const requestedListId = lists[0].id;
-const error = 'some error';
+const error = new Error('some error');
 const state = {
   listMenu: {
     lists,
@@ -34,7 +34,7 @@ test('VisibleFoodList renders the visible foods', () => {
   );
   const renderedFoodList = wrapper.find(FoodList);
   expect(renderedFoodList.prop('requestedListId')).toEqual(requestedListId);
-  expect(renderedFoodList.prop('error')).toEqual(error);
+  expect(renderedFoodList.prop('error')).toEqual('some error');
   expect(renderedFoodList.prop('foods')).toEqual(foods);
   expect(renderedFoodList.prop('lists')).toEqual(lists);
 });

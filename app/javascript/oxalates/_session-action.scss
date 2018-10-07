@@ -1,0 +1,16 @@
+@import "./buttons";
+@import "./constants";
+
+$session_padding: $action_padding;
+
+.action {
+  @extend %flat-button;
+  margin: $session_padding;
+  min-width: $session_width;
+  max-width: $session_width;
+  &.logout, &.login {
+    display: block;
+  }
+
+  text-align: center;
+}

@@ -124,6 +124,25 @@ describe "API" do
     end
   end
 
+  describe "/session/validate" do
+    it "validates the password" do
+      post "/session/validate", params: {password: 'password'}.to_json, headers: {'Accept' => 'application/json', 'Content-type' => 'application/json'}
+      expect(response.code).to eq("200")
+    end
+
+    it "invalidates a wrong password" do
+      post "/session/validate", params: {password: 'wrong'}.to_json, headers: {'Accept' => 'application/json', 'Content-type' => 'application/json'}
+      expect(response.code).to eq("401")
+    end
+
+    xit "gives up after a few tries" do
+      post "/session/validate", params: {password: 'wrong'}.to_json, headers: {'Accept' => 'application/json', 'Content-type' => 'application/json'}
+      post "/session/validate", params: {password: 'wrong'}.to_json, headers: {'Accept' => 'application/json', 'Content-type' => 'application/json'}
+      post "/session/validate", params: {password: 'password'}.to_json, headers: {'Accept' => 'application/json', 'Content-type' => 'application/json'}
+      expect(response.code).to eq("401")
+    end
+  end
+
   xdescribe "The all foods list" do
     it "edits a food" do
       log_in

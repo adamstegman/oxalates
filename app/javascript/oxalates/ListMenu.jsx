@@ -29,4 +29,5 @@ export class ListMenu extends React.Component {
 ListMenu.propTypes = {
   lists: PropTypes.arrayOf(listPropType).isRequired,
   activeListId: PropTypes.node,
+  onListSelect: PropTypes.func,
 };

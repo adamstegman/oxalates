@@ -19,6 +19,10 @@ const state = {
   foodList: {
     query: 'test',
   },
+  session: {
+    authenticating: false,
+    password: '',
+  },
 };
 
 test('ActiveListHeader renders the header with the active list name', () => {

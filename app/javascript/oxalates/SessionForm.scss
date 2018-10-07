@@ -1,0 +1,12 @@
+@import "./actions-form";
+@import "./constants";
+
+.item {
+  min-width: $session_width;
+  max-width: $session_width;
+}
+
+form.session {
+  @extend %actions-form;
+  @extend .item;
+}

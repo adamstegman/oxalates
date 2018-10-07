@@ -1,18 +1,8 @@
-@import "./constants";
-@import "./hidden";
+@import "./actions-form";
 
-$search_padding: $actions_gutter_width;
 $search_width: 9em;
 
 .search {
+  @extend %actions-form;
   min-width: $search_width;
-  padding: $search_padding;
-
-  label, input[type='submit'] {
-    @extend %hidden;
-  }
-  input[type='search'] {
-    font-size: $actions_font_size;
-    width: 100%;
-  }
 }

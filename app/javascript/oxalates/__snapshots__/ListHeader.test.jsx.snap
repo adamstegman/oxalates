@@ -10,6 +10,13 @@ exports[`ListHeader renders the All list title 1`] = `
   <div
     className="actions"
   >
+    <button
+      className="action login"
+      onClick={[Function]}
+      type="button"
+    >
+      Log in
+    </button>
     <form
       className="search"
       onSubmit={[Function]}
@@ -45,6 +52,13 @@ exports[`ListHeader renders the Very High list title 1`] = `
   <div
     className="actions"
   >
+    <button
+      className="action login"
+      onClick={[Function]}
+      type="button"
+    >
+      Log in
+    </button>
     <form
       className="search"
       onSubmit={[Function]}

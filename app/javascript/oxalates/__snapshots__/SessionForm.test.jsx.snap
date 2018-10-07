@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SessionForm renders the authentication form 1`] = `
+<form
+  className="session"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="password"
+  >
+    Password
+  </label>
+  <input
+    autoFocus={true}
+    name="password"
+    onChange={[Function]}
+    placeholder="Password"
+    type="password"
+    value="password"
+  />
+  <input
+    type="submit"
+    value="Log in"
+  />
+</form>
+`;
+
+exports[`SessionForm renders the failed authentication form 1`] = `
+<form
+  className="session"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="password"
+  >
+    Password
+  </label>
+  <input
+    autoFocus={true}
+    name="password"
+    onChange={[Function]}
+    placeholder="Password"
+    type="password"
+    value="password"
+  />
+  <input
+    type="submit"
+    value="Log in"
+  />
+  <p
+    className="item"
+  >
+    some error
+  </p>
+</form>
+`;

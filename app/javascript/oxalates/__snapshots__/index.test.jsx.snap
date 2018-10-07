@@ -14,6 +14,13 @@ exports[`Index renders the home screen 1`] = `
       <div
         className="actions"
       >
+        <button
+          className="action login"
+          onClick={[Function]}
+          type="button"
+        >
+          Log in
+        </button>
         <form
           className="search"
           onSubmit={[Function]}

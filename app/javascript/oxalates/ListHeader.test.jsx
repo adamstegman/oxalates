@@ -11,6 +11,10 @@ const state = {
   foodList: {
     query: 'test',
   },
+  session: {
+    authenticating: false,
+    password: '',
+  },
 };
 
 test('ListHeader renders the All list title', () => {

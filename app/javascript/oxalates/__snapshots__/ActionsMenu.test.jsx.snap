@@ -1,9 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ActionsMenu renders the unauthenticated actions menu 1`] = `
+exports[`ActionsMenu renders the actions menu 1`] = `
 <div
   className="actions"
 >
+  <button
+    className="action logout"
+    onClick={[Function]}
+    type="button"
+  >
+    Log out
+  </button>
   <form
     className="search"
     onSubmit={[Function]}

@@ -1,0 +1,17 @@
+@import "./constants";
+@import "./hidden";
+
+%actions-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $actions_gutter_width;
+
+  label, input[type='submit'] {
+    @extend %hidden;
+  }
+  input[type='search'] {
+    font-size: $actions_font_size;
+    width: 100%;
+  }
+}

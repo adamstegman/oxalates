@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   resources :foods, only: [:index, :new, :create, :edit, :update, :destroy]
   get "search" => 'foods#search'
 
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :destroy] do
+    collection do
+      post :validate
+    end
+  end
 end

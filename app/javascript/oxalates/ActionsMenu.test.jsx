@@ -10,9 +10,14 @@ const state = {
   foodList: {
     query: 'test',
   },
+  session: {
+    authenticated: true,
+    authenticating: false,
+    password: 'password',
+  }
 };
 
-test('ActionsMenu renders the unauthenticated actions menu', () => {
+test('ActionsMenu renders the actions menu', () => {
   const store = mockStore(state);
   const component = renderer.create(
     <Provider store={store}>
