@@ -3,17 +3,16 @@ import PropTypes from 'prop-types';
 
 import "./SessionLogout.scss";
 
-export const SessionLogout = ({ onChangePassword }) => {
-  const onLogOut = () => onChangePassword('');
+export const SessionLogout = ({ onLogout }) => {
   return (
     <button type="button"
             className="action logout"
-            onClick={onLogOut}>
+            onClick={onLogout}>
       Log out
     </button>
   );
 };
 
 SessionLogout.propTypes = {
-  onChangePassword: PropTypes.func,
+  onLogout: PropTypes.func,
 };

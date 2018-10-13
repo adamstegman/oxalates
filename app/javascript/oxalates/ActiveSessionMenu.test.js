@@ -93,4 +93,22 @@ describe('ActiveSessionMenu', () => {
     renderedSessionMenu.prop('onStopAuthentication')('password');
     expect(store.getActions()).toEqual(expectedActions);
   });
+
+  it('logs out', () => {
+    const store = mockStore(state);
+    const wrapper = mount(
+      <Provider store={store}>
+        <ActiveSessionMenu />
+      </Provider>,
+    );
+    const renderedSessionMenu = wrapper.find(SessionMenu);
+    expect(renderedSessionMenu.prop('onLogout')).toBeDefined();
+
+    const expectedActions = [
+      { type: 'SET_AUTHENTICATED', authenticated: false },
+      { type: 'SET_PASSWORD', password: '' },
+    ];
+    renderedSessionMenu.prop('onLogout')();
+    expect(store.getActions()).toEqual(expectedActions);
+  });
 });

@@ -68,6 +68,7 @@ exports[`SessionMenu renders the failed authentication form 1`] = `
 exports[`SessionMenu renders the unauthenticated session menu 1`] = `
 <button
   className="action login"
+  onClick={[Function]}
   type="button"
 >
   Log in

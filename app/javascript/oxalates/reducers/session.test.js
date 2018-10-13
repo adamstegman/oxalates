@@ -1,6 +1,7 @@
 import {
   authenticateFailure,
   authenticateSuccess,
+  setAuthenticated,
   setAuthenticating,
   setPassword,
 } from '../actions';
@@ -15,6 +16,25 @@ describe('session state', () => {
       password: '',
     };
     expect(session(undefined, {})).toEqual(initialState);
+  });
+
+  describe('SET_AUTHENTICATED', () => {
+    it('updates authenticated state', () => {
+      const initialSession = {
+        authenticated: true,
+        authenticating: false,
+        error: null,
+        password: 'password',
+      };
+      const action = setAuthenticated(false);
+      const loggedOutState = {
+        authenticated: false,
+        authenticating: false,
+        error: null,
+        password: 'password',
+      };
+      expect(session(initialSession, action)).toEqual(loggedOutState);
+    });
   });
 
   describe('SET_AUTHENTICATING', () => {
@@ -109,7 +129,7 @@ describe('session state', () => {
       expect(session(initialSession, action)).toEqual(failureState);
     });
 
-    it('AUTHENTICATE_FAILURE is ignored if the password has changed', () => {
+    it('is ignored if the password has changed', () => {
       const initialSession = {
         authenticated: false,
         authenticating: true,

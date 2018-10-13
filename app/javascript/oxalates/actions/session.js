@@ -1,3 +1,11 @@
+export const SET_AUTHENTICATED = 'SET_AUTHENTICATED';
+export const setAuthenticated = authenticated => {
+  return {
+    type: SET_AUTHENTICATED,
+    authenticated,
+  };
+};
+
 export const SET_AUTHENTICATING = 'SET_AUTHENTICATING';
 export const setAuthenticating = authenticating => {
   return {
@@ -55,5 +63,12 @@ export const authenticate = password => {
     }).catch(err => {
       dispatch(authenticateFailure(password, err));
     });
+  };
+};
+
+export const logout = () => {
+  return dispatch => {
+    dispatch(setAuthenticated(false));
+    dispatch(setPassword(''));
   };
 };

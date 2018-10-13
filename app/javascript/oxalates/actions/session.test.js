@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 
 import {
   authenticate,
+  logout,
   setAuthenticating,
   setPassword,
 } from './session';
@@ -23,6 +24,16 @@ test('setPassword dispatches SET_PASSWORD action', () => {
     type: 'SET_PASSWORD',
     password,
   });
+});
+
+test('logout dispatches actions to clear the session', () => {
+  const expectedActions = [
+    { type: 'SET_AUTHENTICATED', authenticated: false },
+    { type: 'SET_PASSWORD', password: '' },
+  ];
+  const store = mockStore({ session: { authenticated: true, password: 'password' } });
+  store.dispatch(logout());
+  expect(store.getActions()).toEqual(expectedActions);
 });
 
 describe('authenticate', () => {

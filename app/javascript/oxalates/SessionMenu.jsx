@@ -13,6 +13,7 @@ export class SessionMenu extends React.Component {
       error,
       password,
       onChangePassword,
+      onLogout,
       onStartAuthentication,
       onStopAuthentication,
     } = this.props;
@@ -25,7 +26,7 @@ export class SessionMenu extends React.Component {
     }
 
     if (authenticated) {
-      return <SessionLogout onChangePassword={onChangePassword} />;
+      return <SessionLogout onLogout={onLogout} />;
     }
 
     return <SessionLogin onStartAuthentication={onStartAuthentication} />;

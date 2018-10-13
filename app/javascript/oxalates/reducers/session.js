@@ -1,6 +1,7 @@
 import {
   AUTHENTICATE_FAILURE,
   AUTHENTICATE_SUCCESS,
+  SET_AUTHENTICATED,
   SET_AUTHENTICATING,
   SET_PASSWORD,
 } from '../actions';
@@ -12,6 +13,8 @@ const authenticated = (state = false, action, { password }) => {
         return true;
       }
       return state;
+    case SET_AUTHENTICATED:
+      return action.authenticated;
     default:
       return state;
   }

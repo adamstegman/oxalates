@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import {
   authenticate,
+  logout,
   setAuthenticating,
   setPassword
 } from './actions';
@@ -25,6 +26,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onChangePassword: password => dispatch(setPassword(password)),
+    onLogout: () => dispatch(logout()),
     onStartAuthentication: () => dispatch(setAuthenticating(true)),
     onStopAuthentication: password => dispatch(authenticate(password)),
   };
