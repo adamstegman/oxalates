@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdminActionsMenu renders admin action buttons 1`] = `
+<div
+  className="actions-container"
+>
+  <button
+    className="food-action"
+    onClick={[Function]}
+    type="button"
+  >
+    Add
+  </button>
+</div>
+`;
+
+exports[`AdminActionsMenu renders nothing 1`] = `null`;

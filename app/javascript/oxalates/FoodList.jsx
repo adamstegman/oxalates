@@ -6,6 +6,7 @@ import { FoodListEmptyItem } from './FoodListEmptyItem';
 import { FoodListError } from './FoodListError';
 import { FoodListItem } from './FoodListItem';
 import { FoodListLoading } from './FoodListLoading';
+import { FoodListNewItem } from './FoodListNewItem';
 import { listPropType } from './listPropType';
 
 import './FoodList.scss';
@@ -50,7 +51,12 @@ export class FoodList extends React.Component {
       foods,
       lists,
       requestedListId,
+      newFood,
+      newFoodListId,
       error,
+      password,
+      createFood,
+      setNewFood,
     } = this.props;
     const sortedFoods = this.sortFoodsAlphabetically(foods);
     const sortedLists = this.sortListsByThresholds(lists);
@@ -58,6 +64,13 @@ export class FoodList extends React.Component {
     let contents = <FoodListEmptyItem />;
     if (requestedListId) {
       contents = <FoodListLoading />;
+    } else if (newFood) {
+      contents = <FoodListNewItem newFood={newFood}
+                                  newFoodListId={newFoodListId}
+                                  createFood={createFood}
+                                  setNewFood={setNewFood}
+                                  error={error}
+                                  password={password} />;
     } else if (error) {
       contents = <FoodListError error={error} />;
     } else if (foods.length > 0) {
@@ -82,4 +95,9 @@ FoodList.propTypes = {
   lists: PropTypes.arrayOf(listPropType).isRequired,
   requestedListId: PropTypes.node,
   error: PropTypes.string,
+  newFood: PropTypes.shape({}),
+  newFoodListId: PropTypes.node,
+  password: PropTypes.string,
+  createFood: PropTypes.func,
+  setNewFood: PropTypes.func,
 };

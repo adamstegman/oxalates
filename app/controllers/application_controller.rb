@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
     session[:current_user]
   end
   helper_method :current_user
+
+  protected
+
+  def valid_password?
+    BCrypt::Password.new(ENV['OXALATES_PASSWORD']) == params[:password]
+  end
 end

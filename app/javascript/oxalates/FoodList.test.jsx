@@ -29,6 +29,20 @@ test('FoodList renders loading indicator', () => {
   expect(tree).toMatchSnapshot();
 });
 
+test('FoodList renders new food form', () => {
+  const component = renderer.create(
+    <FoodList foods={foods}
+              lists={lists}
+              newFood={{}}
+              newFoodListId={lists[0].id}
+              password={'password'}
+              createFood={() => {}}
+              setNewFood={() => {}} />,
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
 test('FoodList renders error indicator', () => {
   const err = 'some error';
   const component = renderer.create(

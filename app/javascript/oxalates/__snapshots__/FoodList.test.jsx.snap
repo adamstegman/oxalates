@@ -94,3 +94,58 @@ exports[`FoodList renders loading indicator 1`] = `
   </ul>
 </div>
 `;
+
+exports[`FoodList renders new food form 1`] = `
+<div
+  className="content"
+>
+  <ul
+    className="food-list"
+  >
+    <form
+      className="add-food"
+      onSubmit={[Function]}
+    >
+      <label
+        htmlFor="name"
+      >
+        New food name
+      </label>
+      <input
+        autoFocus={true}
+        name="name"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <label
+        htmlFor="oxalateMg"
+      >
+        Oxalates per serving (mg)
+      </label>
+      <input
+        name="oxalateMg"
+        onChange={[Function]}
+        step="any"
+        type="number"
+        value={0}
+      />
+      <label
+        htmlFor="serving"
+      >
+        Serving
+      </label>
+      <input
+        name="serving"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <input
+        type="submit"
+        value="Add"
+      />
+    </form>
+  </ul>
+</div>
+`;

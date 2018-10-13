@@ -1,4 +1,7 @@
 class FoodsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
+  before_action :authenticate, only: [:create, :update, :destroy]
+
   def index
     list = fetch_list
     respond_to do |format|
@@ -17,8 +20,38 @@ class FoodsController < ApplicationController
   end
 
   def create
+    authenticate
     food = Food.create!(food_params)
-    redirect_to List.for_food(food)
+    respond_to do |format|
+      format.html do
+        redirect_to List.for_food(food)
+      end
+      format.json do
+        head :created
+      end
+    end
+  rescue ActionController::ParameterMissing
+    error = 'Must provide food details'
+    respond_to do |format|
+      format.html do
+        flash[:error] = error
+        redirect_to List.for_food(food)
+      end
+      format.json do
+        render json: {errors: [error]}, status: :unprocessable_entity
+      end
+    end
+  rescue ActiveRecord::RecordInvalid
+    errors = food.errors.full_messages
+    respond_to do |format|
+      format.html do
+        flash[:error] = errors.join(", ")
+        redirect_to List.for_food(food)
+      end
+      format.json do
+        render json: {errors: errors}, status: :unprocessable_entity
+      end
+    end
   end
 
   def edit
@@ -59,6 +92,14 @@ class FoodsController < ApplicationController
   end
 
   private
+
+  def authenticate
+    verify_authenticity_token
+  rescue ActionController::InvalidAuthenticityToken
+    unless valid_password?
+      head :unauthorized
+    end
+  end
 
   def fetch_list
     if params[:list_id] == AllFoodsList::ID

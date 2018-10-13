@@ -1,0 +1,5 @@
+@import "./body-form";
+
+.add-food {
+  @extend %body-form;
+}

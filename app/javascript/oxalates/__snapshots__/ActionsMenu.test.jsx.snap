@@ -4,6 +4,17 @@ exports[`ActionsMenu renders the actions menu 1`] = `
 <div
   className="actions"
 >
+  <div
+    className="actions-container"
+  >
+    <button
+      className="food-action"
+      onClick={[Function]}
+      type="button"
+    >
+      Add
+    </button>
+  </div>
   <button
     className="action logout"
     onClick={[Function]}

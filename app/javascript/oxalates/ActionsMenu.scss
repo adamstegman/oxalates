@@ -2,10 +2,6 @@
 
 $actions_height: 44px;
 $actions_background_color: lighten($title_background_color, 20%);
-$add_food_padding: $action_padding;
-$add_food_width: 2em;
-$edit_food_padding: $action_padding;
-$edit_food_width: 2em;
 
 .actions {
   display: -webkit-flex;
@@ -21,19 +17,5 @@ $edit_food_width: 2em;
   font-size: $actions_font_size;
   a {
     text-decoration: none;
-  }
-
-  .add-food {
-    padding: $add_food_padding;
-    min-width: $add_food_width;
-
-    text-align: center;
-  }
-
-  .edit-food {
-    padding: $edit_food_padding;
-    min-width: $edit_food_width;
-
-    text-align: center;
   }
 }

@@ -143,6 +143,39 @@ describe "API" do
     end
   end
 
+  describe "POST /foods" do
+    before do
+      ActionController::Base.allow_forgery_protection = true
+    end
+    after do
+      ActionController::Base.allow_forgery_protection = false
+    end
+
+    it "creates a new food" do
+      food = {name: 'blah', oxalate_mg: 30.0, serving: 'test'}
+      expect {
+        post "/foods", params: {food: food, password: 'password'}.to_json, headers: {'Accept' => 'application/json', 'Content-type' => 'application/json'}
+      }.to change(Food, :count).by(1)
+      expect(response.code).to eq("201")
+    end
+
+    context "with an invalid food" do
+      it "returns errors" do
+        post "/foods", params: {food: {}, password: 'password'}.to_json, headers: {'Accept' => 'application/json', 'Content-type' => 'application/json'}
+        expect(response.code).to eq("422")
+        error_response = JSON.parse(response.body)
+        expect(error_response['errors']).to eq(['Must provide food details'])
+      end
+    end
+
+    context "with an invalid password" do
+      it "returns unauthorized" do
+        post "/foods", params: {food: {}, password: 'wrong'}.to_json, headers: {'Accept' => 'application/json', 'Content-type' => 'application/json'}
+        expect(response.code).to eq("401")
+      end
+    end
+  end
+
   xdescribe "The all foods list" do
     it "edits a food" do
       log_in

@@ -8,12 +8,15 @@ import { ListHeader } from './ListHeader';
 
 const mockStore = configureStore();
 const state = {
-  foodList: {
-    query: 'test',
-  },
   session: {
     authenticating: false,
     password: '',
+  },
+  foodList: {
+    query: 'test',
+  },
+  listMenu: {
+    activeListId: lists[0].id,
   },
 };
 

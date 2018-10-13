@@ -1,16 +1,15 @@
+@import "./actions-container";
 @import "./constants";
 @import "./hidden";
 
 %actions-form {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: $actions_gutter_width;
+  @extend %actions-container;
 
   label, input[type='submit'] {
     @extend %hidden;
   }
-  input[type='search'] {
+  input[type='search'],
+  input[type='password'] {
     font-size: $actions_font_size;
     width: 100%;
   }

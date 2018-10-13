@@ -37,10 +37,4 @@ class SessionsController < ApplicationController
       end
     end
   end
-
-  private
-
-  def valid_password?
-    BCrypt::Password.new(ENV['OXALATES_PASSWORD']) == params[:password]
-  end
 end

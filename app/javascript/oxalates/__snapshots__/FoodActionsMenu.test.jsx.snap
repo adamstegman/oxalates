@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FoodActionsMenu renders food action buttons 1`] = `
+<div
+  className="actions-container"
+>
+  <button
+    className="food-action"
+    onClick={[Function]}
+    type="button"
+  >
+    Add
+  </button>
+</div>
+`;

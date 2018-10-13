@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FoodListNewItem renders a failed form 1`] = `
+<form
+  className="add-food"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="name"
+  >
+    New food name
+  </label>
+  <input
+    autoFocus={true}
+    name="name"
+    onChange={[Function]}
+    type="text"
+    value="some food"
+  />
+  <label
+    htmlFor="oxalateMg"
+  >
+    Oxalates per serving (mg)
+  </label>
+  <input
+    name="oxalateMg"
+    onChange={[Function]}
+    step="any"
+    type="number"
+    value={3.14}
+  />
+  <label
+    htmlFor="serving"
+  >
+    Serving
+  </label>
+  <input
+    name="serving"
+    onChange={[Function]}
+    type="text"
+    value="some serving"
+  />
+  <p>
+    error 1
+  </p>
+  <input
+    type="submit"
+    value="Add"
+  />
+</form>
+`;
+
+exports[`FoodListNewItem renders a pre-filled form 1`] = `
+<form
+  className="add-food"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="name"
+  >
+    New food name
+  </label>
+  <input
+    autoFocus={true}
+    name="name"
+    onChange={[Function]}
+    type="text"
+    value="some food"
+  />
+  <label
+    htmlFor="oxalateMg"
+  >
+    Oxalates per serving (mg)
+  </label>
+  <input
+    name="oxalateMg"
+    onChange={[Function]}
+    step="any"
+    type="number"
+    value={3.14}
+  />
+  <label
+    htmlFor="serving"
+  >
+    Serving
+  </label>
+  <input
+    name="serving"
+    onChange={[Function]}
+    type="text"
+    value="some serving"
+  />
+  <input
+    type="submit"
+    value="Add"
+  />
+</form>
+`;
+
+exports[`FoodListNewItem renders an empty form 1`] = `
+<form
+  className="add-food"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="name"
+  >
+    New food name
+  </label>
+  <input
+    autoFocus={true}
+    name="name"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <label
+    htmlFor="oxalateMg"
+  >
+    Oxalates per serving (mg)
+  </label>
+  <input
+    name="oxalateMg"
+    onChange={[Function]}
+    step="any"
+    type="number"
+    value={0}
+  />
+  <label
+    htmlFor="serving"
+  >
+    Serving
+  </label>
+  <input
+    name="serving"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <input
+    type="submit"
+    value="Add"
+  />
+</form>
+`;

@@ -1,8 +1,12 @@
+import isEqual from 'lodash/isEqual';
 import { combineReducers } from 'redux'
 
 import {
   AUTHENTICATE_FAILURE,
   AUTHENTICATE_SUCCESS,
+  CREATE_FOOD_FAILURE,
+  CREATE_FOOD_REQUEST,
+  CREATE_FOOD_SUCCESS,
   FETCH_FOOD_SEARCH_RESULTS_FAILURE,
   FETCH_FOOD_SEARCH_RESULTS_REQUEST,
   FETCH_FOOD_SEARCH_RESULTS_SUCCESS,
@@ -13,6 +17,7 @@ import {
   SET_AUTHENTICATING,
   SET_PASSWORD,
   SET_SEARCH_QUERY,
+  SET_NEW_FOOD,
 } from './actions';
 
 const authenticated = (state = false, action, { password }) => {
@@ -93,6 +98,48 @@ const foods = (state = [], action, { requestedListId, query }) => {
   }
 };
 
+const newFood = (state = null, action, { requestedNewFood }) => {
+  switch (action.type) {
+    case CREATE_FOOD_SUCCESS:
+      if (isEqual(action.food, requestedNewFood)) {
+        return null;
+      }
+      return state;
+    case SET_NEW_FOOD:
+      return action.food;
+    default:
+      return state;
+  }
+};
+
+const newFoodListId = (state = null, action, { requestedNewFood }) => {
+  switch (action.type) {
+    case CREATE_FOOD_SUCCESS:
+      if (isEqual(action.food, requestedNewFood)) {
+        return null;
+      }
+      return state;
+    case SET_NEW_FOOD:
+      return action.listId;
+    default:
+      return state;
+  }
+};
+
+const requestedNewFood = (state = null, action, { requestedNewFood }) => {
+  switch (action.type) {
+    case CREATE_FOOD_REQUEST:
+      return action.food;
+    case CREATE_FOOD_SUCCESS:
+      if (isEqual(action.food, requestedNewFood)) {
+        return null;
+      }
+      return state;
+    default:
+      return state;
+  }
+};
+
 const requestedListId = (state = null, action) => {
   switch (action.type) {
     case FETCH_FOODS_REQUEST:
@@ -108,11 +155,17 @@ const requestedListId = (state = null, action) => {
   }
 };
 
-const fetchFoodsError = (state = null, action, { requestedListId, query }) => {
+const foodListError = (state = null, action, { requestedListId, requestedNewFood, query }) => {
   switch (action.type) {
+    case CREATE_FOOD_REQUEST:
     case FETCH_FOOD_SEARCH_RESULTS_REQUEST:
     case FETCH_FOODS_REQUEST:
       return null;
+    case CREATE_FOOD_FAILURE:
+      if (isEqual(action.food, requestedNewFood)) {
+        return `Error creating food: ${action.err.message}`;
+      }
+      return state;
     case FETCH_FOOD_SEARCH_RESULTS_FAILURE:
       if (action.query === query) {
         return `Error fetching foods for query="${action.query}": ${action.err.message}`;
@@ -161,7 +214,10 @@ const listMenu = combineReducers({
 const foodList = (state = {}, action) => {
   return {
     foods: foods(state.foods, action, { requestedListId: state.requestedListId, query: state.query  }),
-    error: fetchFoodsError(state.error, action, { requestedListId: state.requestedListId, query: state.query }),
+    newFood: newFood(state.newFood, action, { requestedNewFood: state.requestedNewFood }),
+    newFoodListId: newFoodListId(state.newFoodListId, action, { requestedNewFood: state.requestedNewFood }),
+    requestedNewFood: requestedNewFood(state.requestedNewFood, action, { requestedNewFood: state.requestedNewFood }),
+    error: foodListError(state.error, action, { requestedListId: state.requestedListId, requestedNewFood: state.requestedNewFood, query: state.query }),
     requestedListId: requestedListId(state.requestedListId, action),
     query: query(state.query, action),
   };
