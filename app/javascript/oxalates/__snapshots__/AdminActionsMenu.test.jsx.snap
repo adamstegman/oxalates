@@ -11,6 +11,13 @@ exports[`AdminActionsMenu renders admin action buttons 1`] = `
   >
     Add
   </button>
+  <button
+    className="food-action"
+    onClick={[Function]}
+    type="button"
+  >
+    Edit
+  </button>
 </div>
 `;
 

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FoodListEditingItem renders a food in a list being edited 1`] = `
+<li
+  className="edit-food-list-item all"
+>
+  <button
+    className="destroy-food-list-item"
+    onClick={[Function]}
+    type="button"
+  >
+    <test-file-stub />
+  </button>
+  beetroot, steamed
+   - 
+  50.00
+  mg - 
+  just under 1/2 cup
+</li>
+`;

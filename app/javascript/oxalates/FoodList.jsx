@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { foodPropType } from './foodPropType';
+import { FoodListEditingItem } from './FoodListEditingItem';
 import { FoodListEmptyItem } from './FoodListEmptyItem';
 import { FoodListError } from './FoodListError';
 import { FoodListItem } from './FoodListItem';
@@ -50,12 +51,14 @@ export class FoodList extends React.Component {
     const {
       foods,
       lists,
+      editingFoods,
       requestedListId,
       newFood,
       newFoodListId,
       error,
       password,
       createFood,
+      deleteFood,
       setNewFood,
     } = this.props;
     const sortedFoods = this.sortFoodsAlphabetically(foods);
@@ -74,10 +77,21 @@ export class FoodList extends React.Component {
     } else if (error) {
       contents = <FoodListError error={error} />;
     } else if (foods.length > 0) {
-      contents = sortedFoods.map(food => {
-        const list = this.getListForFood(food, sortedLists);
-        return <FoodListItem key={food.id} food={food} list={list} />;
-      });
+      if (editingFoods) {
+        contents = sortedFoods.map(food => {
+          const list = this.getListForFood(food, sortedLists);
+          return <FoodListEditingItem key={food.id}
+                                      food={food}
+                                      list={list}
+                                      password={password}
+                                      deleteFood={deleteFood} />;
+        });
+      } else {
+        contents = sortedFoods.map(food => {
+          const list = this.getListForFood(food, sortedLists);
+          return <FoodListItem key={food.id} food={food} list={list} />;
+        });
+      }
     }
 
     return (
@@ -93,11 +107,13 @@ export class FoodList extends React.Component {
 FoodList.propTypes = {
   foods: PropTypes.arrayOf(foodPropType).isRequired,
   lists: PropTypes.arrayOf(listPropType).isRequired,
+  editingFoods: PropTypes.bool,
   requestedListId: PropTypes.node,
   error: PropTypes.string,
   newFood: PropTypes.shape({}),
   newFoodListId: PropTypes.node,
   password: PropTypes.string,
   createFood: PropTypes.func,
+  deleteFood: PropTypes.func,
   setNewFood: PropTypes.func,
 };

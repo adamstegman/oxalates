@@ -15,9 +15,10 @@ Enzyme.configure({ adapter: new Adapter() });
 
 const mockStore = configureMockStore([thunk]);
 const requestedListId = lists[0].id;
+const editingFoods = false;
 const newFood = foods[0];
 const newFoodListId = lists[1].id;
-const error = new Error('some error');
+const error = 'some error';
 const password = 'password';
 const state = {
   listMenu: {
@@ -25,6 +26,7 @@ const state = {
   },
   foodList: {
     requestedListId,
+    editingFoods,
     newFood,
     newFoodListId,
     error,
@@ -54,6 +56,7 @@ describe('VisibleFoodList', () => {
     expect(renderedFoodList.prop('requestedListId')).toEqual(requestedListId);
     expect(renderedFoodList.prop('newFood')).toEqual(newFood);
     expect(renderedFoodList.prop('newFoodListId')).toEqual(newFoodListId);
+    expect(renderedFoodList.prop('editingFoods')).toEqual(false);
     expect(renderedFoodList.prop('error')).toEqual('some error');
     expect(renderedFoodList.prop('foods')).toEqual(foods);
     expect(renderedFoodList.prop('lists')).toEqual(lists);
@@ -93,6 +96,25 @@ describe('VisibleFoodList', () => {
       { type: 'FETCH_FOODS_REQUEST', listId: lists[0].id },
     ];
     return renderedFoodList.prop('createFood')(password, newFood, lists[0].id).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it('deletes a food', () => {
+    const store = mockStore(state);
+    const wrapper = mount(
+      <Provider store={store}>
+        <VisibleFoodList />
+      </Provider>,
+    );
+    const renderedFoodList = wrapper.find(FoodList);
+    expect(renderedFoodList.prop('deleteFood')).toBeDefined();
+
+    const expectedActions = [
+      { type: 'DELETE_FOOD_REQUEST', food: newFood },
+      { type: 'DELETE_FOOD_SUCCESS', food: newFood },
+    ];
+    return renderedFoodList.prop('deleteFood')(password, newFood).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });

@@ -176,6 +176,33 @@ describe "API" do
     end
   end
 
+  describe "DELETE /foods/:id" do
+    before do
+      ActionController::Base.allow_forgery_protection = true
+    end
+    after do
+      ActionController::Base.allow_forgery_protection = false
+    end
+
+    it "deletes the food" do
+      food = Food.create!(name: 'test')
+      expect {
+        delete "/foods/#{food.id}", params: {password: 'password'}.to_json, headers: {'Accept' => 'application/json', 'Content-type' => 'application/json'}
+      }.to change(Food, :count).by(-1)
+      expect(response.code).to eq("204")
+    end
+
+    context "with an invalid password" do
+      it "returns unauthorized" do
+        food = Food.create!(name: 'test')
+        expect {
+          delete "/foods/#{food.id}", params: {password: 'wrong'}.to_json, headers: {'Accept' => 'application/json', 'Content-type' => 'application/json'}
+        }.not_to change(Food, :count)
+        expect(response.code).to eq("401")
+      end
+    end
+  end
+
   xdescribe "The all foods list" do
     it "edits a food" do
       log_in

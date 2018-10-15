@@ -68,8 +68,12 @@ class FoodsController < ApplicationController
     food = Food.find(params[:id])
     food.destroy!
     respond_to do |format|
-      format.html { redirect_to :back }
-      format.js { head 204 }
+      format.html do
+        redirect_to :back
+      end
+      format.json do
+        head :no_content
+      end
     end
   end
 

@@ -20,6 +20,9 @@ const state = {
   listMenu: {
     activeListId: lists[0].id,
   },
+  foodList: {
+    editingFoods: false,
+  },
 };
 
 describe('AuthenticatedAdminActionsMenu', () => {
@@ -40,6 +43,7 @@ describe('AuthenticatedAdminActionsMenu', () => {
     const renderedAdminActionsMenu = wrapper.find(AdminActionsMenu);
     expect(renderedAdminActionsMenu.prop('authenticated')).toEqual(true);
     expect(renderedAdminActionsMenu.prop('activeListId')).toEqual(lists[0].id);
+    expect(renderedAdminActionsMenu.prop('editingFoods')).toEqual(false);
   });
 
   it('starts a new food', () => {
@@ -56,6 +60,23 @@ describe('AuthenticatedAdminActionsMenu', () => {
       { type: 'SET_NEW_FOOD', food: {}, listId: lists[0].id },
     ];
     renderedAdminActionsMenu.prop('startNewFood')(lists[0].id);
+    expect(store.getActions()).toEqual(expectedActions);
+  });
+
+  it('allows editing foods', () => {
+    const store = mockStore(state);
+    const wrapper = mount(
+      <Provider store={store}>
+        <AuthenticatedAdminActionsMenu />
+      </Provider>,
+    );
+    const renderedAdminActionsMenu = wrapper.find(AdminActionsMenu);
+    expect(renderedAdminActionsMenu.prop('setEditingFoods')).toBeDefined();
+
+    const expectedActions = [
+      { type: 'SET_EDITING_FOODS', editingFoods: true },
+    ];
+    renderedAdminActionsMenu.prop('setEditingFoods')(true);
     expect(store.getActions()).toEqual(expectedActions);
   });
 });

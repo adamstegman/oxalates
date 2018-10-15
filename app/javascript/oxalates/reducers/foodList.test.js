@@ -2,12 +2,16 @@ import {
   createFoodFailure,
   createFoodRequest,
   createFoodSuccess,
+  deleteFoodFailure,
+  deleteFoodRequest,
+  deleteFoodSuccess,
   fetchFoodSearchResultsFailure,
   fetchFoodSearchResultsRequest,
   fetchFoodSearchResultsSuccess,
   fetchFoodsFailure,
   fetchFoodsRequest,
   fetchFoodsSuccess,
+  setEditingFoods,
   setNewFood,
   setSearchQuery,
 } from '../actions';
@@ -20,6 +24,7 @@ describe('foodList state', () => {
   it('is correct initially', () => {
     const initialState = {
       foods: [],
+      editingFoods: false,
       newFood: null,
       newFoodListId: null,
       requestedNewFood: null,
@@ -35,6 +40,7 @@ describe('foodList state', () => {
       const newFood = { name: 'food' };
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood,
         newFoodListId: null,
         requestedNewFood: null,
@@ -45,6 +51,7 @@ describe('foodList state', () => {
       const action = createFoodRequest(newFood, lists[0].id);
       const createFoodState = {
         foods: [],
+        editingFoods: false,
         newFood,
         newFoodListId: null,
         requestedNewFood: newFood,
@@ -61,6 +68,7 @@ describe('foodList state', () => {
       const newFood = { name: 'food' };
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood,
         newFoodListId: lists[0].id,
         requestedNewFood: newFood,
@@ -71,6 +79,7 @@ describe('foodList state', () => {
       const action = createFoodSuccess(newFood, 1);
       const foodsState = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -86,6 +95,7 @@ describe('foodList state', () => {
       const newFood2 = { name: 'food2' };
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood: newFood2,
         newFoodListId: lists[0].id,
         requestedNewFood: newFood2,
@@ -103,6 +113,7 @@ describe('foodList state', () => {
       const newFood = { name: 'food' };
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood,
         newFoodListId: null,
         requestedNewFood: newFood,
@@ -114,6 +125,7 @@ describe('foodList state', () => {
       const action = createFoodFailure(newFood, err);
       const failureState = {
         foods: [],
+        editingFoods: false,
         newFood,
         newFoodListId: null,
         requestedNewFood: newFood,
@@ -129,6 +141,7 @@ describe('foodList state', () => {
       const newFood2 = { name: 'food2' };
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood: newFood2,
         newFoodListId: null,
         requestedNewFood: newFood2,
@@ -142,10 +155,89 @@ describe('foodList state', () => {
     });
   });
 
+  describe('DELETE_FOOD_REQUEST', () => {
+    it('indicates a loading state', () => {
+      const food = foods[0];
+      const initialFoodList = {
+        foods,
+        editingFoods: true,
+        newFood: null,
+        newFoodListId: null,
+        requestedNewFood: null,
+        error: {},
+        requestedListId: null,
+        query: '',
+      };
+      const action = deleteFoodRequest(food);
+      const deletedFoods = foods.slice(1);
+      const deletedFoodState = {
+        foods: deletedFoods,
+        editingFoods: true,
+        newFood: null,
+        newFoodListId: null,
+        requestedNewFood: null,
+        error: null,
+        requestedListId: null,
+        query: '',
+      };
+      expect(foodList(initialFoodList, action)).toEqual(deletedFoodState);
+    });
+  });
+
+  describe('DELETE_FOOD_SUCCESS', () => {
+    it('ensures the food is deleted', () => {
+      const food = foods[0];
+      const deletedFoods = foods.slice(1);
+      const initialFoodList = {
+        foods: deletedFoods,
+        editingFoods: true,
+        newFood: null,
+        newFoodListId: null,
+        requestedNewFood: null,
+        error: null,
+        requestedListId: null,
+        query: '',
+      };
+      const action = deleteFoodSuccess(food);
+      expect(foodList(initialFoodList, action)).toEqual(initialFoodList);
+    });
+  });
+
+  describe('DELETE_FOOD_FAILURE', () => {
+    it('indicates an error state', () => {
+      const food = foods[0];
+      const deletedFoods = foods.slice(1);
+      const initialFoodList = {
+        foods: deletedFoods,
+        editingFoods: true,
+        newFood: null,
+        newFoodListId: null,
+        requestedNewFood: null,
+        error: null,
+        requestedListId: null,
+        query: '',
+      };
+      const err = new Error('some error');
+      const action = deleteFoodFailure(food, err);
+      const failureState = {
+        foods: deletedFoods,
+        editingFoods: true,
+        newFood: null,
+        newFoodListId: null,
+        requestedNewFood: null,
+        error: `Error deleting food: some error`,
+        requestedListId: null,
+        query: '',
+      };
+      expect(foodList(initialFoodList, action)).toEqual(failureState);
+    });
+  });
+
   describe('FETCH_FOODS_REQUEST', () => {
     it('indicates a loading state', () => {
       const initialFoodList = {
         foods,
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -156,6 +248,7 @@ describe('foodList state', () => {
       const action = fetchFoodsRequest(lists[0].id);
       const emptyFoodsState = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -171,6 +264,7 @@ describe('foodList state', () => {
     it('updates the foods', () => {
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -181,6 +275,7 @@ describe('foodList state', () => {
       const action = fetchFoodsSuccess(1, { foods: responseFoods });
       const foodsState = {
         foods,
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -194,6 +289,7 @@ describe('foodList state', () => {
     it('does not update the foods if the requestedListId has changed', () => {
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -210,6 +306,7 @@ describe('foodList state', () => {
     it('indicates an error state', () => {
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -221,6 +318,7 @@ describe('foodList state', () => {
       const action = fetchFoodsFailure(lists[0].id, err);
       const failureState = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -234,6 +332,7 @@ describe('foodList state', () => {
     it('is ignored if a new list was requested', () => {
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -251,6 +350,7 @@ describe('foodList state', () => {
     it('indicates a loading state', () => {
       const initialFoodList = {
         foods,
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -261,6 +361,7 @@ describe('foodList state', () => {
       const action = fetchFoodSearchResultsRequest('test');
       const emptyFoodsState = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -276,6 +377,7 @@ describe('foodList state', () => {
     it('updates the foods', () => {
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -286,6 +388,7 @@ describe('foodList state', () => {
       const action = fetchFoodSearchResultsSuccess('test', { foods: responseFoods });
       const foodsState = {
         foods,
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -299,6 +402,7 @@ describe('foodList state', () => {
     it('does not update the foods if the search query has changed', () => {
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -315,6 +419,7 @@ describe('foodList state', () => {
     it('indicates an error state', () => {
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -326,6 +431,7 @@ describe('foodList state', () => {
       const action = fetchFoodSearchResultsFailure('test', err);
       const failureState = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -339,6 +445,7 @@ describe('foodList state', () => {
     it('is ignored if the query was changed', () => {
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -356,6 +463,7 @@ describe('foodList state', () => {
     it('updates the food search query', () => {
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -366,6 +474,7 @@ describe('foodList state', () => {
       const action = setSearchQuery('test');
       const queryState = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -381,6 +490,7 @@ describe('foodList state', () => {
     it('starts a new food', () => {
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood: null,
         newFoodListId: null,
         requestedNewFood: null,
@@ -389,8 +499,9 @@ describe('foodList state', () => {
         query: '',
       };
       const action = setNewFood(lists[0].id);
-      const queryState = {
+      const newFoodState = {
         foods: [],
+        editingFoods: false,
         newFood: {},
         newFoodListId: lists[0].id,
         requestedNewFood: null,
@@ -398,12 +509,13 @@ describe('foodList state', () => {
         requestedListId: null,
         query: '',
       };
-      expect(foodList(initialFoodList, action)).toEqual(queryState);
+      expect(foodList(initialFoodList, action)).toEqual(newFoodState);
     });
 
     it('updates the new food', () => {
       const initialFoodList = {
         foods: [],
+        editingFoods: false,
         newFood: {},
         newFoodListId: lists[0].id,
         requestedNewFood: null,
@@ -412,8 +524,9 @@ describe('foodList state', () => {
         query: '',
       };
       const action = setNewFood(lists[0].id, { name: 'test' });
-      const queryState = {
+      const newFoodState = {
         foods: [],
+        editingFoods: false,
         newFood: { name: 'test' },
         newFoodListId: lists[0].id,
         requestedNewFood: null,
@@ -421,7 +534,34 @@ describe('foodList state', () => {
         requestedListId: null,
         query: '',
       };
-      expect(foodList(initialFoodList, action)).toEqual(queryState);
+      expect(foodList(initialFoodList, action)).toEqual(newFoodState);
+    });
+  });
+
+  describe('SET_EDITING_FOODS', () => {
+    it('updates the editing state', () => {
+      const initialFoodList = {
+        foods: [],
+        editingFoods: false,
+        newFood: null,
+        newFoodListId: null,
+        requestedNewFood: null,
+        error: null,
+        requestedListId: null,
+        query: '',
+      };
+      const action = setEditingFoods(true);
+      const editingState = {
+        foods: [],
+        editingFoods: true,
+        newFood: null,
+        newFoodListId: null,
+        requestedNewFood: null,
+        error: null,
+        requestedListId: null,
+        query: '',
+      };
+      expect(foodList(initialFoodList, action)).toEqual(editingState);
     });
   });
 });

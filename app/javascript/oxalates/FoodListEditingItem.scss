@@ -1,0 +1,23 @@
+@import "./buttons";
+@import "./FoodListItem";
+
+$destroy_food_list_item_icon_height: 22px;
+$destroy_food_list_item_icon_width: 22px;
+
+.destroy-food-list-item {
+  @extend %flat-button;
+  width: $destroy_food_list_item_icon_width;
+  height: $destroy_food_list_item_icon_height;
+  padding: 0;
+  margin: 0 $food_list_item_padding 0 0;
+}
+
+.edit-food-list-item {
+  @extend .food-list-item;
+
+  display: block;
+  -webkit-flex-grow: 2;
+  flex-grow: 2;
+
+  text-decoration: none;
+}

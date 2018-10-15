@@ -8,11 +8,16 @@ export class AdminActionsMenu extends React.Component {
     const {
       activeListId,
       authenticated,
+      editingFoods,
+      setEditingFoods,
       startNewFood,
     } = this.props;
 
     if (authenticated) {
-      return <FoodActionsMenu activeListId={activeListId} startNewFood={startNewFood} />;
+      return <FoodActionsMenu activeListId={activeListId}
+                              editingFoods={editingFoods}
+                              setEditingFoods={setEditingFoods}
+                              startNewFood={startNewFood} />;
     }
 
     return null;
@@ -22,5 +27,7 @@ export class AdminActionsMenu extends React.Component {
 AdminActionsMenu.propTypes = {
   activeListId: PropTypes.node,
   authenticated: PropTypes.bool,
+  editingFoods: PropTypes.bool,
+  setEditingFoods: PropTypes.func.isRequired,
   startNewFood: PropTypes.func.isRequired,
 };

@@ -3,18 +3,23 @@ import {
   CREATE_FOOD_FAILURE,
   CREATE_FOOD_REQUEST,
   CREATE_FOOD_SUCCESS,
+  DELETE_FOOD_FAILURE,
+  DELETE_FOOD_REQUEST,
   FETCH_FOOD_SEARCH_RESULTS_FAILURE,
   FETCH_FOOD_SEARCH_RESULTS_REQUEST,
   FETCH_FOOD_SEARCH_RESULTS_SUCCESS,
   FETCH_FOODS_FAILURE,
   FETCH_FOODS_REQUEST,
   FETCH_FOODS_SUCCESS,
+  SET_EDITING_FOODS,
   SET_SEARCH_QUERY,
   SET_NEW_FOOD,
 } from '../actions';
 
 const foods = (state = [], action, { requestedListId, query }) => {
   switch (action.type) {
+    case DELETE_FOOD_REQUEST:
+      return state.filter(food => food.id !== action.food.id);
     case FETCH_FOOD_SEARCH_RESULTS_REQUEST:
     case FETCH_FOODS_REQUEST:
       return [];
@@ -28,6 +33,15 @@ const foods = (state = [], action, { requestedListId, query }) => {
         return action.foods;
       }
       return state;
+    default:
+      return state;
+  }
+};
+
+const editingFoods = (state = false, action) => {
+  switch (action.type) {
+    case SET_EDITING_FOODS:
+      return action.editingFoods;
     default:
       return state;
   }
@@ -93,6 +107,7 @@ const requestedListId = (state = null, action) => {
 const foodListError = (state = null, action, { requestedListId, requestedNewFood, query }) => {
   switch (action.type) {
     case CREATE_FOOD_REQUEST:
+    case DELETE_FOOD_REQUEST:
     case FETCH_FOOD_SEARCH_RESULTS_REQUEST:
     case FETCH_FOODS_REQUEST:
       return null;
@@ -101,6 +116,8 @@ const foodListError = (state = null, action, { requestedListId, requestedNewFood
         return `Error creating food: ${action.err.message}`;
       }
       return state;
+    case DELETE_FOOD_FAILURE:
+      return `Error deleting food: ${action.err.message}`;
     case FETCH_FOOD_SEARCH_RESULTS_FAILURE:
       if (action.query === query) {
         return `Error fetching foods for query="${action.query}": ${action.err.message}`;
@@ -127,7 +144,8 @@ const query = (state = '', action) => {
 
 export const foodList = (state = {}, action) => {
   return {
-    foods: foods(state.foods, action, { requestedListId: state.requestedListId, query: state.query  }),
+    foods: foods(state.foods, action, { requestedListId: state.requestedListId, query: state.query }),
+    editingFoods: editingFoods(state.editingFoods, action),
     newFood: newFood(state.newFood, action, { requestedNewFood: state.requestedNewFood }),
     newFoodListId: newFoodListId(state.newFoodListId, action, { requestedNewFood: state.requestedNewFood }),
     requestedNewFood: requestedNewFood(state.requestedNewFood, action, { requestedNewFood: state.requestedNewFood }),

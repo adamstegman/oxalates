@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
-import { createFood, setNewFood } from './actions';
+import { createFood, deleteFood, setNewFood } from './actions';
 import { FoodList } from './FoodList';
 
 const mapStateToProps = state => {
   const {
+    editingFoods,
     requestedListId,
     newFood,
     newFoodListId,
@@ -16,12 +17,12 @@ const mapStateToProps = state => {
   const {
     password,
   } = state.session;
-  const errorMessage = error ? error.message : null;
   return {
+    editingFoods,
     requestedListId,
     newFood,
     newFoodListId,
-    error: errorMessage,
+    error,
     foods,
     lists,
     password,
@@ -31,6 +32,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     createFood: (password, food, listId) => dispatch(createFood(password, food, listId)),
+    deleteFood: (password, food) => dispatch(deleteFood(password, food)),
     setNewFood: (listId, food) => dispatch(setNewFood(listId, food)),
   };
 };

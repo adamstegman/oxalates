@@ -51,3 +51,11 @@ test('FoodList renders error indicator', () => {
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+test('FoodList renders editing foods', () => {
+  const component = renderer.create(
+    <FoodList foods={foods} lists={lists} editingFoods={true} password={'password'} deleteFood={() => {}} />,
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});

@@ -1,4 +1,5 @@
 export * from './actions/addFood';
+export * from './actions/editFoods';
 export * from './actions/fetchFoods';
 export * from './actions/fetchFoodSearchResults';
 export * from './actions/search';
