@@ -51,6 +51,7 @@ describe('ActiveListMenu', () => {
     expect(renderedListMenu.prop('onListSelect')).toBeDefined();
 
     const expectedActions = [
+      { type: 'SET_EDITING_FOODS', editingFoods: false },
       { type: 'SELECT_ACTIVE_LIST_ID', activeListId: lists[1].id },
       { type: 'FETCH_FOODS_REQUEST', listId: lists[1].id },
       { type: 'FETCH_FOODS_SUCCESS', listId: lists[1].id, foods: [] },
