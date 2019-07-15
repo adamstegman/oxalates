@@ -8,6 +8,7 @@ export class AdminActionsMenu extends React.Component {
     const {
       activeListId,
       authenticated,
+      doneEditingFoods,
       editingFoods,
       setEditingFoods,
       startNewFood,
@@ -15,6 +16,7 @@ export class AdminActionsMenu extends React.Component {
 
     if (authenticated) {
       return <FoodActionsMenu activeListId={activeListId}
+                              doneEditingFoods={doneEditingFoods}
                               editingFoods={editingFoods}
                               setEditingFoods={setEditingFoods}
                               startNewFood={startNewFood} />;
@@ -27,6 +29,7 @@ export class AdminActionsMenu extends React.Component {
 AdminActionsMenu.propTypes = {
   activeListId: PropTypes.node,
   authenticated: PropTypes.bool,
+  doneEditingFoods: PropTypes.func.isRequired,
   editingFoods: PropTypes.bool,
   setEditingFoods: PropTypes.func.isRequired,
   startNewFood: PropTypes.func.isRequired,

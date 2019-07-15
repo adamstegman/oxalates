@@ -60,8 +60,37 @@ class FoodsController < ApplicationController
 
   def update
     food = Food.find(params[:id])
-    food.update_attributes!(food_params)
-    redirect_to edit_list_path(List.for_food(food))
+    food.update!(food_params)
+    respond_to do |format|
+      format.html do
+        redirect_to edit_list_path(List.for_food(food))
+      end
+      format.json do
+        head :no_content
+      end
+    end
+  rescue ActionController::ParameterMissing
+    error = 'Must provide food details'
+    respond_to do |format|
+      format.html do
+        flash[:error] = error
+        redirect_to edit_food_path(food)
+      end
+      format.json do
+        render json: {errors: [error]}, status: :unprocessable_entity
+      end
+    end
+  rescue ActiveRecord::RecordInvalid
+    errors = food.errors.full_messages
+    respond_to do |format|
+      format.html do
+        flash[:error] = errors.join(", ")
+        redirect_to edit_food_path(food)
+      end
+      format.json do
+        render json: {errors: errors}, status: :unprocessable_entity
+      end
+    end
   end
 
   def destroy

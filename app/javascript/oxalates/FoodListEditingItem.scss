@@ -4,6 +4,16 @@
 $destroy_food_list_item_icon_height: 22px;
 $destroy_food_list_item_icon_width: 22px;
 
+.editing-food-list-item {
+  @extend .food-list-item;
+
+  display: block;
+  -webkit-flex-grow: 2;
+  flex-grow: 2;
+
+  text-decoration: none;
+}
+
 .destroy-food-list-item {
   @extend %flat-button;
   width: $destroy_food_list_item_icon_width;
@@ -13,11 +23,5 @@ $destroy_food_list_item_icon_width: 22px;
 }
 
 .edit-food-list-item {
-  @extend .food-list-item;
-
-  display: block;
-  -webkit-flex-grow: 2;
-  flex-grow: 2;
-
-  text-decoration: none;
+  @extend %flat-button;
 }

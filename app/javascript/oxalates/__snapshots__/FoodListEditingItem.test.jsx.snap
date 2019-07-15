@@ -2,7 +2,7 @@
 
 exports[`FoodListEditingItem renders a food in a list being edited 1`] = `
 <li
-  className="edit-food-list-item all"
+  className="editing-food-list-item"
 >
   <button
     className="destroy-food-list-item"
@@ -11,10 +11,16 @@ exports[`FoodListEditingItem renders a food in a list being edited 1`] = `
   >
     <test-file-stub />
   </button>
-  beetroot, steamed
-   - 
-  50.00
-  mg - 
-  just under 1/2 cup
+  <button
+    className="edit-food-list-item all"
+    onClick={[Function]}
+    type="button"
+  >
+    beetroot, steamed
+     - 
+    50.00
+    mg - 
+    just under 1/2 cup
+  </button>
 </li>
 `;

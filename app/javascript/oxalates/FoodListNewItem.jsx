@@ -29,9 +29,9 @@ export const FoodListNewItem = ({ newFood, newFoodListId, setNewFood, createFood
   } = newFood;
   let errorMessages = null;
   if (error instanceof Array) {
-    errorMessages = error.map((msg, i) => <p key={i}>{msg}</p>);
-  } else if (error instanceof String) {
-    errorMessages = <p>{error}</p>;
+    errorMessages = error.map((msg, i) => <p key={i} className="error">{msg}</p>);
+  } else if (error) {
+    errorMessages = <p className="error">{error}</p>;
   }
   return (
     <form className="add-food" onSubmit={_createFood}>

@@ -176,6 +176,43 @@ describe "API" do
     end
   end
 
+  describe "PUT /foods/:id" do
+    before do
+      ActionController::Base.allow_forgery_protection = true
+    end
+    after do
+      ActionController::Base.allow_forgery_protection = false
+    end
+
+    it "updates the food" do
+      food = Food.create!(name: 'test')
+      expect {
+        put "/foods/#{food.id}", params: {food: {name: "edited"}, password: "password"}.to_json, headers: {'Accept' => 'application/json', 'Content-type' => 'application/json'}
+      }.to change { food.reload.name }.to("edited")
+      expect(response.code).to eq("204")
+    end
+
+    context "with an invalid food" do
+      it "returns errors" do
+        food = Food.create!(name: 'test')
+        put "/foods/#{food.id}", params: {password: "password"}.to_json, headers: {'Accept' => 'application/json', 'Content-type' => 'application/json'}
+        expect(response.code).to eq("422")
+        error_response = JSON.parse(response.body)
+        expect(error_response['errors']).to eq(['Must provide food details'])
+      end
+    end
+
+    context "with an invalid password" do
+      it "returns unauthorized" do
+        food = Food.create!(name: 'test')
+        expect {
+          put "/foods/#{food.id}", params: {food: {name: "edited"}, password: "wrong"}.to_json, headers: {'Accept' => 'application/json', 'Content-type' => 'application/json'}
+        }.not_to change { food.reload.name }
+        expect(response.code).to eq("401")
+      end
+    end
+  end
+
   describe "DELETE /foods/:id" do
     before do
       ActionController::Base.allow_forgery_protection = true

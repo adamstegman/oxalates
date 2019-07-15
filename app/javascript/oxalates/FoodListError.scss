@@ -1,5 +1,6 @@
 @import "./FoodListItem";
+@import "./error";
 
 .error {
-  color: #f60;
+  @extend %error;
 }

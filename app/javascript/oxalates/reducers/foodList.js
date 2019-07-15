@@ -11,9 +11,13 @@ import {
   FETCH_FOODS_FAILURE,
   FETCH_FOODS_REQUEST,
   FETCH_FOODS_SUCCESS,
+  SET_EDITING_FOOD,
   SET_EDITING_FOODS,
   SET_SEARCH_QUERY,
   SET_NEW_FOOD,
+  UPDATE_FOOD_FAILURE,
+  UPDATE_FOOD_REQUEST,
+  UPDATE_FOOD_SUCCESS,
 } from '../actions';
 
 const foods = (state = [], action, { requestedListId, query }) => {
@@ -42,6 +46,48 @@ const editingFoods = (state = false, action) => {
   switch (action.type) {
     case SET_EDITING_FOODS:
       return action.editingFoods;
+    default:
+      return state;
+  }
+};
+
+const editingFood = (state = null, action, { requestedEditingFood }) => {
+  switch (action.type) {
+    case UPDATE_FOOD_SUCCESS:
+      if (isEqual(action.food, requestedEditingFood)) {
+        return null;
+      }
+      return state;
+    case SET_EDITING_FOOD:
+      return action.food;
+    default:
+      return state;
+  }
+};
+
+const editingFoodListId = (state = null, action, { requestedEditingFood }) => {
+  switch (action.type) {
+    case UPDATE_FOOD_SUCCESS:
+      if (isEqual(action.food, requestedEditingFood)) {
+        return null;
+      }
+      return state;
+    case SET_EDITING_FOOD:
+      return action.listId;
+    default:
+      return state;
+  }
+};
+
+const requestedEditingFood = (state = null, action, { requestedEditingFood }) => {
+  switch (action.type) {
+    case UPDATE_FOOD_REQUEST:
+      return action.food;
+    case UPDATE_FOOD_SUCCESS:
+      if (isEqual(action.food, requestedEditingFood)) {
+        return null;
+      }
+      return state;
     default:
       return state;
   }
@@ -104,16 +150,20 @@ const requestedListId = (state = null, action) => {
   }
 };
 
-const foodListError = (state = null, action, { requestedListId, requestedNewFood, query }) => {
+const foodListError = (state = null, action, { requestedListId, requestedEditingFood, requestedNewFood, query }) => {
   switch (action.type) {
     case CREATE_FOOD_REQUEST:
     case DELETE_FOOD_REQUEST:
     case FETCH_FOOD_SEARCH_RESULTS_REQUEST:
     case FETCH_FOODS_REQUEST:
+    case UPDATE_FOOD_REQUEST:
       return null;
     case CREATE_FOOD_FAILURE:
       if (isEqual(action.food, requestedNewFood)) {
-        return `Error creating food: ${action.err.message}`;
+        if (action.err.message) {
+          return `Error creating food: ${action.err.message}`;
+        }
+        return action.err;
       }
       return state;
     case DELETE_FOOD_FAILURE:
@@ -126,6 +176,14 @@ const foodListError = (state = null, action, { requestedListId, requestedNewFood
     case FETCH_FOODS_FAILURE:
       if (action.listId === requestedListId) {
         return `Error fetching foods for list_id=${action.listId}: ${action.err.message}`;
+      }
+      return state;
+    case UPDATE_FOOD_FAILURE:
+      if (isEqual(action.food, requestedEditingFood)) {
+        if (action.err.message) {
+          return `Error updating food: ${action.err.message}`;
+        }
+        return action.err;
       }
       return state;
     default:
@@ -145,11 +203,14 @@ const query = (state = '', action) => {
 export const foodList = (state = {}, action) => {
   return {
     foods: foods(state.foods, action, { requestedListId: state.requestedListId, query: state.query }),
+    editingFood: editingFood(state.editingFood, action, { requestedEditingFood: state.requestedEditingFood }),
+    editingFoodListId: editingFoodListId(state.editingFoodListId, action, { requestedEditingFood: state.requestedEditingFood }),
     editingFoods: editingFoods(state.editingFoods, action),
     newFood: newFood(state.newFood, action, { requestedNewFood: state.requestedNewFood }),
     newFoodListId: newFoodListId(state.newFoodListId, action, { requestedNewFood: state.requestedNewFood }),
+    requestedEditingFood: requestedEditingFood(state.requestedEditingFood, action, { requestedEditingFood: state.requestedEditingFood }),
     requestedNewFood: requestedNewFood(state.requestedNewFood, action, { requestedNewFood: state.requestedNewFood }),
-    error: foodListError(state.error, action, { requestedListId: state.requestedListId, requestedNewFood: state.requestedNewFood, query: state.query }),
+    error: foodListError(state.error, action, { requestedListId: state.requestedListId, requestedEditingFood: state.requestedEditingFood, requestedNewFood: state.requestedNewFood, query: state.query }),
     requestedListId: requestedListId(state.requestedListId, action),
     query: query(state.query, action),
   };

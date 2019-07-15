@@ -8,6 +8,7 @@ test('FoodActionsMenu renders food action buttons', () => {
   const component = renderer.create(
     <FoodActionsMenu activeListId={lists[0].id}
                      editingFoods={false}
+                     doneEditingFoods={() => {}}
                      setEditingFoods={() => {}}
                      startNewFood={() => {}} />
   );
@@ -19,6 +20,7 @@ test('FoodActionsMenu renders editing action buttons', () => {
   const component = renderer.create(
     <FoodActionsMenu activeListId={lists[0].id}
                      editingFoods={true}
+                     doneEditingFoods={() => {}}
                      setEditingFoods={() => {}}
                      startNewFood={() => {}} />
   );

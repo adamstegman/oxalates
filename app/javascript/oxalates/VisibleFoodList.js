@@ -1,9 +1,17 @@
 import { connect } from 'react-redux';
-import { createFood, deleteFood, setNewFood } from './actions';
+import {
+  createFood,
+  deleteFood,
+  setEditingFood,
+  setNewFood,
+  updateFood,
+} from './actions';
 import { FoodList } from './FoodList';
 
 const mapStateToProps = state => {
   const {
+    editingFood,
+    editingFoodListId,
     editingFoods,
     requestedListId,
     newFood,
@@ -18,6 +26,8 @@ const mapStateToProps = state => {
     password,
   } = state.session;
   return {
+    editingFood,
+    editingFoodListId,
     editingFoods,
     requestedListId,
     newFood,
@@ -33,7 +43,9 @@ const mapDispatchToProps = dispatch => {
   return {
     createFood: (password, food, listId) => dispatch(createFood(password, food, listId)),
     deleteFood: (password, food) => dispatch(deleteFood(password, food)),
+    setEditingFood: (food, listId) => dispatch(setEditingFood(food, listId)),
     setNewFood: (listId, food) => dispatch(setNewFood(listId, food)),
+    updateFood: (password, food, listId) => dispatch(updateFood(password, food, listId)),
   };
 };
 

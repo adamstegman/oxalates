@@ -8,6 +8,7 @@ import { FoodListError } from './FoodListError';
 import { FoodListItem } from './FoodListItem';
 import { FoodListLoading } from './FoodListLoading';
 import { FoodListNewItem } from './FoodListNewItem';
+import { FoodListUpdateItem } from './FoodListUpdateItem';
 import { listPropType } from './listPropType';
 
 import './FoodList.scss';
@@ -51,6 +52,8 @@ export class FoodList extends React.Component {
     const {
       foods,
       lists,
+      editingFood,
+      editingFoodListId,
       editingFoods,
       requestedListId,
       newFood,
@@ -59,7 +62,9 @@ export class FoodList extends React.Component {
       password,
       createFood,
       deleteFood,
+      setEditingFood,
       setNewFood,
+      updateFood,
     } = this.props;
     const sortedFoods = this.sortFoodsAlphabetically(foods);
     const sortedLists = this.sortListsByThresholds(lists);
@@ -74,6 +79,13 @@ export class FoodList extends React.Component {
                                   setNewFood={setNewFood}
                                   error={error}
                                   password={password} />;
+    } else if (editingFood) {
+      contents = <FoodListUpdateItem editingFood={editingFood}
+                                     editingFoodListId={editingFoodListId}
+                                     updateFood={updateFood}
+                                     setEditingFood={setEditingFood}
+                                     error={error}
+                                     password={password} />;
     } else if (error) {
       contents = <FoodListError error={error} />;
     } else if (foods.length > 0) {
@@ -84,7 +96,8 @@ export class FoodList extends React.Component {
                                       food={food}
                                       list={list}
                                       password={password}
-                                      deleteFood={deleteFood} />;
+                                      deleteFood={deleteFood}
+                                      setEditingFood={setEditingFood} />;
         });
       } else {
         contents = sortedFoods.map(food => {
@@ -107,6 +120,8 @@ export class FoodList extends React.Component {
 FoodList.propTypes = {
   foods: PropTypes.arrayOf(foodPropType).isRequired,
   lists: PropTypes.arrayOf(listPropType).isRequired,
+  editingFood: PropTypes.shape({}),
+  editingFoodListId: PropTypes.node,
   editingFoods: PropTypes.bool,
   requestedListId: PropTypes.node,
   error: PropTypes.string,
@@ -116,4 +131,6 @@ FoodList.propTypes = {
   createFood: PropTypes.func,
   deleteFood: PropTypes.func,
   setNewFood: PropTypes.func,
+  setEditingFood: PropTypes.func,
+  updateFood: PropTypes.func,
 };

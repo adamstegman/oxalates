@@ -14,7 +14,10 @@ import { FoodList } from './FoodList';
 Enzyme.configure({ adapter: new Adapter() });
 
 const mockStore = configureMockStore([thunk]);
+const activeListId = lists[2].id;
 const requestedListId = lists[0].id;
+const editingFood = foods[1];
+const editingFoodListId = lists[2].id;
 const editingFoods = false;
 const newFood = foods[0];
 const newFoodListId = lists[1].id;
@@ -22,10 +25,13 @@ const error = 'some error';
 const password = 'password';
 const state = {
   listMenu: {
+    activeListId,
     lists,
   },
   foodList: {
     requestedListId,
+    editingFood,
+    editingFoodListId,
     editingFoods,
     newFood,
     newFoodListId,
@@ -56,6 +62,8 @@ describe('VisibleFoodList', () => {
     expect(renderedFoodList.prop('requestedListId')).toEqual(requestedListId);
     expect(renderedFoodList.prop('newFood')).toEqual(newFood);
     expect(renderedFoodList.prop('newFoodListId')).toEqual(newFoodListId);
+    expect(renderedFoodList.prop('editingFood')).toEqual(editingFood);
+    expect(renderedFoodList.prop('editingFoodListId')).toEqual(editingFoodListId);
     expect(renderedFoodList.prop('editingFoods')).toEqual(false);
     expect(renderedFoodList.prop('error')).toEqual('some error');
     expect(renderedFoodList.prop('foods')).toEqual(foods);
@@ -115,6 +123,43 @@ describe('VisibleFoodList', () => {
       { type: 'DELETE_FOOD_SUCCESS', food: newFood },
     ];
     return renderedFoodList.prop('deleteFood')(password, newFood).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it('edits an existing food', () => {
+    const store = mockStore(state);
+    const wrapper = mount(
+      <Provider store={store}>
+        <VisibleFoodList />
+      </Provider>,
+    );
+    const renderedFoodList = wrapper.find(FoodList);
+    expect(renderedFoodList.prop('setEditingFood')).toBeDefined();
+
+    const expectedActions = [
+      { type: 'SET_EDITING_FOOD', food: editingFood, listId: lists[2].id },
+    ];
+    renderedFoodList.prop('setEditingFood')(editingFood, lists[2].id);
+    expect(store.getActions()).toEqual(expectedActions);
+  });
+
+  it('updates the editing food', () => {
+    const store = mockStore(state);
+    const wrapper = mount(
+      <Provider store={store}>
+        <VisibleFoodList />
+      </Provider>,
+    );
+    const renderedFoodList = wrapper.find(FoodList);
+    expect(renderedFoodList.prop('updateFood')).toBeDefined();
+
+    const expectedActions = [
+      { type: 'UPDATE_FOOD_REQUEST', food: editingFood, listId: lists[2].id },
+      { type: 'UPDATE_FOOD_SUCCESS', food: editingFood, listId: lists[2].id },
+      { type: 'FETCH_FOODS_REQUEST', listId: lists[2].id },
+    ];
+    return renderedFoodList.prop('updateFood')(password, editingFood, lists[2].id).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });

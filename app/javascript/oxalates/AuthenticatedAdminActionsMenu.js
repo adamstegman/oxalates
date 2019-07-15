@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import {
+  doneEditingFoods,
   setEditingFoods,
   setNewFood,
 } from './actions';
@@ -24,6 +25,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    doneEditingFoods: () => dispatch(doneEditingFoods()),
     setEditingFoods: editingFoods => dispatch(setEditingFoods(editingFoods)),
     startNewFood: listId => dispatch(setNewFood(listId)),
   };

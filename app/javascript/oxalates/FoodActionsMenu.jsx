@@ -11,6 +11,7 @@ export class FoodActionsMenu extends React.Component {
   render() {
     const {
       activeListId,
+      doneEditingFoods,
       editingFoods,
       setEditingFoods,
       startNewFood,
@@ -30,8 +31,7 @@ export class FoodActionsMenu extends React.Component {
 
     let doneButton = null;
     if (editingFoods) {
-      const onDoneEditingFoods = () => setEditingFoods(false);
-      doneButton = <FoodActionDone onDoneEditingFoods={onDoneEditingFoods} />;
+      doneButton = <FoodActionDone onDoneEditingFoods={doneEditingFoods} />;
     }
 
     return (
@@ -46,6 +46,7 @@ export class FoodActionsMenu extends React.Component {
 
 FoodActionsMenu.propTypes = {
   activeListId: PropTypes.node,
+  doneEditingFoods: PropTypes.func.isRequired,
   editingFoods: PropTypes.bool,
   setEditingFoods: PropTypes.func.isRequired,
   startNewFood: PropTypes.func.isRequired,

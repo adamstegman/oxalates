@@ -79,4 +79,22 @@ describe('AuthenticatedAdminActionsMenu', () => {
     renderedAdminActionsMenu.prop('setEditingFoods')(true);
     expect(store.getActions()).toEqual(expectedActions);
   });
+
+  it('finishes editing foods', () => {
+    const store = mockStore(state);
+    const wrapper = mount(
+      <Provider store={store}>
+        <AuthenticatedAdminActionsMenu />
+      </Provider>,
+    );
+    const renderedAdminActionsMenu = wrapper.find(AdminActionsMenu);
+    expect(renderedAdminActionsMenu.prop('doneEditingFoods')).toBeDefined();
+
+    const expectedActions = [
+      { type: 'SET_EDITING_FOODS', editingFoods: false },
+      { type: 'SET_EDITING_FOOD', food: null, listId: null },
+    ];
+    renderedAdminActionsMenu.prop('doneEditingFoods')();
+    expect(store.getActions()).toEqual(expectedActions);
+  });
 });

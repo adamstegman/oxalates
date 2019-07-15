@@ -8,9 +8,12 @@ test('initial state', () => {
     },
     foodList: {
       foods: [],
+      editingFood: null,
+      editingFoodListId: null,
       editingFoods: false,
       newFood: null,
       newFoodListId: null,
+      requestedEditingFood: null,
       requestedNewFood: null,
       error: null,
       requestedListId: null,

@@ -54,7 +54,26 @@ test('FoodList renders error indicator', () => {
 
 test('FoodList renders editing foods', () => {
   const component = renderer.create(
-    <FoodList foods={foods} lists={lists} editingFoods={true} password={'password'} deleteFood={() => {}} />,
+    <FoodList foods={foods}
+              lists={lists}
+              editingFoods={true}
+              password={'password'}
+              deleteFood={() => {}}
+              setEditingFood={() => {}} />,
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+test('FoodList renders edit food form', () => {
+  const component = renderer.create(
+    <FoodList foods={foods}
+              lists={lists}
+              editingFood={foods[0]}
+              editingFoodListId={lists[0].id}
+              password={'password'}
+              updateFood={() => {}}
+              setEditingFood={() => {}} />,
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();

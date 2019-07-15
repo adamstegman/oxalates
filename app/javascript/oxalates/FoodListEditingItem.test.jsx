@@ -10,7 +10,7 @@ const list = lists[0];
 
 test('FoodListEditingItem renders a food in a list being edited', () => {
   const component = renderer.create(
-    <FoodListEditingItem food={food} list={list} password={'password'} deleteFood={() => {}} />,
+    <FoodListEditingItem food={food} list={list} password={'password'} deleteFood={() => {}} setEditingFood={() => {}} />,
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();

@@ -36,3 +36,16 @@ test('FoodListNewItem renders a failed form', () => {
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+test('FoodListNewItem renders a server error', () => {
+  const newFood = {
+    name: 'some food',
+    serving: 'some serving',
+    oxalateMg: 3.14,
+  }
+  const component = renderer.create(
+    <FoodListNewItem newFood={newFood} newFoodListId={1} createFood={() => {}} setNewFood={() => {}} error={'error message'} />,
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});

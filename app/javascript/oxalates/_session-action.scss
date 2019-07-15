@@ -4,7 +4,7 @@
 $session_padding: $action_padding;
 
 .action {
-  @extend %flat-button;
+  @extend %link-button;
   margin: $session_padding;
   min-width: $session_width;
   max-width: $session_width;

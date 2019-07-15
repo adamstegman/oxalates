@@ -8,6 +8,7 @@ test('AdminActionsMenu renders admin action buttons', () => {
   const component = renderer.create(
     <AdminActionsMenu authenticated={true}
                       activeListId={lists[0].id}
+                      doneEditingFoods={() => {}}
                       editingFoods={false}
                       setEditingFoods={() => {}}
                       startNewFood={() => {}} />
@@ -20,6 +21,7 @@ test('AdminActionsMenu renders nothing', () => {
   const component = renderer.create(
     <AdminActionsMenu authenticated={false}
                       activeListId={lists[0].id}
+                      doneEditingFoods={() => {}}
                       editingFoods={false}
                       setEditingFoods={() => {}}
                       startNewFood={() => {}} />
