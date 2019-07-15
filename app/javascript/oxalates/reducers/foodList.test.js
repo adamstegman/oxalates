@@ -54,7 +54,7 @@ describe('foodList state', () => {
         newFoodListId: null,
         requestedEditingFood: null,
         requestedNewFood: null,
-        error: {},
+        error: [''],
         requestedListId: null,
         query: '',
       };
@@ -190,7 +190,7 @@ describe('foodList state', () => {
         newFoodListId: null,
         requestedEditingFood: null,
         requestedNewFood: newFood,
-        error: `Error creating food: some error`,
+        error: [`Error creating food: some error`],
         requestedListId: null,
         query: '',
       };
@@ -231,7 +231,7 @@ describe('foodList state', () => {
         newFoodListId: null,
         requestedEditingFood: null,
         requestedNewFood: null,
-        error: {},
+        error: [''],
         requestedListId: null,
         query: '',
       };
@@ -304,7 +304,7 @@ describe('foodList state', () => {
         newFoodListId: null,
         requestedEditingFood: null,
         requestedNewFood: null,
-        error: `Error deleting food: some error`,
+        error: [`Error deleting food: some error`],
         requestedListId: null,
         query: '',
       };
@@ -323,7 +323,7 @@ describe('foodList state', () => {
         newFoodListId: null,
         requestedEditingFood: null,
         requestedNewFood: null,
-        error: {},
+        error: [''],
         requestedListId: null,
         query: '',
       };
@@ -422,7 +422,7 @@ describe('foodList state', () => {
         newFoodListId: null,
         requestedEditingFood: null,
         requestedNewFood: null,
-        error: `Error fetching foods for list_id=${lists[0].id}: some error`,
+        error: [`Error fetching foods for list_id=${lists[0].id}: some error`],
         requestedListId: null,
         query: '',
       };
@@ -460,7 +460,7 @@ describe('foodList state', () => {
         newFoodListId: null,
         requestedEditingFood: null,
         requestedNewFood: null,
-        error: {},
+        error: [''],
         requestedListId: null,
         query: 'test',
       };
@@ -559,7 +559,7 @@ describe('foodList state', () => {
         newFoodListId: null,
         requestedEditingFood: null,
         requestedNewFood: null,
-        error: `Error fetching foods for query="test": some error`,
+        error: ['Error fetching foods for query="test": some error'],
         requestedListId: null,
         query: 'test',
       };
@@ -761,7 +761,7 @@ describe('foodList state', () => {
         newFoodListId: null,
         requestedEditingFood: null,
         requestedNewFood: null,
-        error: {},
+        error: [''],
         requestedListId: null,
         query: '',
       };
@@ -897,7 +897,7 @@ describe('foodList state', () => {
         newFoodListId: null,
         requestedEditingFood: editingFood,
         requestedNewFood: null,
-        error: `Error updating food: some error`,
+        error: ['Error updating food: some error'],
         requestedListId: null,
         query: '',
       };

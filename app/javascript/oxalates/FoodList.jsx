@@ -124,7 +124,7 @@ FoodList.propTypes = {
   editingFoodListId: PropTypes.node,
   editingFoods: PropTypes.bool,
   requestedListId: PropTypes.node,
-  error: PropTypes.string,
+  error: PropTypes.arrayOf(PropTypes.string),
   newFood: PropTypes.shape({}),
   newFoodListId: PropTypes.node,
   password: PropTypes.string,

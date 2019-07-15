@@ -44,7 +44,7 @@ test('FoodList renders new food form', () => {
 });
 
 test('FoodList renders error indicator', () => {
-  const err = 'some error';
+  const err = ['some error'];
   const component = renderer.create(
     <FoodList foods={[]} lists={lists} error={err} />,
   );

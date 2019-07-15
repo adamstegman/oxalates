@@ -27,12 +27,7 @@ export const FoodListUpdateItem = ({ editingFood, editingFoodListId, setEditingF
     oxalateMg,
     serving,
   } = editingFood;
-  let errorMessages = null;
-  if (error instanceof Array) {
-    errorMessages = error.map((msg, i) => <p key={i} className="error">{msg}</p>);
-  } else if (error) {
-    errorMessages = <p className="error">{error}</p>;
-  }
+  const errorMessages = (error || []).map((msg, i) => <p key={i} className="error">{msg}</p>);
   return (
     <form className="edit-food" onSubmit={_updateFood}>
       <label htmlFor="name">Name</label>
@@ -52,9 +47,6 @@ FoodListUpdateItem.propTypes = {
   editingFoodListId: PropTypes.node.isRequired,
   updateFood: PropTypes.func.isRequired,
   setEditingFood: PropTypes.func.isRequired,
-  error: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-  ]),
+  error: PropTypes.arrayOf(PropTypes.string),
   password: PropTypes.string,
 };

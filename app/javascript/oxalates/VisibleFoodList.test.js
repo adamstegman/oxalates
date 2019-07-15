@@ -21,7 +21,7 @@ const editingFoodListId = lists[2].id;
 const editingFoods = false;
 const newFood = foods[0];
 const newFoodListId = lists[1].id;
-const error = 'some error';
+const error = ['some error'];
 const password = 'password';
 const state = {
   listMenu: {
@@ -65,7 +65,7 @@ describe('VisibleFoodList', () => {
     expect(renderedFoodList.prop('editingFood')).toEqual(editingFood);
     expect(renderedFoodList.prop('editingFoodListId')).toEqual(editingFoodListId);
     expect(renderedFoodList.prop('editingFoods')).toEqual(false);
-    expect(renderedFoodList.prop('error')).toEqual('some error');
+    expect(renderedFoodList.prop('error')).toEqual(['some error']);
     expect(renderedFoodList.prop('foods')).toEqual(foods);
     expect(renderedFoodList.prop('lists')).toEqual(lists);
     expect(renderedFoodList.prop('password')).toEqual(password);

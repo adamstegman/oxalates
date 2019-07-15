@@ -161,27 +161,27 @@ const foodListError = (state = null, action, { requestedListId, requestedEditing
     case CREATE_FOOD_FAILURE:
       if (isEqual(action.food, requestedNewFood)) {
         if (action.err.message) {
-          return `Error creating food: ${action.err.message}`;
+          return [`Error creating food: ${action.err.message}`];
         }
         return action.err;
       }
       return state;
     case DELETE_FOOD_FAILURE:
-      return `Error deleting food: ${action.err.message}`;
+      return [`Error deleting food: ${action.err.message}`];
     case FETCH_FOOD_SEARCH_RESULTS_FAILURE:
       if (action.query === query) {
-        return `Error fetching foods for query="${action.query}": ${action.err.message}`;
+        return [`Error fetching foods for query="${action.query}": ${action.err.message}`];
       }
       return state;
     case FETCH_FOODS_FAILURE:
       if (action.listId === requestedListId) {
-        return `Error fetching foods for list_id=${action.listId}: ${action.err.message}`;
+        return [`Error fetching foods for list_id=${action.listId}: ${action.err.message}`];
       }
       return state;
     case UPDATE_FOOD_FAILURE:
       if (isEqual(action.food, requestedEditingFood)) {
         if (action.err.message) {
-          return `Error updating food: ${action.err.message}`;
+          return [`Error updating food: ${action.err.message}`];
         }
         return action.err;
       }

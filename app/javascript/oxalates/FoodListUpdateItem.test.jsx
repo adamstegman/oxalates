@@ -25,11 +25,3 @@ test('FoodListUpdateItem renders a failed form', () => {
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
-
-test('FoodListUpdateItem renders a server error', () => {
-  const component = renderer.create(
-    <FoodListUpdateItem editingFood={editingFood} editingFoodListId={1} updateFood={() => {}} setEditingFood={() => {}} error={'error message'} />,
-  );
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-});
