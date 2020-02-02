@@ -3,25 +3,8 @@ class ListsController < ApplicationController
     @list = fetch_list
   end
 
-  def edit
-    @list = fetch_list
-  end
-
-  def update
-    # Does not merge conflicting writes, last write wins
-    # A more friendly approach might be incremental updates rather than the entire list at a time
-    Array(params[:list][:foods]).each { |food_params|
-      food = Food.find(food_params[:id])
-      food.update_attributes!(food_params.permit(:name))
-    }
-    redirect_to fetch_list
-  end
-
   def index
     respond_to do |format|
-      format.html do
-        redirect_to AllFoodsList.new
-      end
       format.json do
         @lists = List.all.to_a.unshift(AllFoodsList.new)
       end

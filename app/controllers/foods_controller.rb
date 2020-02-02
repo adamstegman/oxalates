@@ -5,27 +5,16 @@ class FoodsController < ApplicationController
   def index
     list = fetch_list
     respond_to do |format|
-      format.html do
-        redirect_to AllFoodsList.new
-      end
       format.json do
         @foods = Food.for_list(list)
       end
     end
   end
 
-  def new
-    @food = Food.new
-    @list_id = params[:list_id]
-  end
-
   def create
     authenticate
     food = Food.create!(food_params)
     respond_to do |format|
-      format.html do
-        redirect_to List.for_food(food)
-      end
       format.json do
         head :created
       end
@@ -33,10 +22,6 @@ class FoodsController < ApplicationController
   rescue ActionController::ParameterMissing
     error = 'Must provide food details'
     respond_to do |format|
-      format.html do
-        flash[:error] = error
-        redirect_to List.for_food(food)
-      end
       format.json do
         render json: {errors: [error]}, status: :unprocessable_entity
       end
@@ -44,27 +29,16 @@ class FoodsController < ApplicationController
   rescue ActiveRecord::RecordInvalid
     errors = food.errors.full_messages
     respond_to do |format|
-      format.html do
-        flash[:error] = errors.join(", ")
-        redirect_to List.for_food(food)
-      end
       format.json do
         render json: {errors: errors}, status: :unprocessable_entity
       end
     end
   end
 
-  def edit
-    @food = Food.find(params[:id])
-  end
-
   def update
     food = Food.find(params[:id])
     food.update!(food_params)
     respond_to do |format|
-      format.html do
-        redirect_to edit_list_path(List.for_food(food))
-      end
       format.json do
         head :no_content
       end
@@ -72,10 +46,6 @@ class FoodsController < ApplicationController
   rescue ActionController::ParameterMissing
     error = 'Must provide food details'
     respond_to do |format|
-      format.html do
-        flash[:error] = error
-        redirect_to edit_food_path(food)
-      end
       format.json do
         render json: {errors: [error]}, status: :unprocessable_entity
       end
@@ -83,10 +53,6 @@ class FoodsController < ApplicationController
   rescue ActiveRecord::RecordInvalid
     errors = food.errors.full_messages
     respond_to do |format|
-      format.html do
-        flash[:error] = errors.join(", ")
-        redirect_to edit_food_path(food)
-      end
       format.json do
         render json: {errors: errors}, status: :unprocessable_entity
       end
@@ -97,9 +63,6 @@ class FoodsController < ApplicationController
     food = Food.find(params[:id])
     food.destroy!
     respond_to do |format|
-      format.html do
-        redirect_to :back
-      end
       format.json do
         head :no_content
       end
@@ -116,7 +79,6 @@ class FoodsController < ApplicationController
       @results = Food.all
     end
     respond_to do |format|
-      format.html
       format.json do
         @foods = @results
         render action: :index
