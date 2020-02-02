@@ -1,0 +1,13 @@
+@import "./buttons";
+@import "./constants";
+
+$food_action_padding: $action_padding;
+$food_action_width: 2em;
+
+.food-action {
+  @extend %link-button;
+  padding: $food_action_padding;
+  min-width: $food_action_width;
+
+  text-align: center;
+}

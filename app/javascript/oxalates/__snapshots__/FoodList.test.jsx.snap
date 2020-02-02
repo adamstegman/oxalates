@@ -1,0 +1,305 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FoodList renders edit food form 1`] = `
+<div
+  className="content"
+>
+  <ul
+    className="food-list"
+  >
+    <form
+      className="edit-food"
+      onSubmit={[Function]}
+    >
+      <label
+        htmlFor="name"
+      >
+        Name
+      </label>
+      <input
+        autoFocus={true}
+        name="name"
+        onChange={[Function]}
+        type="text"
+        value="Asparagus, raw"
+      />
+      <label
+        htmlFor="oxalateMg"
+      >
+        Oxalates per serving (mg)
+      </label>
+      <input
+        name="oxalateMg"
+        onChange={[Function]}
+        step="any"
+        type="number"
+        value={4.9}
+      />
+      <label
+        htmlFor="serving"
+      >
+        Serving
+      </label>
+      <input
+        name="serving"
+        onChange={[Function]}
+        type="text"
+        value="1/2 cup"
+      />
+      <input
+        type="submit"
+        value="Update"
+      />
+    </form>
+  </ul>
+</div>
+`;
+
+exports[`FoodList renders editing foods 1`] = `
+<div
+  className="content"
+>
+  <ul
+    className="food-list"
+  >
+    <li
+      className="editing-food-list-item"
+    >
+      <button
+        className="destroy-food-list-item"
+        onClick={[Function]}
+        type="button"
+      >
+        <test-file-stub />
+      </button>
+      <button
+        className="edit-food-list-item low"
+        onClick={[Function]}
+        type="button"
+      >
+        Asparagus, raw
+         - 
+        4.90
+        mg - 
+        1/2 cup
+      </button>
+    </li>
+    <li
+      className="editing-food-list-item"
+    >
+      <button
+        className="destroy-food-list-item"
+        onClick={[Function]}
+        type="button"
+      >
+        <test-file-stub />
+      </button>
+      <button
+        className="edit-food-list-item very-high"
+        onClick={[Function]}
+        type="button"
+      >
+        beetroot, steamed
+         - 
+        50.00
+        mg - 
+        just under 1/2 cup
+      </button>
+    </li>
+    <li
+      className="editing-food-list-item"
+    >
+      <button
+        className="destroy-food-list-item"
+        onClick={[Function]}
+        type="button"
+      >
+        <test-file-stub />
+      </button>
+      <button
+        className="edit-food-list-item high"
+        onClick={[Function]}
+        type="button"
+      >
+        carrots, steamed
+         - 
+        15.00
+        mg - 
+        1/2 cup
+      </button>
+    </li>
+    <li
+      className="editing-food-list-item"
+    >
+      <button
+        className="destroy-food-list-item"
+        onClick={[Function]}
+        type="button"
+      >
+        <test-file-stub />
+      </button>
+      <button
+        className="edit-food-list-item moderate"
+        onClick={[Function]}
+        type="button"
+      >
+        tomato, raw, sliced
+         - 
+        5.00
+        mg - 
+        1/2 cup
+      </button>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`FoodList renders empty food list 1`] = `
+<div
+  className="content"
+>
+  <ul
+    className="food-list"
+  >
+    <li
+      className="food-list-item"
+    >
+      No foods found
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`FoodList renders error indicator 1`] = `
+<div
+  className="content"
+>
+  <ul
+    className="food-list"
+  >
+    <li
+      className="food-list-item error"
+    >
+      some error
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`FoodList renders foods 1`] = `
+<div
+  className="content"
+>
+  <ul
+    className="food-list"
+  >
+    <li
+      className="food-list-item low"
+    >
+      Asparagus, raw
+       - 
+      4.90
+      mg - 
+      1/2 cup
+    </li>
+    <li
+      className="food-list-item very-high"
+    >
+      beetroot, steamed
+       - 
+      50.00
+      mg - 
+      just under 1/2 cup
+    </li>
+    <li
+      className="food-list-item high"
+    >
+      carrots, steamed
+       - 
+      15.00
+      mg - 
+      1/2 cup
+    </li>
+    <li
+      className="food-list-item moderate"
+    >
+      tomato, raw, sliced
+       - 
+      5.00
+      mg - 
+      1/2 cup
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`FoodList renders loading indicator 1`] = `
+<div
+  className="content"
+>
+  <ul
+    className="food-list"
+  >
+    <li
+      className="food-list-item"
+    >
+      Loading foods...
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`FoodList renders new food form 1`] = `
+<div
+  className="content"
+>
+  <ul
+    className="food-list"
+  >
+    <form
+      className="add-food"
+      onSubmit={[Function]}
+    >
+      <label
+        htmlFor="name"
+      >
+        New food name
+      </label>
+      <input
+        autoFocus={true}
+        name="name"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <label
+        htmlFor="oxalateMg"
+      >
+        Oxalates per serving (mg)
+      </label>
+      <input
+        name="oxalateMg"
+        onChange={[Function]}
+        step="any"
+        type="number"
+        value={0}
+      />
+      <label
+        htmlFor="serving"
+      >
+        Serving
+      </label>
+      <input
+        name="serving"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <input
+        type="submit"
+        value="Add"
+      />
+    </form>
+  </ul>
+</div>
+`;

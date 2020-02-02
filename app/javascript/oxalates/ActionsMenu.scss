@@ -1,0 +1,21 @@
+@import "./constants";
+
+$actions_height: 44px;
+$actions_background_color: lighten($title_background_color, 20%);
+
+.actions {
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: $actions_height;
+
+  background-color: $actions_background_color;
+  font-size: $actions_font_size;
+  a {
+    text-decoration: none;
+  }
+}

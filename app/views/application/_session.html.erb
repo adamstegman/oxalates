@@ -1,5 +1,0 @@
-<% if current_user %>
-  <%= link_to "Log out", session_path(from: current_path), method: :delete, class: 'session logout' %>
-<% else %>
-  <%= link_to "Log in", new_session_path(from: current_path), class: 'session login' %>
-<% end %>

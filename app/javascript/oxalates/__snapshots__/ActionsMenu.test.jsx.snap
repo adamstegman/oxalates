@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionsMenu renders the actions menu 1`] = `
+<div
+  className="actions"
+>
+  <div
+    className="actions-container"
+  >
+    <button
+      className="food-action"
+      onClick={[Function]}
+      type="button"
+    >
+      Add
+    </button>
+    <button
+      className="food-action"
+      onClick={[Function]}
+      type="button"
+    >
+      Edit
+    </button>
+  </div>
+  <button
+    className="action logout"
+    onClick={[Function]}
+    type="button"
+  >
+    Log out
+  </button>
+  <form
+    className="search"
+    onSubmit={[Function]}
+  >
+    <label
+      htmlFor="search"
+    >
+      Search
+    </label>
+    <input
+      name="search"
+      onChange={[Function]}
+      placeholder="Search"
+      type="search"
+      value="test"
+    />
+    <input
+      type="submit"
+      value="Search"
+    />
+  </form>
+</div>
+`;

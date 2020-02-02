@@ -1,0 +1,10 @@
+@import "./lists";
+
+$food_list_item_padding: 0.75em;
+$food_list_item_font_size: 16px;
+
+.food-list-item {
+  padding: $food_list_item_padding;
+
+  font-size: $food_list_item_font_size;
+}

@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SessionMenu renders the authenticated session menu 1`] = `
+<button
+  className="action logout"
+  onClick={[Function]}
+  type="button"
+>
+  Log out
+</button>
+`;
+
+exports[`SessionMenu renders the authentication form 1`] = `
+<form
+  className="session"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="password"
+  >
+    Password
+  </label>
+  <input
+    autoFocus={true}
+    name="password"
+    onChange={[Function]}
+    placeholder="Password"
+    type="password"
+    value="pass"
+  />
+  <input
+    type="submit"
+    value="Log in"
+  />
+</form>
+`;
+
+exports[`SessionMenu renders the failed authentication form 1`] = `
+<form
+  className="session"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="password"
+  >
+    Password
+  </label>
+  <input
+    autoFocus={true}
+    name="password"
+    onChange={[Function]}
+    placeholder="Password"
+    type="password"
+    value=""
+  />
+  <input
+    type="submit"
+    value="Log in"
+  />
+  <p
+    className="item"
+  >
+    some error
+  </p>
+</form>
+`;
+
+exports[`SessionMenu renders the unauthenticated session menu 1`] = `
+<button
+  className="action login"
+  onClick={[Function]}
+  type="button"
+>
+  Log in
+</button>
+`;

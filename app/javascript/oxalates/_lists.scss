@@ -1,0 +1,20 @@
+$very_high_text_color: black;
+$high_text_color: #e00;
+$moderate_text_color: #fa0;
+$low_text_color: green;
+
+.very-high {
+  color: $very_high_text_color;
+}
+
+.high {
+  color: $high_text_color;
+}
+
+.moderate {
+  color: $moderate_text_color;
+}
+
+.low {
+  color: $low_text_color;
+}

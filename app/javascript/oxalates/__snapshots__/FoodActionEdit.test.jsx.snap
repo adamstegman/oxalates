@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FoodActionEdit renders the edit foods button 1`] = `
+<button
+  className="food-action"
+  onClick={[Function]}
+  type="button"
+>
+  Edit
+</button>
+`;

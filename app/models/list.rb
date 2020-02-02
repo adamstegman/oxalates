@@ -7,14 +7,6 @@ class List < ActiveRecord::Base
     )
   }
 
-  def self.for_food(food)
-    # Find the "highest" (most dangerous) list
-    food_between_thresholds(food).max { |a,b|
-      ((a.bottom_threshold || 0) + (a.top_threshold || Float::INFINITY)) <=>
-        ((b.bottom_threshold || 0) + (b.top_threshold || Float::INFINITY))
-    } || NoList.new
-  end
-
   class NoList
     def name
       ""

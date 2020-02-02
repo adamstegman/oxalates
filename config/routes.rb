@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   root 'lists#show', id: AllFoodsList::ID
-  resources :lists, only: [:show, :index, :edit, :update]
+  resources :lists, only: [:index, :show]
 
-  resources :foods, only: [:new, :create, :edit, :update, :destroy]
+  resources :foods, only: [:index, :create, :update, :destroy]
   get "search" => 'foods#search'
 
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: [] do
+    collection do
+      post :validate
+    end
+  end
 end

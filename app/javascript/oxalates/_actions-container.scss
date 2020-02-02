@@ -1,0 +1,8 @@
+@import "./constants";
+
+%actions-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $actions_gutter_width;
+}

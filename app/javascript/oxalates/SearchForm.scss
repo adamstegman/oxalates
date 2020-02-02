@@ -1,0 +1,8 @@
+@import "./actions-form";
+
+$search_width: 9em;
+
+.search {
+  @extend %actions-form;
+  min-width: $search_width;
+}

@@ -1,0 +1,6 @@
+@import "./FoodListItem";
+@import "./error";
+
+.error {
+  @extend %error;
+}

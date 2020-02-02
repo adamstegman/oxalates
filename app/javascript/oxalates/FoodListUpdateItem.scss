@@ -1,0 +1,10 @@
+@import "./body-form";
+@import "./error";
+
+.edit-food {
+  @extend %body-form;
+}
+
+.error {
+  @extend %error;
+}

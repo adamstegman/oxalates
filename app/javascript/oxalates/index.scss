@@ -1,0 +1,26 @@
+@import "./constants";
+
+html {
+  font-family: $font_family;
+}
+
+body, h1, p {
+  margin: 0;
+}
+
+.body {
+  display: -webkit-flex;
+  -webkit-align-items: stretch;
+  -webkit-flex-direction: column;
+  -webkit-justify-content: flex-start;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  height: calc(100vh - 44px);
+}
+
+.content {
+  overflow: scroll;
+}

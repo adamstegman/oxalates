@@ -1,5 +1,6 @@
 class AllFoodsList
   include ActiveModel::Model
+  include ActiveModel::Serializers::JSON
   extend ActiveModel::Naming
 
   ID   = "all"
@@ -23,6 +24,15 @@ class AllFoodsList
 
   def persisted?
     true
+  end
+
+  def attributes
+    {
+      "id" => id,
+      "name" => name,
+      "bottom_threshold" => bottom_threshold,
+      "top_threshold" => top_threshold,
+    }
   end
 
   def self.model_name

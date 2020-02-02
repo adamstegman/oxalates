@@ -1,0 +1,11 @@
+%flat-button {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+%link-button {
+  @extend %flat-button;
+  color: -webkit-link;
+}

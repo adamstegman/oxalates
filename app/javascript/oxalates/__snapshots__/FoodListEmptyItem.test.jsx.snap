@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FoodListEmptyItem renders an empty list item 1`] = `
+<li
+  className="food-list-item"
+>
+  No foods found
+</li>
+`;
