@@ -3,9 +3,15 @@ import React from 'react';
 import './SearchForm.scss';
 
 export class SearchForm extends React.Component {
-  onSubmit(event) {
+  onSubmit = event => {
     event.preventDefault();
-    this._onSubmit(event.target.value);
+    this._onSubmit(this.query);
+  }
+
+  onChange = event => {
+    event.preventDefault();
+    this.query = event.target.value;
+    this._onSubmit(this.query);
   }
 
   render() {
@@ -15,11 +21,10 @@ export class SearchForm extends React.Component {
     } = this.props;
     this._onSubmit = onSubmit;
 
-    const onChange = this.onSubmit.bind(this);
     return (
-      <form className="search" onSubmit={onChange}>
+      <form className="search" onSubmit={this.onSubmit}>
         <label htmlFor="search">Search</label>
-        <input type="search" name="search" placeholder="Search" value={query} onChange={onChange} />
+        <input type="search" name="search" placeholder="Search" value={query} onChange={this.onChange} />
         <input type="submit" value="Search" />
       </form>
     );
