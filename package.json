@@ -6,9 +6,9 @@
     "tdd": "jest --watch"
   },
   "dependencies": {
-    "@rails/webpacker": "3.5",
-    "babel-core": "^6.26.3",
-    "babel-preset-react": "^6.24.1",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-react": "^7.8.3",
+    "@rails/webpacker": "4.2.2",
     "caniuse-lite": "^1.0.30000989",
     "jquery": "^3.3.1",
     "lodash": "^4.17.11",
@@ -19,25 +19,19 @@
     "react-svg-loader": "^2.1.0",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "webpack": "^3.12.0"
+    "webpack": "^4.41.2"
   },
   "devDependencies": {
-    "babel-jest": "^23.6.0",
-    "babel-preset-env": "^1.7.0",
-    "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.5.0",
+    "babel-jest": "^25.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "fetch-mock": "^7.0.5",
-    "jest": "^23.6.0",
+    "jest": "^25.1.0",
+    "jsdom": "^16.2.1",
     "node-fetch": "^2.6.0",
-    "react-test-renderer": "^16.5.2",
+    "react-test-renderer": "^16.13.0",
     "redux-mock-store": "^1.5.3",
-    "webpack-dev-server": "2.11.2"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(scss)$": "<rootDir>/__mocks__/styleMock.js"
-    },
-    "testRegex": "(/__tests__/.*|/app/javascript/(.*/)*(.*\\.)*test)\\.jsx?$"
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.3"
   }
 }
