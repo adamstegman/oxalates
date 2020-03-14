@@ -1,17 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './SearchForm.scss';
 
 export class SearchForm extends React.Component {
   onSubmit = event => {
+    const { query } = this.props;
     event.preventDefault();
-    this._onSubmit(this.query);
+    this._onSubmit(query);
   }
 
   onChange = event => {
     event.preventDefault();
-    this.query = event.target.value;
-    this._onSubmit(this.query);
+    this._onSubmit(event.target.value);
   }
 
   render() {
@@ -32,4 +33,6 @@ export class SearchForm extends React.Component {
 };
 
 SearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired,
 };
