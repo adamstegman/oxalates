@@ -12,7 +12,11 @@ const editingFood = {
 
 test('FoodListUpdateItem renders a pre-filled form', () => {
   const component = renderer.create(
-    <FoodListUpdateItem editingFood={editingFood} editingFoodListId={1} updateFood={() => {}} setEditingFood={() => {}} />,
+    <FoodListUpdateItem editingFood={editingFood}
+                        editingFoodListId={1}
+                        updateFood={() => {}}
+                        cancelEditingFood={() => {}}
+                        setEditingFood={() => {}} />,
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
@@ -20,7 +24,12 @@ test('FoodListUpdateItem renders a pre-filled form', () => {
 
 test('FoodListUpdateItem renders a failed form', () => {
   const component = renderer.create(
-    <FoodListUpdateItem editingFood={editingFood} editingFoodListId={1} updateFood={() => {}} setEditingFood={() => {}} error={['error 1']} />,
+    <FoodListUpdateItem editingFood={editingFood}
+                        editingFoodListId={1}
+                        updateFood={() => {}}
+                        cancelEditingFood={() => {}}
+                        setEditingFood={() => {}}
+                        error={['error 1']} />,
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();

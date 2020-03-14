@@ -1,5 +1,10 @@
 import { fetchFoods } from '../actions';
 
+export const CANCEL_EDITING_FOOD = 'CANCEL_EDITING_FOOD';
+export const cancelEditingFood = () => ({
+  type: CANCEL_EDITING_FOOD,
+});
+
 export const SET_EDITING_FOOD = 'SET_EDITING_FOOD';
 export const setEditingFood = (food, listId) => ({
   type: SET_EDITING_FOOD,

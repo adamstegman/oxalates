@@ -50,6 +50,12 @@ exports[`FoodList renders edit food form 1`] = `
         type="submit"
         value="Update"
       />
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        Cancel
+      </button>
     </form>
   </ul>
 </div>
@@ -299,6 +305,12 @@ exports[`FoodList renders new food form 1`] = `
         type="submit"
         value="Add"
       />
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        Cancel
+      </button>
     </form>
   </ul>
 </div>

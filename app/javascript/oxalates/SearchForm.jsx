@@ -34,5 +34,5 @@ export class SearchForm extends React.Component {
 
 SearchForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  query: PropTypes.string.isRequired,
+  query: PropTypes.string,
 };

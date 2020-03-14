@@ -1,4 +1,6 @@
 import {
+  cancelEditingFood,
+  cancelNewFood,
   createFoodFailure,
   createFoodRequest,
   createFoodSuccess,
@@ -40,6 +42,72 @@ describe('foodList state', () => {
       query: '',
     };
     expect(foodList(undefined, {})).toEqual(initialState);
+  });
+
+  describe('CANCEL_EDITING_FOOD', () => {
+    it('removes the food being edited', () => {
+      const initialFoodList = {
+        foods: [],
+        editingFood: { id: 1 },
+        editingFoodListId: lists[0].id,
+        editingFoods: true,
+        newFood: null,
+        newFoodListId: null,
+        requestedEditingFood: null,
+        requestedNewFood: null,
+        error: null,
+        requestedListId: null,
+        query: '',
+      };
+      const action = cancelEditingFood();
+      const editingState = {
+        foods: [],
+        editingFood: null,
+        editingFoodListId: null,
+        editingFoods: true,
+        newFood: null,
+        newFoodListId: null,
+        requestedEditingFood: null,
+        requestedNewFood: null,
+        error: null,
+        requestedListId: null,
+        query: '',
+      };
+      expect(foodList(initialFoodList, action)).toEqual(editingState);
+    });
+  });
+
+  describe('CANCEL_NEW_FOOD', () => {
+    it('cancels the new food', () => {
+      const initialFoodList = {
+        foods: [],
+        editingFood: null,
+        editingFoodListId: null,
+        editingFoods: false,
+        newFood: {},
+        newFoodListId: 1,
+        requestedEditingFood: null,
+        requestedNewFood: null,
+        error: null,
+        requestedListId: null,
+        query: '',
+      };
+      const action = cancelNewFood();
+      const cancelFoodState = {
+        foods: [],
+        editingFood: null,
+        editingFoodListId: null,
+        editingFoods: false,
+        newFood: null,
+        newFoodListId: null,
+        requestedEditingFood: null,
+        requestedNewFood: null,
+        error: null,
+        requestedListId: null,
+        query: '',
+      };
+      expect(foodList(initialFoodList, action)).toEqual(cancelFoodState);
+    });
   });
 
   describe('CREATE_FOOD_REQUEST', () => {

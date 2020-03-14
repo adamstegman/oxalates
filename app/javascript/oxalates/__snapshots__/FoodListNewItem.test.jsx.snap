@@ -49,6 +49,12 @@ exports[`FoodListNewItem renders a failed form 1`] = `
     type="submit"
     value="Add"
   />
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Cancel
+  </button>
 </form>
 `;
 
@@ -96,6 +102,12 @@ exports[`FoodListNewItem renders a pre-filled form 1`] = `
     type="submit"
     value="Add"
   />
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Cancel
+  </button>
 </form>
 `;
 
@@ -148,6 +160,12 @@ exports[`FoodListNewItem renders a server error 1`] = `
     type="submit"
     value="Add"
   />
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Cancel
+  </button>
 </form>
 `;
 
@@ -195,5 +213,11 @@ exports[`FoodListNewItem renders an empty form 1`] = `
     type="submit"
     value="Add"
   />
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Cancel
+  </button>
 </form>
 `;

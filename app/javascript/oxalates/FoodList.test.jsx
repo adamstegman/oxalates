@@ -36,6 +36,7 @@ test('FoodList renders new food form', () => {
               newFood={{}}
               newFoodListId={lists[0].id}
               password={'password'}
+              cancelNewFood={() => {}}
               createFood={() => {}}
               setNewFood={() => {}} />,
   );
@@ -73,6 +74,7 @@ test('FoodList renders edit food form', () => {
               editingFoodListId={lists[0].id}
               password={'password'}
               updateFood={() => {}}
+              cancelEditingFood={() => {}}
               setEditingFood={() => {}} />,
   );
   let tree = component.toJSON();

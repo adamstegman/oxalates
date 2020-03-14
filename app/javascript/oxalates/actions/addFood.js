@@ -9,6 +9,11 @@ export const setNewFood = (listId, food = {}) => {
   };
 };
 
+export const CANCEL_NEW_FOOD = 'CANCEL_NEW_FOOD';
+export const cancelNewFood = () => ({
+  type: CANCEL_NEW_FOOD,
+});
+
 export const CREATE_FOOD_REQUEST = 'CREATE_FOOD_REQUEST';
 export const createFoodRequest = (food, listId) => {
   return {

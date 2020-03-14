@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import {
+  cancelEditingFood,
+  cancelNewFood,
   createFood,
   deleteFood,
   setEditingFood,
@@ -41,6 +43,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    cancelEditingFood: () => dispatch(cancelEditingFood()),
+    cancelNewFood: () => dispatch(cancelNewFood()),
     createFood: (password, food, listId) => dispatch(createFood(password, food, listId)),
     deleteFood: (password, food) => dispatch(deleteFood(password, food)),
     setEditingFood: (food, listId) => dispatch(setEditingFood(food, listId)),

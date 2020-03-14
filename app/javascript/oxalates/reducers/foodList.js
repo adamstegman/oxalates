@@ -1,5 +1,7 @@
 import isEqual from 'lodash/isEqual';
 import {
+  CANCEL_EDITING_FOOD,
+  CANCEL_NEW_FOOD,
   CREATE_FOOD_FAILURE,
   CREATE_FOOD_REQUEST,
   CREATE_FOOD_SUCCESS,
@@ -53,6 +55,8 @@ const editingFoods = (state = false, action) => {
 
 const editingFood = (state = null, action, { requestedEditingFood }) => {
   switch (action.type) {
+    case CANCEL_EDITING_FOOD:
+      return null;
     case UPDATE_FOOD_SUCCESS:
       if (isEqual(action.food, requestedEditingFood)) {
         return null;
@@ -67,6 +71,8 @@ const editingFood = (state = null, action, { requestedEditingFood }) => {
 
 const editingFoodListId = (state = null, action, { requestedEditingFood }) => {
   switch (action.type) {
+    case CANCEL_EDITING_FOOD:
+      return null;
     case UPDATE_FOOD_SUCCESS:
       if (isEqual(action.food, requestedEditingFood)) {
         return null;
@@ -95,6 +101,8 @@ const requestedEditingFood = (state = null, action, { requestedEditingFood }) =>
 
 const newFood = (state = null, action, { requestedNewFood }) => {
   switch (action.type) {
+    case CANCEL_NEW_FOOD:
+      return null;
     case CREATE_FOOD_SUCCESS:
       if (isEqual(action.food, requestedNewFood)) {
         return null;
@@ -109,6 +117,8 @@ const newFood = (state = null, action, { requestedNewFood }) => {
 
 const newFoodListId = (state = null, action, { requestedNewFood }) => {
   switch (action.type) {
+    case CANCEL_NEW_FOOD:
+      return null;
     case CREATE_FOOD_SUCCESS:
       if (isEqual(action.food, requestedNewFood)) {
         return null;

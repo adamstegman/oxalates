@@ -62,8 +62,10 @@ export class FoodList extends React.Component {
       password,
       createFood,
       deleteFood,
-      setEditingFood,
+      cancelNewFood,
       setNewFood,
+      cancelEditingFood,
+      setEditingFood,
       updateFood,
     } = this.props;
     const sortedFoods = this.sortFoodsAlphabetically(foods);
@@ -75,6 +77,7 @@ export class FoodList extends React.Component {
     } else if (newFood) {
       contents = <FoodListNewItem newFood={newFood}
                                   newFoodListId={newFoodListId}
+                                  cancelNewFood={cancelNewFood}
                                   createFood={createFood}
                                   setNewFood={setNewFood}
                                   error={error}
@@ -82,6 +85,7 @@ export class FoodList extends React.Component {
     } else if (editingFood) {
       contents = <FoodListUpdateItem editingFood={editingFood}
                                      editingFoodListId={editingFoodListId}
+                                     cancelEditingFood={cancelEditingFood}
                                      updateFood={updateFood}
                                      setEditingFood={setEditingFood}
                                      error={error}
@@ -130,7 +134,9 @@ FoodList.propTypes = {
   password: PropTypes.string,
   createFood: PropTypes.func,
   deleteFood: PropTypes.func,
+  cancelNewFood: PropTypes.func,
   setNewFood: PropTypes.func,
+  cancelEditingFood: PropTypes.func,
   setEditingFood: PropTypes.func,
   updateFood: PropTypes.func,
 };

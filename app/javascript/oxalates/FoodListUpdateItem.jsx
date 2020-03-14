@@ -4,7 +4,15 @@ import { foodPropType } from './foodPropType';
 
 import './FoodListUpdateItem.scss';
 
-export const FoodListUpdateItem = ({ editingFood, editingFoodListId, setEditingFood, updateFood, error, password }) => {
+export const FoodListUpdateItem = ({
+  editingFood,
+  editingFoodListId,
+  cancelEditingFood,
+  setEditingFood,
+  updateFood,
+  error,
+  password,
+}) => {
   const setFoodName = event => {
     const foodWithName = Object.assign({}, editingFood, { name: event.target.value });
     setEditingFood(foodWithName, editingFoodListId);
@@ -38,6 +46,7 @@ export const FoodListUpdateItem = ({ editingFood, editingFoodListId, setEditingF
       <input type="text" name="serving" value={serving || ''} onChange={setFoodServing} />
       {errorMessages}
       <input type="submit" value="Update" />
+      <button type="button" onClick={cancelEditingFood}>Cancel</button>
     </form>
   );
 };
@@ -46,6 +55,7 @@ FoodListUpdateItem.propTypes = {
   editingFood: foodPropType.isRequired,
   editingFoodListId: PropTypes.node.isRequired,
   updateFood: PropTypes.func.isRequired,
+  cancelEditingFood: PropTypes.func.isRequired,
   setEditingFood: PropTypes.func.isRequired,
   error: PropTypes.arrayOf(PropTypes.string),
   password: PropTypes.string,

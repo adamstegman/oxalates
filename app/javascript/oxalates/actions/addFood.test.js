@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 
 import {
   setNewFood,
+  cancelNewFood,
   createFood,
 } from './addFood';
 import responseFoods from '../__mocks__/response-foods.json';
@@ -23,6 +24,12 @@ test('setNewFood sets the in-progress new food', () => {
     type: 'SET_NEW_FOOD',
     listId: 1,
     food: { name: 'test' },
+  });
+});
+
+test('cancelNewFood cancels the new food', () => {
+  expect(cancelNewFood()).toEqual({
+    type: 'CANCEL_NEW_FOOD',
   });
 });
 

@@ -5,7 +5,11 @@ import { FoodListNewItem } from './FoodListNewItem';
 
 test('FoodListNewItem renders an empty form', () => {
   const component = renderer.create(
-    <FoodListNewItem newFood={{}} newFoodListId={1} createFood={() => {}} setNewFood={() => {}} />,
+    <FoodListNewItem newFood={{}}
+                     newFoodListId={1}
+                     cancelNewFood={() => {}}
+                     createFood={() => {}}
+                     setNewFood={() => {}} />,
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
@@ -18,7 +22,11 @@ test('FoodListNewItem renders a pre-filled form', () => {
     oxalateMg: 3.14,
   }
   const component = renderer.create(
-    <FoodListNewItem newFood={newFood} newFoodListId={1} createFood={() => {}} setNewFood={() => {}} />,
+    <FoodListNewItem newFood={newFood}
+                     newFoodListId={1}
+                     cancelNewFood={() => {}}
+                     createFood={() => {}}
+                     setNewFood={() => {}} />,
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
@@ -31,7 +39,12 @@ test('FoodListNewItem renders a failed form', () => {
     oxalateMg: 3.14,
   }
   const component = renderer.create(
-    <FoodListNewItem newFood={newFood} newFoodListId={1} createFood={() => {}} setNewFood={() => {}} error={['error 1']} />,
+    <FoodListNewItem newFood={newFood}
+                     newFoodListId={1}
+                     cancelNewFood={() => {}}
+                     createFood={() => {}}
+                     setNewFood={() => {}}
+                     error={['error 1']} />,
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
@@ -44,7 +57,12 @@ test('FoodListNewItem renders a server error', () => {
     oxalateMg: 3.14,
   }
   const component = renderer.create(
-    <FoodListNewItem newFood={newFood} newFoodListId={1} createFood={() => {}} setNewFood={() => {}} error={'error message'} />,
+    <FoodListNewItem newFood={newFood}
+                     newFoodListId={1}
+                     cancelNewFood={() => {}}
+                     createFood={() => {}}
+                     setNewFood={() => {}}
+                     error={'error message'} />,
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();

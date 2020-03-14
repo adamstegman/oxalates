@@ -2,6 +2,7 @@ import fetchMock from 'fetch-mock';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import {
+  cancelEditingFood,
   deleteFood,
   doneEditingFoods,
   setEditingFood,
@@ -12,6 +13,12 @@ import responseFoods from '../__mocks__/response-foods.json';
 
 const mockStore = configureMockStore([thunk]);
 const food = { id: 1, name: 'new food', oxalateMg: 10.0, serving: 'serving' };
+
+test('cancelEditingFood dispatches CANCEL_EDITING_FOOD action', () => {
+  expect(cancelEditingFood()).toEqual({
+    type: 'CANCEL_EDITING_FOOD',
+  });
+});
 
 test('setEditingFood dispatches SET_EDITING_FOOD action', () => {
   expect(setEditingFood({ id: 1 }, 1)).toEqual({

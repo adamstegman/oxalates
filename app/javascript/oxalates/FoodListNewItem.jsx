@@ -4,7 +4,7 @@ import { foodPropType } from './foodPropType';
 
 import './FoodListNewItem.scss';
 
-export const FoodListNewItem = ({ newFood, newFoodListId, setNewFood, createFood, error, password }) => {
+export const FoodListNewItem = ({ newFood, newFoodListId, setNewFood, cancelNewFood, createFood, error, password }) => {
   const setNewFoodName = event => {
     const newFoodWithName = Object.assign({}, newFood, { name: event.target.value });
     setNewFood(newFoodListId, newFoodWithName);
@@ -43,6 +43,7 @@ export const FoodListNewItem = ({ newFood, newFoodListId, setNewFood, createFood
       <input type="text" name="serving" value={serving || ''} onChange={setNewFoodServing} />
       {errorMessages}
       <input type="submit" value="Add" />
+      <button type="button" onClick={cancelNewFood}>Cancel</button>
     </form>
   );
 };
@@ -50,6 +51,7 @@ export const FoodListNewItem = ({ newFood, newFoodListId, setNewFood, createFood
 FoodListNewItem.propTypes = {
   newFood: PropTypes.shape({}).isRequired,
   newFoodListId: PropTypes.node.isRequired,
+  cancelNewFood: PropTypes.func.isRequired,
   createFood: PropTypes.func.isRequired,
   setNewFood: PropTypes.func.isRequired,
   error: PropTypes.oneOfType([
