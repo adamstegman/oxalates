@@ -13,6 +13,7 @@ import {
   fetchFoodsFailure,
   fetchFoodsRequest,
   fetchFoodsSuccess,
+  setAuthenticated,
   setEditingFood,
   setEditingFoods,
   setNewFood,
@@ -651,6 +652,70 @@ describe('foodList state', () => {
       const err = new Error('some error');
       const action = fetchFoodSearchResultsFailure('test', err);
       expect(foodList(initialFoodList, action)).toEqual(initialFoodList);
+    });
+  });
+
+  describe('SET_AUTHENTICATED', () => {
+    it('stops editing foods', () => {
+      const initialFoodList = {
+        foods: [],
+        editingFood: { id: 1 },
+        editingFoodListId: lists[0].id,
+        editingFoods: true,
+        newFood: null,
+        newFoodListId: null,
+        requestedEditingFood: null,
+        requestedNewFood: null,
+        error: null,
+        requestedListId: null,
+        query: '',
+      };
+      const action = setAuthenticated(false);
+      const editingState = {
+        foods: [],
+        editingFood: null,
+        editingFoodListId: null,
+        editingFoods: false,
+        newFood: null,
+        newFoodListId: null,
+        requestedEditingFood: null,
+        requestedNewFood: null,
+        error: null,
+        requestedListId: null,
+        query: '',
+      };
+      expect(foodList(initialFoodList, action)).toEqual(editingState);
+    });
+
+    it('removes any new food', () => {
+      const initialFoodList = {
+        foods: [],
+        editingFood: null,
+        editingFoodListId: null,
+        editingFoods: false,
+        newFood: {},
+        newFoodListId: lists[0].id,
+        requestedEditingFood: null,
+        requestedNewFood: null,
+        error: null,
+        requestedListId: null,
+        query: '',
+      };
+      const action = setAuthenticated(false);
+      const newFoodState = {
+        foods: [],
+        editingFood: null,
+        editingFoodListId: null,
+        editingFoods: false,
+        newFood: null,
+        newFoodListId: null,
+        requestedEditingFood: null,
+        requestedNewFood: null,
+        error: null,
+        requestedListId: null,
+        query: '',
+      };
+      expect(foodList(initialFoodList, action)).toEqual(newFoodState);
     });
   });
 

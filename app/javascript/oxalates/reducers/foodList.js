@@ -13,6 +13,7 @@ import {
   FETCH_FOODS_FAILURE,
   FETCH_FOODS_REQUEST,
   FETCH_FOODS_SUCCESS,
+  SET_AUTHENTICATED,
   SET_EDITING_FOOD,
   SET_EDITING_FOODS,
   SET_SEARCH_QUERY,
@@ -46,6 +47,8 @@ const foods = (state = [], action, { requestedListId, query }) => {
 
 const editingFoods = (state = false, action) => {
   switch (action.type) {
+    case SET_AUTHENTICATED:
+      return false;
     case SET_EDITING_FOODS:
       return action.editingFoods;
     default:
@@ -62,6 +65,8 @@ const editingFood = (state = null, action, { requestedEditingFood }) => {
         return null;
       }
       return state;
+    case SET_AUTHENTICATED:
+      return null;
     case SET_EDITING_FOOD:
       return action.food;
     default:
@@ -78,6 +83,8 @@ const editingFoodListId = (state = null, action, { requestedEditingFood }) => {
         return null;
       }
       return state;
+    case SET_AUTHENTICATED:
+      return null;
     case SET_EDITING_FOOD:
       return action.listId;
     default:
@@ -108,6 +115,8 @@ const newFood = (state = null, action, { requestedNewFood }) => {
         return null;
       }
       return state;
+    case SET_AUTHENTICATED:
+      return null;
     case SET_NEW_FOOD:
       return action.food;
     default:
@@ -124,6 +133,8 @@ const newFoodListId = (state = null, action, { requestedNewFood }) => {
         return null;
       }
       return state;
+    case SET_AUTHENTICATED:
+      return null;
     case SET_NEW_FOOD:
       return action.listId;
     default:
