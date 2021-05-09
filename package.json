@@ -11,7 +11,7 @@
     "@rails/webpacker": "4.2.2",
     "caniuse-lite": "^1.0.30000989",
     "jquery": "^3.5.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "prop-types": "^15.6.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
