@@ -71,6 +71,7 @@ export class FoodList extends React.Component {
     const sortedFoods = this.sortFoodsAlphabetically(foods);
     const sortedLists = this.sortListsByThresholds(lists);
 
+    // FIXME: replace this with a router
     let contents = <FoodListEmptyItem />;
     if (requestedListId) {
       contents = <FoodListLoading />;

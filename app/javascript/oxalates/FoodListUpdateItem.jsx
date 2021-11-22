@@ -30,6 +30,7 @@ export const FoodListUpdateItem = ({
     updateFood(password, editingFood, editingFoodListId);
   };
 
+  // FIXME: don't load all foods, re-execute search
   const {
     name,
     oxalateMg,

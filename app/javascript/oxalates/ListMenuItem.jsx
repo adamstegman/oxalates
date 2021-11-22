@@ -17,6 +17,7 @@ export class ListMenuItem extends React.Component {
     return EMPTY_CLASS_NAME;
   }
 
+  // TODO: only no-outline when state indicates non-keyboard user
   render() {
     return (
       <li className={`list-menu-item ${this.activeClassName(this.props.list)}`}>
