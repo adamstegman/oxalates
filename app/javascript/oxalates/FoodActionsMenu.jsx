@@ -5,8 +5,6 @@ import { FoodActionAdd } from './FoodActionAdd';
 import { FoodActionDone } from './FoodActionDone';
 import { FoodActionEdit } from './FoodActionEdit';
 
-import "./FoodActionsMenu.scss";
-
 export class FoodActionsMenu extends React.Component {
   render() {
     const {

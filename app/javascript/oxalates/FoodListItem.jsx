@@ -5,8 +5,6 @@ import { cssify } from './cssify';
 import { foodPropType } from './foodPropType';
 import { listPropType } from './listPropType';
 
-import './FoodListItem.scss';
-
 export class FoodListItem extends React.Component {
   render() {
     const {

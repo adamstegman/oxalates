@@ -5,8 +5,6 @@ import { cssify } from './cssify';
 import { listPropType } from './listPropType';
 import { ActionsMenu } from './ActionsMenu';
 
-import './ListHeader.scss';
-
 export class ListHeader extends React.Component {
   getListHeader(list) {
     if (list.name === "All") {
@@ -17,10 +15,6 @@ export class ListHeader extends React.Component {
   }
 
   render() {
-    const {
-      list,
-    } = this.props;
-
     const listClassName = cssify(this.props.list.name);
     const header = this.getListHeader(this.props.list);
 

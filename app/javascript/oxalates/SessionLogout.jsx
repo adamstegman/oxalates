@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import "./SessionLogout.scss";
-
 export const SessionLogout = ({ onLogout }) => {
   return (
     <button type="button"

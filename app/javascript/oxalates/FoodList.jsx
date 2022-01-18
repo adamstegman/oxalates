@@ -11,8 +11,6 @@ import { FoodListNewItem } from './FoodListNewItem';
 import { FoodListUpdateItem } from './FoodListUpdateItem';
 import { listPropType } from './listPropType';
 
-import './FoodList.scss';
-
 export class FoodList extends React.Component {
   // Find the "highest" (most dangerous) list
   getListForFood(food, lists) {

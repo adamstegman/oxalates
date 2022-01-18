@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './index.scss';
 import { ActiveListHeader } from './ActiveListHeader';
 import { ActiveListMenu } from './ActiveListMenu';
 import { VisibleFoodList } from './VisibleFoodList';

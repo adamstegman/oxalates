@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { foodPropType } from './foodPropType';
 
-import './FoodListNewItem.scss';
-
 export const FoodListNewItem = ({ newFood, newFoodListId, setNewFood, cancelNewFood, createFood, error, password }) => {
   const setNewFoodName = event => {
     const newFoodWithName = Object.assign({}, newFood, { name: event.target.value });

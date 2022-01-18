@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import "./FoodActionAdd.scss";
-
 export const FoodActionAdd = ({ onStartAddingFood }) => {
   return (
     <button type="button"

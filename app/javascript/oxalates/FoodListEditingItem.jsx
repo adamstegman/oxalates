@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import { cssify } from './cssify';
 import { foodPropType } from './foodPropType';
 import { listPropType } from './listPropType';
-
-import FoodListItemDelete from './FoodListItemDelete.svg';
-import './FoodListEditingItem.scss';
+import { FoodListItemDelete } from './FoodListItemDelete';
 
 export class FoodListEditingItem extends React.Component {
   render() {

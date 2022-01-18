@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { ListMenuItem } from './ListMenuItem';
 import { listPropType } from './listPropType';
 
-import './ListMenu.scss';
-
 export class ListMenu extends React.Component {
   isActive(list) {
     return !!this.props.activeListId && this.props.activeListId === list.id;

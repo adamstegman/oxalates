@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { foodPropType } from './foodPropType';
 
-import './FoodListUpdateItem.scss';
-
 export const FoodListUpdateItem = ({
   editingFood,
   editingFoodListId,

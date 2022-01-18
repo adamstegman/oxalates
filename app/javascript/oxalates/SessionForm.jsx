@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import "./SessionForm.scss";
-
 export const SessionForm = ({ error, password, onChangePassword, onStopAuthentication }) => {
   const _onStopAuthentication = event => {
     event.preventDefault();

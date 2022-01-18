@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './SearchForm.scss';
-
 export class SearchForm extends React.Component {
   onSubmit = event => {
     const { query } = this.props;

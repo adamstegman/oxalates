@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { listPropType } from './listPropType';
 import { ListMenuItemIcon } from './ListMenuItemIcon';
 
-import './ListMenuItem.scss';
-
 const ACTIVE_CLASS_NAME = 'active';
 const EMPTY_CLASS_NAME = '';
 

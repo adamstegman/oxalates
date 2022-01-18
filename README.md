@@ -4,6 +4,6 @@ An app that tracks oxalate consumption information
 ## Development
 
 ```
-gem install foreman
-foreman start
+bin/setup
+bin/dev
 ```

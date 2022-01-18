@@ -1,0 +1,8 @@
+@import "./actions-container";
+@import "./FoodActionAdd.scss";
+@import "./FoodActionDone.scss";
+@import "./FoodActionEdit.scss";
+
+.actions-container {
+  @extend %actions-container;
+}

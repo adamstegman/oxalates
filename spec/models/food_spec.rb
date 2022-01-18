@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-describe Food, type: :model do
+RSpec.describe Food, type: :model do
   describe '.for_list' do
     it "finds the foods whose oxalate content falls between the list's thresholds" do
       Food.create!(name: "too-low", oxalate_mg: 1)

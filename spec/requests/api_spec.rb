@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "API" do
+RSpec.describe "API" do
   before(:each) do
     ENV['OXALATES_PASSWORD'] = BCrypt::Password.create('password')
   end

@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
-describe List, type: :model do
+RSpec.describe List, type: :model do
 end
