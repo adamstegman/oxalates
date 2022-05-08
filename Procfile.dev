@@ -1,4 +1,4 @@
 web: bin/rails server -p 3000
-js: yarn build --watch
+js: yarn dev
 css: yarn build:css --watch
 db:  postgres -D "`brew --prefix`/var/postgres"
